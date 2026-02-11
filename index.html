@@ -32,10 +32,13 @@
         header .tag { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9em; }
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
             padding: 30px;
             background: #f8f9fa;
+        }
+        @media (max-width: 800px) {
+            .stats { grid-template-columns: repeat(3, 1fr); }
         }
         .stat-card {
             background: white;
