@@ -38,8 +38,8 @@
             background: #f8f9fa;
         }
         @media (max-width: 800px) {
-            .stats { 
-                grid-template-columns: repeat(3, 1fr); 
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
                 gap: 8px;
                 padding: 15px;
             }
@@ -134,6 +134,16 @@
             text-align: center;
         }
         footer a { color: #667eea; text-decoration: none; }
+        .badge-new {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
         @media (max-width: 600px) {
             header h1 { font-size: 1.8em; }
             .media-item { flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -154,31 +164,9 @@
             </div>
         </header>
 
-        <!-- 數字統計 - 最上面 -->
-        <div class="stats">
-            <a href="https://www.facebook.com/good.leg.clinic/" target="_blank" class="stat-card" style="text-decoration:none;color:inherit;">
-                <div class="number">4.9萬+</div>
-                <div class="label">Facebook 追蹤</div>
-            </a>
-            <a href="https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1" target="_blank" class="stat-card" style="text-decoration:none;color:inherit;">
-                <div class="number">⭐ 4.9</div>
-                <div class="label">Google 評價</div>
-            </a>
-            <div class="stat-card">
-                <div class="number">45+</div>
-                <div class="label">受邀節目集數</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">70+</div>
-                <div class="label">媒體曝光</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">5000+</div>
-                <div class="label">著作銷量</div>
-            </div>
-        </div>
+        <!-- Stats: dynamically rendered from data.json -->
+        <div class="stats" id="stats-container"></div>
 
-        <!-- 官方網站 -->
         <div class="section">
             <h2><span class="icon">🏥</span> 富足診所</h2>
             <div class="highlight-box">
@@ -188,7 +176,6 @@
             </div>
         </div>
 
-        <!-- Facebook 粉絲專頁 -->
         <div class="section">
             <h2><span class="icon">📘</span> Facebook 粉絲專頁</h2>
             <div class="highlight-box" style="background: linear-gradient(135deg, #1877f2 0%, #0d5db5 100%);">
@@ -196,14 +183,13 @@
                 <a href="https://www.facebook.com/good.leg.clinic/" target="_blank">fb.com/good.leg.clinic</a>
                 <div class="stats-row">
                     <div class="stat-item">
-                        <div class="stat-num">4.9萬+</div>
+                        <div class="stat-num" id="fb-follower-display">載入中...</div>
                         <div class="stat-label">追蹤者</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- YouTube 頻道 -->
         <div class="section">
             <h2><span class="icon">📺</span> YouTube 頻道</h2>
             <div class="highlight-box" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);">
@@ -212,7 +198,6 @@
             </div>
         </div>
 
-        <!-- 榮譽獎項 -->
         <div class="section">
             <h2><span class="icon">🏆</span> 榮譽獎項</h2>
             <div class="media-list">
@@ -243,11 +228,10 @@
             </div>
         </div>
 
-        <!-- 講師經歷 -->
         <div class="section">
             <h2><span class="icon">🎤</span> 講師・演講（50+ 場）</h2>
             <p style="text-align: center; color: #666; margin-bottom: 20px;">主題：簡報技巧｜溝通表達｜醫病關係｜生涯規劃</p>
-            
+
             <div class="subsection">
                 <h3>公開課程講師</h3>
                 <div class="media-list">
@@ -336,630 +320,24 @@
             </div>
         </div>
 
-        <!-- 電視節目 -->
+        <!-- TV Shows: dynamically rendered from data.json -->
         <div class="section">
             <h2><span class="icon">📺</span> 電視節目</h2>
-            
-            <div class="subsection">
-                <h3>醫師好辣（東森）</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1493 衰到懷疑人生！醫師我是不是無藥可救了？</div>
-                            <div class="meta">2023/02/07</div>
-                        </div>
-                        <a href="https://youtu.be/wkyGmUeKGWc" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1378 比星座分析更準！你的個性暴露你生什麼病？</div>
-                            <div class="meta">2022/07/22</div>
-                        </div>
-                        <a href="https://youtu.be/mFTTWlWJnMo" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1197 疫情間高燒嚇壞病患，就診後竟是「闌尾炎」</div>
-                            <div class="meta">2021/09/08</div>
-                        </div>
-                        <a href="https://youtu.be/iEb-NQozHaU" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1165 心導管手術遇突發狀況？病患心律不整</div>
-                            <div class="meta">2021/07/13</div>
-                        </div>
-                        <a href="https://youtu.be/TO7Gp9wXqsw" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1165 心臟移植手術時間緊迫？高鐵緊急送心</div>
-                            <div class="meta">2021/07/13</div>
-                        </div>
-                        <a href="https://youtu.be/aPofODvhkuM" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1162 沒有最怕，只有更怕！醫師心中恐懼誰人知</div>
-                            <div class="meta">2021/06/22</div>
-                        </div>
-                        <a href="https://youtu.be/MzPTYt9RdB4" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1142 心臟檢查方式超多，選對方式最重要</div>
-                            <div class="meta">2021/05/03</div>
-                        </div>
-                        <a href="https://youtu.be/i6mfYP3Eat8" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1088 醫病失聲吶喊，這些情況別讓我遇到</div>
-                            <div class="meta">2021/01/21</div>
-                        </div>
-                        <a href="https://youtu.be/g-Y-QZDn8t0" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1026 救命關鍵一瞬間，急救保命必收藏</div>
-                            <div class="meta">2020/10/05</div>
-                        </div>
-                        <a href="https://youtu.be/VLkiHxQgZXc" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP989 白色巨塔談錢傷感情，自費醫療爭議多</div>
-                            <div class="meta">2020/07/30</div>
-                        </div>
-                        <a href="https://youtu.be/5mSCn04SxLc" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP953 生病不再心好累，一秒讓你從地獄到天堂</div>
-                            <div class="meta">2020/05/28</div>
-                        </div>
-                        <a href="https://youtu.be/7bXXaQmJUag" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP913 醫師不只是醫師？隱藏版角色多到嚇壞你</div>
-                            <div class="meta">2020/03/19</div>
-                        </div>
-                        <a href="https://youtu.be/vXqU1cowGdI" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP803 醫師吶喊，這些情況是不是在整我們</div>
-                            <div class="meta">2019/09/03</div>
-                        </div>
-                        <a href="https://youtu.be/7rtGjgmJIxw" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP794 身體最愛出難題，醫師燒破腦袋也難查出病</div>
-                            <div class="meta">2019/08/19</div>
-                        </div>
-                        <a href="https://youtu.be/JaolN9uFHIk" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP774 2019新興超級食物來報到</div>
-                            <div class="meta">2019/07/15</div>
-                        </div>
-                        <a href="https://youtu.be/sqEQtsjmMEU" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP760 意想不到！醫術精湛的功臣竟是它</div>
-                            <div class="meta">2019/06/19</div>
-                        </div>
-                        <a href="https://youtu.be/mHKN757cicE" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP740 你被選中了嗎？疾病居然會挑對象</div>
-                            <div class="meta">2019/05/15</div>
-                        </div>
-                        <a href="https://youtu.be/smG2sUjh2U0" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">便秘也會心肌梗塞？7旬翁倒臥馬桶急送醫（精華版）</div>
-                            <div class="meta">精選片段</div>
-                        </div>
-                        <a href="https://youtu.be/UCt_lW9Egrs" target="_blank">觀看</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>全民星攻略（衛視中文台）</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP1111 出軌的人有「這特徵」？醫師回答被蘿莉塔抓包</div>
-                            <div class="meta">2024/08/15</div>
-                        </div>
-                        <a href="https://youtu.be/qZkyky6s4Ow" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP994 丁寧看鄰居手氣差還酸言酸語？馬上現世報</div>
-                            <div class="meta">2024/01/17</div>
-                        </div>
-                        <a href="https://youtu.be/79zI4zMhmSU" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP900 梁赫群手氣超狂歸零全閃開？最高獎金連2中</div>
-                            <div class="meta">2023/08/03</div>
-                        </div>
-                        <a href="https://youtu.be/ahgRWJXf61E" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP801 做哪件事有助如廁更順暢？掏心掏肺分享城哥笑歪</div>
-                            <div class="meta">2023/02/13</div>
-                        </div>
-                        <a href="https://youtu.be/xtK-8Uc3dYw" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP801 機會來了還把握不住？李偉浩答錯被老婆現場狠噹</div>
-                            <div class="meta">2023/02/13</div>
-                        </div>
-                        <a href="https://youtu.be/5Q_3hRKyefE" target="_blank">觀看</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>健康2.0（TVBS）</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP3157 曹西平猝逝！血壓高+情緒失控=最強奪命組合</div>
-                            <div class="meta">2026/01/11</div>
-                        </div>
-                        <a href="https://youtu.be/_60E8RIOKcY" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP3041 持續胸痛恐心肌梗塞！伴隨胸口悶堵、呼吸困難</div>
-                            <div class="meta">2025/06/14</div>
-                        </div>
-                        <a href="https://youtu.be/lU4m-uhqy2Q" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP3029 川普愛吃速食竟沒糖尿病！降膽固醇藥+阿斯匹靈</div>
-                            <div class="meta">2025/05/24</div>
-                        </div>
-                        <a href="https://youtu.be/DsPwoWKsWiU" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">EP3011 靜脈曲張／雙腿水腫 器官求救警訊</div>
-                            <div class="meta">2025/04/20</div>
-                        </div>
-                        <a href="https://youtu.be/BXek4S2EFq8" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">【懶人護心法】坐著3動作 血管變年輕｜feat.鄭凱云</div>
-                            <div class="meta">2025</div>
-                        </div>
-                        <a href="https://youtu.be/ElOvpd_2Yk0" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">三高脂肪肝引腎臟病危機！高血壓藥能顧腎？｜明欣醫聊事</div>
-                            <div class="meta">2025</div>
-                        </div>
-                        <a href="https://youtu.be/e-0iEaRiJEQ" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">水中1招刺激血管彈性｜一周精選</div>
-                            <div class="meta">2025/05/26</div>
-                        </div>
-                        <a href="https://youtu.be/1ZsJfako110" target="_blank">觀看</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>聚焦2.0（年代）</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">第553集 罹癌危機！45kg窈窕女竟脂肪肝</div>
-                            <div class="meta">2025</div>
-                        </div>
-                        <a href="https://youtu.be/h2-F4N_wD9M" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">孔鏘怪病纏身 單側腳水腫危機</div>
-                            <div class="meta">2025/04</div>
-                        </div>
-                        <a href="https://youtu.be/oyhh2WyJDFQ" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">第577集 世界最強效擊打術！名醫挑戰「泰拳K肚子」</div>
-                            <div class="meta">2024</div>
-                        </div>
-                        <a href="https://youtu.be/TKxCIsHYDgE" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">第541集 心臟外科名醫靠「一招」體脂從23降到10</div>
-                            <div class="meta">2024/07</div>
-                        </div>
-                        <a href="https://youtu.be/7a-fXW8pkJE" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">第501集 「聽腳」揪腳中風！名醫教「足背把脈」自我檢測</div>
-                            <div class="meta">2024</div>
-                        </div>
-                        <a href="https://youtu.be/d1T05zUL0S8" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">第501集 腹痛竟「主動脈瘤爆裂」微創支架提前拆彈</div>
-                            <div class="meta">2024</div>
-                        </div>
-                        <a href="https://youtu.be/ruA-7oDMqQE" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">第432集 名醫搶救狂醫！3分鐘搞懂心導管手術</div>
-                            <div class="meta">2021/01/01</div>
-                        </div>
-                        <a href="https://youtu.be/kUHrZffg9Rk" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">第223集 名醫劈腿拉筋動齡法！每天一分鐘延壽十年</div>
-                            <div class="meta">經典回顧</div>
-                        </div>
-                        <a href="https://youtu.be/FcnWlTDJ0pk" target="_blank">觀看</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>祝你健康</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">靜脈曲張放著不管恐截肢？冬天是治療好時機？彈性襪怎選？｜直播完整版</div>
-                            <div class="meta">2026/01/14</div>
-                        </div>
-                        <a href="https://youtu.be/oQP7uvyADeQ" target="_blank">觀看</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>廣播節目</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">九八新聞台｜名醫On Call｜談《俠醫楊智鈞的50道心臟密碼》</div>
-                            <div class="meta">2023/08/24</div>
-                        </div>
-                        <a href="https://youtu.be/MhcnE-KQl0M" target="_blank">收聽</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">九八新聞台｜財經一路發｜俠醫楊智鈞的50道心臟密碼</div>
-                            <div class="meta">2023/01/31</div>
-                        </div>
-                        <a href="https://youtu.be/FVaF3t12d0w" target="_blank">收聽</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">飛碟聯播網｜青春永遠不會老｜心碎症候群真的會致命</div>
-                            <div class="meta">2023/04/05</div>
-                        </div>
-                        <a href="https://youtu.be/ykvszqo0jEQ" target="_blank">收聽</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>網路直播/專訪</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">17LIVE｜心臟外科手術室秘辛</div>
-                            <div class="meta">直播</div>
-                        </div>
-                        <a href="https://youtu.be/CVYU5FPCNwQ" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">17LIVE｜健康人也會心臟病發？安心過好年</div>
-                            <div class="meta">直播</div>
-                        </div>
-                        <a href="https://youtu.be/-4xVOgZnFIQ" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">早安健康｜小心空汙傷「心」！室內空氣與環境是關鍵</div>
-                            <div class="meta">專訪</div>
-                        </div>
-                        <a href="https://youtu.be/Qxq1gTnILVg" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">克拉拉主播｜內外兼修 開心俠醫專訪</div>
-                            <div class="meta">專訪</div>
-                        </div>
-                        <a href="https://youtu.be/tYV_4vvTrlY" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">就是愛健康｜俠醫楊智鈞的50道心臟密碼</div>
-                            <div class="meta">專訪</div>
-                        </div>
-                        <a href="https://youtu.be/XGVO9MU-k-w" target="_blank">觀看</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">健康主播鄭凱云｜心梗自救！倒下前30秒一定要做這3件事</div>
-                            <div class="meta">專訪</div>
-                        </div>
-                        <a href="https://youtu.be/ieSBSFoQJV0" target="_blank">觀看</a>
-                    </div>
-                </div>
-            </div>
+            <div id="tv-shows-container"></div>
         </div>
 
-        <!-- 權威健康媒體 -->
+        <!-- Health Media: dynamically rendered from data.json -->
         <div class="section">
             <h2><span class="icon">🩺</span> 權威健康媒體</h2>
-            
-            <div class="subsection">
-                <h3>早安健康（專欄作者）</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">男網購中藥降糖亡！醫嘆這味藥是心臟殺手，4大護心藥吃錯...</div>
-                            <div class="meta">2026/02/11</div>
-                        </div>
-                        <a href="https://edh.tw/articles/pnThwNr" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">楊醫師，我會不會像演歌天后八代亞紀那樣？</div>
-                            <div class="meta">2026/02/06</div>
-                        </div>
-                        <a href="https://edh.tw/articles/mieaxMb" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">跑越多，大腸息肉長越多？</div>
-                            <div class="meta">2026/01/21</div>
-                        </div>
-                        <a href="https://edh.tw/articles/F0x7WB6" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">不是只能靠魚油！名醫：益生菌等3營養素不只顧腸道也護心</div>
-                            <div class="meta">2024/07/07</div>
-                        </div>
-                        <a href="https://edh.tw/articles/vLZWsSg" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">最佳護心飲食，降4成心肌梗塞發生率！名醫列清單秒懂怎麼吃</div>
-                            <div class="meta">2023/05/11</div>
-                        </div>
-                        <a href="https://edh.tw/articles/OphywhN" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">心衰竭不會好，但存活率能改善！醫師教你這樣鍛鍊心肌保養心臟</div>
-                            <div class="meta">2023/05/09</div>
-                        </div>
-                        <a href="https://edh.tw/articles/9KQYTmv" target="_blank">閱讀</a>
-                    </div>
-                </div>
-            </div>
+            <div id="health-media-container"></div>
         </div>
 
-        <!-- 新聞媒體 -->
+        <!-- News Media: dynamically rendered from data.json -->
         <div class="section">
             <h2><span class="icon">🗞️</span> 新聞媒體報導</h2>
-            
-            <div class="subsection">
-                <h3>自由時報</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">預防靜脈曲張 醫：吃對更有效</div>
-                            <div class="meta">2026/02/08</div>
-                        </div>
-                        <a href="https://health.ltn.com.tw/article/breakingnews/5331185" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">男子喝中藥猝死！心臟醫談4中藥</div>
-                            <div class="meta">2026/02/07</div>
-                        </div>
-                        <a href="https://health.ltn.com.tw/article/breakingnews/5335189" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">小心「瘦胖子」高血脂危機</div>
-                            <div class="meta">2025/12/24</div>
-                        </div>
-                        <a href="https://health.ltn.com.tw/article/breakingnews/5288347" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">膽固醇正常仍中風？5習慣是血管殺手</div>
-                            <div class="meta">2025/11/27</div>
-                        </div>
-                        <a href="https://health.ltn.com.tw/article/breakingnews/5259962" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">工作久站靜脈病變 25歲男腳傷潰爛（紙本）</div>
-                            <div class="meta">2025/09/14 📰</div>
-                        </div>
-                        <a href="https://health.ltn.com.tw/article/paper/1724111" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">魔鷹太太驟逝 經濟艙症候群</div>
-                            <div class="meta">2025/07/24</div>
-                        </div>
-                        <a href="https://health.ltn.com.tw/article/breakingnews/5117960" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">油罐車司機主動脈剝離 開胸救回一命（紙本）</div>
-                            <div class="meta">2023/02/03 📰</div>
-                        </div>
-                        <a href="https://health.ltn.com.tw/article/paper/1565003" target="_blank">閱讀</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>聯合報／元氣網</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">35歲健康女長途飛行後中風</div>
-                            <div class="meta">2025/11/13</div>
-                        </div>
-                        <a href="https://health.udn.com/health/story/6008/9137255" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">經濟艙症候群惹禍？魔鷹愛妻猝逝</div>
-                            <div class="meta">2025/07/24</div>
-                        </div>
-                        <a href="https://udn.com/news/story/7266/8894801" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">孔鏘怪病纏身重度水腫</div>
-                            <div class="meta">2025/04/19</div>
-                        </div>
-                        <a href="https://udn.com/news/story/123693/8685360" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">腳中風微創打通</div>
-                            <div class="meta">2021/09/29</div>
-                        </div>
-                        <a href="https://health.udn.com/health/story/5977/5779156" target="_blank">閱讀</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>ETtoday</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">突冒白髮 罹心臟病風險高5倍</div>
-                            <div class="meta">2022/11/05</div>
-                        </div>
-                        <a href="https://health.ettoday.net/news/2371693" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">魚油「這時間吃」效果最好</div>
-                            <div class="meta">2022/08/31</div>
-                        </div>
-                        <a href="https://health.ettoday.net/news/2327428" target="_blank">閱讀</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>TVBS 健康2.0</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">蘆筍、蕎麥也能護血管？靜脈曲張還有救！醫曝「護腿神物」吃出血管韌性</div>
-                            <div class="meta">2026/02/12</div>
-                        </div>
-                        <a href="https://health.tvbs.com.tw/nutrition/361099" target="_blank">閱讀</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>CTWANT／周刊王</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">紅麴、丹參都上榜！醫列4中藥致命禁忌</div>
-                            <div class="meta">2026/02/08</div>
-                        </div>
-                        <a href="https://www.ctwant.com/article/469241" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">劉真拿掉葉克膜 等待移植心臟</div>
-                            <div class="meta">2020/02/24</div>
-                        </div>
-                        <a href="https://www.ctwant.com/article/38298" target="_blank">閱讀</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>Yahoo 新聞</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">楊智鈞扎根偏鄉 努力翻轉醫療生態</div>
-                            <div class="meta">2022/07/23</div>
-                        </div>
-                        <a href="https://tw.news.yahoo.com/%E6%A5%8A%E6%99%BA%E9%88%9E%E6%89%8E%E6%A0%B9%E5%81%8F%E9%84%89-%E5%8A%AA%E5%8A%9B%E7%BF%BB%E8%BD%89%E9%86%AB%E7%99%82%E7%94%9F%E6%85%8B-201000654.html" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">兒童疫苗該選莫德納還是BNT？醫師楊智鈞：都不考慮讓孩子施打</div>
-                            <div class="meta">2022/05/01</div>
-                        </div>
-                        <a href="https://tw.news.yahoo.com/%E5%85%92%E7%AB%A5%E7%96%AB%E8%8B%97%E8%A9%B2%E9%81%B8%E8%8E%AB%E5%BE%B7%E7%B4%8D%E9%82%84%E6%98%AFbnt-%E9%86%AB%E5%B8%AB%E6%A5%8A%E6%99%BA%E9%88%9E-%E9%83%BD%E4%B8%8D%E8%80%83%E6%85%AE%E8%AE%93%E5%AD%A9%E5%AD%90%E6%96%BD%E6%89%93-035220870.html" target="_blank">閱讀</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3>LINE TODAY</h3>
-                <div class="media-list">
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">孔鏘罹怪病！右腳水腫達第4級 醫師：嚴重恐需葉克膜救命</div>
-                            <div class="meta">2025/04/18</div>
-                        </div>
-                        <a href="https://today.line.me/tw/v3/article/mWmvnep" target="_blank">閱讀</a>
-                    </div>
-                    <div class="media-item">
-                        <div class="info">
-                            <div class="title">大千4醫師獲選苗縣優秀青年</div>
-                            <div class="meta">2021/03/29</div>
-                        </div>
-                        <a href="https://today.line.me/tw/v3/article/wxX2rw" target="_blank">閱讀</a>
-                    </div>
-                </div>
-            </div>
+            <div id="news-media-container"></div>
         </div>
 
-        <!-- 著作 -->
         <div class="section">
             <h2><span class="icon">📚</span> 著作・專欄・Podcast</h2>
             <div class="media-list">
@@ -1001,7 +379,6 @@
             </div>
         </div>
 
-        <!-- 品牌合作 -->
         <div class="section">
             <h2><span class="icon">🤝</span> 品牌合作</h2>
             <div class="media-list">
@@ -1031,8 +408,147 @@
 
         <footer>
             <p><strong>俠醫楊智鈞｜富足診所</strong></p>
-            <p style="margin-top: 15px; opacity: 0.7;">媒體包整理日期：2026年2月12日</p>
+            <p id="last-updated" style="margin-top: 15px; opacity: 0.7;">媒體包整理中...</p>
         </footer>
     </div>
+
+    <script>
+    (async function() {
+        const DATA_URL = 'data.json';
+        let data;
+
+        try {
+            const resp = await fetch(DATA_URL + '?v=' + Date.now());
+            data = await resp.json();
+        } catch (err) {
+            console.error('Failed to load data.json:', err);
+            return;
+        }
+
+        // --- Render Stats Bar ---
+        renderStats(data.stats);
+
+        // --- Render FB follower count ---
+        const fbEl = document.getElementById('fb-follower-display');
+        if (fbEl) fbEl.textContent = data.stats.facebook_followers.display;
+
+        // --- Render TV Shows (grouped by show) ---
+        renderGroupedSection(
+            'tv-shows-container',
+            data.tv_shows,
+            'show',
+            function(item) {
+                return item.show_network ? item.show + '（' + item.show_network + '）' : item.show;
+            },
+            '觀看'
+        );
+
+        // --- Render Health Media (grouped by outlet) ---
+        renderGroupedSection(
+            'health-media-container',
+            data.health_media,
+            'outlet',
+            function(item) {
+                var role = item.outlet_role ? '（' + item.outlet_role + '）' : '';
+                return item.outlet + role;
+            },
+            '閱讀'
+        );
+
+        // --- Render News Media (grouped by outlet) ---
+        renderGroupedSection(
+            'news-media-container',
+            data.news_media,
+            'outlet',
+            function(item) { return item.outlet; },
+            '閱讀'
+        );
+
+        // --- Update footer date ---
+        var footerEl = document.getElementById('last-updated');
+        if (footerEl && data.last_updated) {
+            var d = new Date(data.last_updated);
+            footerEl.textContent = '資料自動更新：' + d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+        }
+
+        // ─── Helper Functions ───────────────────────────
+
+        function renderStats(stats) {
+            var container = document.getElementById('stats-container');
+            if (!container) return;
+            var cards = [
+                { number: stats.facebook_followers.display, label: 'Facebook 追蹤', url: stats.facebook_followers.url },
+                { number: '\u2B50 ' + stats.google_rating.score, label: 'Google 評價', url: stats.google_rating.url },
+                { number: stats.tv_episodes.display, label: '受邀節目集數' },
+                { number: stats.media_exposure.display, label: '媒體曝光' },
+                { number: stats.book_sales.display, label: '著作銷量' }
+            ];
+            container.innerHTML = cards.map(function(c) {
+                var tag = c.url ? 'a' : 'div';
+                var href = c.url ? ' href="' + escHtml(c.url) + '" target="_blank"' : '';
+                var style = c.url ? ' style="text-decoration:none;color:inherit;"' : '';
+                return '<' + tag + href + ' class="stat-card"' + style + '>' +
+                    '<div class="number">' + escHtml(c.number) + '</div>' +
+                    '<div class="label">' + escHtml(c.label) + '</div>' +
+                    '</' + tag + '>';
+            }).join('');
+        }
+
+        function renderGroupedSection(containerId, items, groupField, labelFn, defaultBtnText) {
+            var container = document.getElementById(containerId);
+            if (!container || !items) return;
+
+            // Group items preserving insertion order
+            var groups = {};
+            var groupOrder = [];
+            items.forEach(function(item) {
+                var key = item[groupField];
+                if (!groups[key]) {
+                    groups[key] = [];
+                    groupOrder.push(key);
+                }
+                groups[key].push(item);
+            });
+
+            // Sort within each group by date descending
+            Object.keys(groups).forEach(function(key) {
+                groups[key].sort(function(a, b) {
+                    return (b.date || '').localeCompare(a.date || '');
+                });
+            });
+
+            // Check if item was added in last 30 days
+            var thirtyDaysAgo = new Date();
+            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+            var cutoff = thirtyDaysAgo.toISOString().slice(0, 10);
+
+            container.innerHTML = groupOrder.map(function(key) {
+                var groupItems = groups[key];
+                var label = labelFn(groupItems[0]);
+                return '<div class="subsection">' +
+                    '<h3>' + escHtml(label) + '</h3>' +
+                    '<div class="media-list">' +
+                    groupItems.map(function(item) {
+                        var btnText = item.link_label || defaultBtnText;
+                        var newBadge = (item.source === 'auto_search' && item.added_date >= cutoff)
+                            ? '<span class="badge-new">NEW</span>' : '';
+                        return '<div class="media-item">' +
+                            '<div class="info">' +
+                            '<div class="title">' + escHtml(item.title) + newBadge + '</div>' +
+                            '<div class="meta">' + escHtml(item.date || '') + '</div>' +
+                            '</div>' +
+                            (item.url ? '<a href="' + escHtml(item.url) + '" target="_blank">' + escHtml(btnText) + '</a>' : '') +
+                            '</div>';
+                    }).join('') +
+                    '</div></div>';
+            }).join('');
+        }
+
+        function escHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+    })();
+    </script>
 </body>
 </html>

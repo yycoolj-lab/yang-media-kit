@@ -1,0 +1,50 @@
+name: Update Media Kit Data
+
+on:
+  schedule:
+    # Run every Monday at 9 AM Taiwan time (1 AM UTC)
+    - cron: '0 1 * * 1'
+  workflow_dispatch:  # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Install Playwright browsers
+        run: python -m playwright install chromium --with-deps
+
+      - name: Install yt-dlp
+        run: pip install yt-dlp
+
+      - name: Run update script
+        run: python scripts/update_media.py
+
+      - name: Check for changes
+        id: check
+        run: |
+          git diff --quiet data.json && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "chore: auto-update media data $(date +%Y-%m-%d)"
+          git push

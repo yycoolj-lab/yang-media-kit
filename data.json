@@ -1,0 +1,755 @@
+{
+  "last_updated": "2026-02-27T09:00:00+08:00",
+  "stats": {
+    "facebook_followers": {
+      "count": 50000,
+      "display": "5萬+",
+      "url": "https://www.facebook.com/good.leg.clinic/"
+    },
+    "google_rating": {
+      "score": 4.9,
+      "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
+    },
+    "tv_episodes": {
+      "count": 48,
+      "display": "48+"
+    },
+    "media_exposure": {
+      "count": 74,
+      "display": "74+"
+    },
+    "book_sales": {
+      "count": 5000,
+      "display": "5000+"
+    }
+  },
+  "tv_shows": [
+    {
+      "id": "tv-488cc9ac",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP1493 衰到懷疑人生！醫師我是不是無藥可救了？",
+      "date": "2023-02-07",
+      "url": "https://youtu.be/wkyGmUeKGWc",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-637e11a0",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP1378 比星座分析更準！你的個性暴露你生什麼病？",
+      "date": "2022-07-22",
+      "url": "https://youtu.be/mFTTWlWJnMo",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-27b3d143",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP1197 疫情間高燒嚇壞病患，就診後竟是「闌尾炎」",
+      "date": "2021-09-08",
+      "url": "https://youtu.be/iEb-NQozHaU",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-06041901",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP1165 心導管手術遇突發狀況？病患心律不整",
+      "date": "2021-07-13",
+      "url": "https://youtu.be/TO7Gp9wXqsw",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-5fdefa15",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP1165 心臟移植手術時間緊迫？高鐵緊急送心",
+      "date": "2021-07-13",
+      "url": "https://youtu.be/aPofODvhkuM",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-3276ec2f",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP1162 沒有最怕，只有更怕！醫師心中恐懼誰人知",
+      "date": "2021-06-22",
+      "url": "https://youtu.be/MzPTYt9RdB4",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-dfa16589",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP1142 心臟檢查方式超多，選對方式最重要",
+      "date": "2021-05-03",
+      "url": "https://youtu.be/i6mfYP3Eat8",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-96592063",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP1088 醫病失聲吶喊，這些情況別讓我遇到",
+      "date": "2021-01-21",
+      "url": "https://youtu.be/g-Y-QZDn8t0",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-60a0c42b",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP1026 救命關鍵一瞬間，急救保命必收藏",
+      "date": "2020-10-05",
+      "url": "https://youtu.be/VLkiHxQgZXc",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-841920ee",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP989 白色巨塔談錢傷感情，自費醫療爭議多",
+      "date": "2020-07-30",
+      "url": "https://youtu.be/5mSCn04SxLc",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-ed5f5741",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP953 生病不再心好累，一秒讓你從地獄到天堂",
+      "date": "2020-05-28",
+      "url": "https://youtu.be/7bXXaQmJUag",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-875d6834",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP913 醫師不只是醫師？隱藏版角色多到嚇壞你",
+      "date": "2020-03-19",
+      "url": "https://youtu.be/vXqU1cowGdI",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-5f093235",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP803 醫師吶喊，這些情況是不是在整我們",
+      "date": "2019-09-03",
+      "url": "https://youtu.be/7rtGjgmJIxw",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-e67e6f03",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP794 身體最愛出難題，醫師燒破腦袋也難查出病",
+      "date": "2019-08-19",
+      "url": "https://youtu.be/JaolN9uFHIk",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-4c7d1d38",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP774 2019新興超級食物來報到",
+      "date": "2019-07-15",
+      "url": "https://youtu.be/sqEQtsjmMEU",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-26782b90",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP760 意想不到！醫術精湛的功臣竟是它",
+      "date": "2019-06-19",
+      "url": "https://youtu.be/mHKN757cicE",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-bd0182d6",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "EP740 你被選中了嗎？疾病居然會挑對象",
+      "date": "2019-05-15",
+      "url": "https://youtu.be/smG2sUjh2U0",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-81faf197",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "便秘也會心肌梗塞？7旬翁倒臥馬桶急送醫（精華版）",
+      "date": "",
+      "url": "https://youtu.be/UCt_lW9Egrs",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-c6ef11fc",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "EP1111 出軌的人有「這特徵」？醫師回答被蘿莉塔抓包",
+      "date": "2024-08-15",
+      "url": "https://youtu.be/qZkyky6s4Ow",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-73c7cd9e",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "EP994 丁寧看鄰居手氣差還酸言酸語？馬上現世報",
+      "date": "2024-01-17",
+      "url": "https://youtu.be/79zI4zMhmSU",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-1b21e3f2",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "EP900 梁赫群手氣超狂歸零全閃開？最高獎金連2中",
+      "date": "2023-08-03",
+      "url": "https://youtu.be/ahgRWJXf61E",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-c0635fa6",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "EP801 做哪件事有助如廁更順暢？掏心掏肺分享城哥笑歪",
+      "date": "2023-02-13",
+      "url": "https://youtu.be/xtK-8Uc3dYw",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-bdb9d0d1",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "EP801 機會來了還把握不住？李偉浩答錯被老婆現場狠噹",
+      "date": "2023-02-13",
+      "url": "https://youtu.be/5Q_3hRKyefE",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-73334a8c",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "EP3157 曹西平猝逝！血壓高+情緒失控=最強奪命組合",
+      "date": "2026-01-11",
+      "url": "https://youtu.be/_60E8RIOKcY",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-b96bcbbc",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "EP3041 持續胸痛恐心肌梗塞！伴隨胸口悶堵、呼吸困難",
+      "date": "2025-06-14",
+      "url": "https://youtu.be/lU4m-uhqy2Q",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-8b4b6cfc",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "EP3029 川普愛吃速食竟沒糖尿病！降膽固醇藥+阿斯匹靈",
+      "date": "2025-05-24",
+      "url": "https://youtu.be/DsPwoWKsWiU",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-6503e495",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "EP3011 靜脈曲張／雙腿水腫 器官求救警訊",
+      "date": "2025-04-20",
+      "url": "https://youtu.be/BXek4S2EFq8",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-1edb84e1",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "【懶人護心法】坐著3動作 血管變年輕｜feat.鄭凱云",
+      "date": "2025",
+      "url": "https://youtu.be/ElOvpd_2Yk0",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-dbcd5799",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "三高脂肪肝引腎臟病危機！高血壓藥能顧腎？｜明欣醫聊事",
+      "date": "2025",
+      "url": "https://youtu.be/e-0iEaRiJEQ",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-f4378c44",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "水中1招刺激血管彈性｜一周精選",
+      "date": "2025-05-26",
+      "url": "https://youtu.be/1ZsJfako110",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-6bfb08b3",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "第553集 罹癌危機！45kg窈窕女竟脂肪肝",
+      "date": "2025",
+      "url": "https://youtu.be/h2-F4N_wD9M",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-85d8d287",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "孔鏘怪病纏身 單側腳水腫危機",
+      "date": "2025-04",
+      "url": "https://youtu.be/oyhh2WyJDFQ",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-247f7e15",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "第577集 世界最強效擊打術！名醫挑戰「泰拳K肚子」",
+      "date": "2024",
+      "url": "https://youtu.be/TKxCIsHYDgE",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-9d786bb1",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "第541集 心臟外科名醫靠「一招」體脂從23降到10",
+      "date": "2024-07",
+      "url": "https://youtu.be/7a-fXW8pkJE",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-090a1b60",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "第501集 「聽腳」揪腳中風！名醫教「足背把脈」自我檢測",
+      "date": "2024",
+      "url": "https://youtu.be/d1T05zUL0S8",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-08fdfb69",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "第501集 腹痛竟「主動脈瘤爆裂」微創支架提前拆彈",
+      "date": "2024",
+      "url": "https://youtu.be/ruA-7oDMqQE",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-f332f1c8",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "第432集 名醫搶救狂醫！3分鐘搞懂心導管手術",
+      "date": "2021-01-01",
+      "url": "https://youtu.be/kUHrZffg9Rk",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-1be8277f",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "第223集 名醫劈腿拉筋動齡法！每天一分鐘延壽十年",
+      "date": "",
+      "url": "https://youtu.be/FcnWlTDJ0pk",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-873d5270",
+      "show": "祝你健康",
+      "show_network": "",
+      "title": "靜脈曲張放著不管恐截肢？冬天是治療好時機？彈性襪怎選？｜直播完整版",
+      "date": "2026-01-14",
+      "url": "https://youtu.be/oQP7uvyADeQ",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-aae84a13",
+      "show": "廣播節目",
+      "show_network": "",
+      "title": "九八新聞台｜名醫On Call｜談《俠醫楊智鈞的50道心臟密碼》",
+      "date": "2023-08-24",
+      "url": "https://youtu.be/MhcnE-KQl0M",
+      "source": "manual",
+      "added_date": "2026-02-12",
+      "link_label": "收聽"
+    },
+    {
+      "id": "tv-c0e9846c",
+      "show": "廣播節目",
+      "show_network": "",
+      "title": "九八新聞台｜財經一路發｜俠醫楊智鈞的50道心臟密碼",
+      "date": "2023-01-31",
+      "url": "https://youtu.be/FVaF3t12d0w",
+      "source": "manual",
+      "added_date": "2026-02-12",
+      "link_label": "收聽"
+    },
+    {
+      "id": "tv-e626c32c",
+      "show": "廣播節目",
+      "show_network": "",
+      "title": "飛碟聯播網｜青春永遠不會老｜心碎症候群真的會致命",
+      "date": "2023-04-05",
+      "url": "https://youtu.be/ykvszqo0jEQ",
+      "source": "manual",
+      "added_date": "2026-02-12",
+      "link_label": "收聽"
+    },
+    {
+      "id": "tv-8736b383",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "17LIVE｜心臟外科手術室秘辛",
+      "date": "",
+      "url": "https://youtu.be/CVYU5FPCNwQ",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-b7aaf19c",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "17LIVE｜健康人也會心臟病發？安心過好年",
+      "date": "",
+      "url": "https://youtu.be/-4xVOgZnFIQ",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-f563901c",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "早安健康｜小心空汙傷「心」！室內空氣與環境是關鍵",
+      "date": "",
+      "url": "https://youtu.be/Qxq1gTnILVg",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-c27e6d0c",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "克拉拉主播｜內外兼修 開心俠醫專訪",
+      "date": "",
+      "url": "https://youtu.be/tYV_4vvTrlY",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-9d0facaf",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "就是愛健康｜俠醫楊智鈞的50道心臟密碼",
+      "date": "",
+      "url": "https://youtu.be/XGVO9MU-k-w",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-f93ec8c4",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "健康主播鄭凱云｜心梗自救！倒下前30秒一定要做這3件事",
+      "date": "",
+      "url": "https://youtu.be/ieSBSFoQJV0",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    }
+  ],
+  "health_media": [
+    {
+      "id": "hm-930c9622",
+      "outlet": "早安健康",
+      "outlet_role": "專欄作者",
+      "title": "男網購中藥降糖亡！醫嘆這味藥是心臟殺手，4大護心藥吃錯...",
+      "date": "2026-02-11",
+      "url": "https://edh.tw/articles/pnThwNr",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "hm-0b8159ed",
+      "outlet": "早安健康",
+      "outlet_role": "專欄作者",
+      "title": "楊醫師，我會不會像演歌天后八代亞紀那樣？",
+      "date": "2026-02-06",
+      "url": "https://edh.tw/articles/mieaxMb",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "hm-7a1aa019",
+      "outlet": "早安健康",
+      "outlet_role": "專欄作者",
+      "title": "跑越多，大腸息肉長越多？",
+      "date": "2026-01-21",
+      "url": "https://edh.tw/articles/F0x7WB6",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "hm-aa30bd0d",
+      "outlet": "早安健康",
+      "outlet_role": "專欄作者",
+      "title": "不是只能靠魚油！名醫：益生菌等3營養素不只顧腸道也護心",
+      "date": "2024-07-07",
+      "url": "https://edh.tw/articles/vLZWsSg",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "hm-18dcaf09",
+      "outlet": "早安健康",
+      "outlet_role": "專欄作者",
+      "title": "最佳護心飲食，降4成心肌梗塞發生率！名醫列清單秒懂怎麼吃",
+      "date": "2023-05-11",
+      "url": "https://edh.tw/articles/OphywhN",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "hm-614de939",
+      "outlet": "早安健康",
+      "outlet_role": "專欄作者",
+      "title": "心衰竭不會好，但存活率能改善！醫師教你這樣鍛鍊心肌保養心臟",
+      "date": "2023-05-09",
+      "url": "https://edh.tw/articles/9KQYTmv",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    }
+  ],
+  "news_media": [
+    {
+      "id": "nm-90e9f4c8",
+      "outlet": "自由時報",
+      "title": "預防靜脈曲張 醫：吃對更有效",
+      "date": "2026-02-08",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5331185",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-a03c968f",
+      "outlet": "自由時報",
+      "title": "男子喝中藥猝死！心臟醫談4中藥",
+      "date": "2026-02-07",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5335189",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-4dfeef21",
+      "outlet": "自由時報",
+      "title": "小心「瘦胖子」高血脂危機",
+      "date": "2025-12-24",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5288347",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-58115a5e",
+      "outlet": "自由時報",
+      "title": "膽固醇正常仍中風？5習慣是血管殺手",
+      "date": "2025-11-27",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5259962",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-61a86745",
+      "outlet": "自由時報",
+      "title": "工作久站靜脈病變 25歲男腳傷潰爛（紙本）",
+      "date": "2025-09-14",
+      "url": "https://health.ltn.com.tw/article/paper/1724111",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-a7dcb071",
+      "outlet": "自由時報",
+      "title": "魔鷹太太驟逝 經濟艙症候群",
+      "date": "2025-07-24",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5117960",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-33fdee89",
+      "outlet": "自由時報",
+      "title": "油罐車司機主動脈剝離 開胸救回一命（紙本）",
+      "date": "2023-02-03",
+      "url": "https://health.ltn.com.tw/article/paper/1565003",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-f7997695",
+      "outlet": "聯合報／元氣網",
+      "title": "35歲健康女長途飛行後中風",
+      "date": "2025-11-13",
+      "url": "https://health.udn.com/health/story/6008/9137255",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-fb763ee2",
+      "outlet": "聯合報／元氣網",
+      "title": "經濟艙症候群惹禍？魔鷹愛妻猝逝",
+      "date": "2025-07-24",
+      "url": "https://udn.com/news/story/7266/8894801",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-335cd89f",
+      "outlet": "聯合報／元氣網",
+      "title": "孔鏘怪病纏身重度水腫",
+      "date": "2025-04-19",
+      "url": "https://udn.com/news/story/123693/8685360",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-b0fd1974",
+      "outlet": "聯合報／元氣網",
+      "title": "腳中風微創打通",
+      "date": "2021-09-29",
+      "url": "https://health.udn.com/health/story/5977/5779156",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-744de9bf",
+      "outlet": "ETtoday",
+      "title": "突冒白髮 罹心臟病風險高5倍",
+      "date": "2022-11-05",
+      "url": "https://health.ettoday.net/news/2371693",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-1801e5d3",
+      "outlet": "ETtoday",
+      "title": "魚油「這時間吃」效果最好",
+      "date": "2022-08-31",
+      "url": "https://health.ettoday.net/news/2327428",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-c66e5519",
+      "outlet": "TVBS 健康2.0",
+      "title": "蘆筍、蕎麥也能護血管？靜脈曲張還有救！醫曝「護腿神物」吃出血管韌性",
+      "date": "2026-02-12",
+      "url": "https://health.tvbs.com.tw/nutrition/361099",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-693e70c4",
+      "outlet": "CTWANT／周刊王",
+      "title": "紅麴、丹參都上榜！醫列4中藥致命禁忌",
+      "date": "2026-02-08",
+      "url": "https://www.ctwant.com/article/469241",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-642ec5ab",
+      "outlet": "CTWANT／周刊王",
+      "title": "劉真拿掉葉克膜 等待移植心臟",
+      "date": "2020-02-24",
+      "url": "https://www.ctwant.com/article/38298",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-ebac4e86",
+      "outlet": "Yahoo 新聞",
+      "title": "楊智鈞扎根偏鄉 努力翻轉醫療生態",
+      "date": "2022-07-23",
+      "url": "https://tw.news.yahoo.com/%E6%A5%8A%E6%99%BA%E9%88%9E%E6%89%8E%E6%A0%B9%E5%81%8F%E9%84%89-%E5%8A%AA%E5%8A%9B%E7%BF%BB%E8%BD%89%E9%86%AB%E7%99%82%E7%94%9F%E6%85%8B-201000654.html",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-2e09e638",
+      "outlet": "Yahoo 新聞",
+      "title": "兒童疫苗該選莫德納還是BNT？醫師楊智鈞：都不考慮讓孩子施打",
+      "date": "2022-05-01",
+      "url": "https://tw.news.yahoo.com/%E5%85%92%E7%AB%A5%E7%96%AB%E8%8B%97%E8%A9%B2%E9%81%B8%E8%8E%AB%E5%BE%B7%E7%B4%8D%E9%82%84%E6%98%AFbnt-%E9%86%AB%E5%B8%AB%E6%A5%8A%E6%99%BA%E9%88%9E-%E9%83%BD%E4%B8%8D%E8%80%83%E6%85%AE%E8%AE%93%E5%AD%A9%E5%AD%90%E6%96%BD%E6%89%93-035220870.html",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-e0bf42b4",
+      "outlet": "LINE TODAY",
+      "title": "孔鏘罹怪病！右腳水腫達第4級 醫師：嚴重恐需葉克膜救命",
+      "date": "2025-04-18",
+      "url": "https://today.line.me/tw/v3/article/mWmvnep",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    },
+    {
+      "id": "nm-9f51d4e9",
+      "outlet": "LINE TODAY",
+      "title": "大千4醫師獲選苗縣優秀青年",
+      "date": "2021-03-29",
+      "url": "https://today.line.me/tw/v3/article/wxX2rw",
+      "source": "manual",
+      "added_date": "2026-02-12"
+    }
+  ]
+}
