@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <circle cx="50" cy="50" r="48" fill="#1a1a2e" stroke="#667eea" stroke-width="3"/>
-  <text x="50" y="58" text-anchor="middle" dominant-baseline="central"
+  <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
     font-family="'KaiTi','STKaiti','DFKai-SB','BiauKai','serif'"
-    font-size="52" font-weight="bold" fill="white">俠</text>
+    font-size="82" font-weight="bold" fill="white">俠</text>
 </svg>
