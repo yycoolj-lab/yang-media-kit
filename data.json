@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-02-27T09:00:00+08:00",
+  "last_updated": "2026-03-02T13:19:50.464294+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 48,
-      "display": "48+"
+      "count": 58,
+      "display": "58+"
     },
     "media_exposure": {
-      "count": 74,
-      "display": "74+"
+      "count": 89,
+      "display": "89+"
     },
     "book_sales": {
       "count": 5000,
@@ -506,6 +506,106 @@
       "url": "https://youtu.be/ieSBSFoQJV0",
       "source": "manual",
       "added_date": "2026-02-12"
+    },
+    {
+      "id": "tv-37df05e8",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "【心臟科】病患無外傷喊病危 醫師一聽竟是心臟瓣膜斷裂？！【醫師好辣】袁明琦 必看精彩片段",
+      "date": "",
+      "url": "https://youtu.be/5VcGTmNAV38",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-b7c07a32",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "不為人知的冷門行業！「器官捐贈協調師」分享感人案例，讓主持人淚灑攝影棚？！【#醫師好辣】20220124 完整版 冷門行業 EP1275 袁明琦 張錦姝 胡瓜",
+      "date": "",
+      "url": "https://youtu.be/PqkWHi3Hf-0",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-ac368277",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "關乎生死的心臟科！馬西屏心臟手術後，竟「中風」上頭條？！【#醫師好辣】20210713 完整版 關乎生死的心臟科 EP1165 馬西屏 劉中平",
+      "date": "",
+      "url": "https://youtu.be/24K4IYbzNIQ",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-07f3bcfd",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "真的隔行如隔山！醫師們大風吹交換考題只能盲猜？超怕答錯出糗面面相覷！20230213 曾國城 侯鐘堡 完整版 白袍醫師益智保衛戰 EP801【全民星攻略】",
+      "date": "",
+      "url": "https://youtu.be/jub0MOshkAc",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-f0447412",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "如何迎接老化避免悲劇 醫:每天保持3個穩定錨點【健康2.0分段】@tvbshealth20  EP3157-3 20260111 #鄭凱云#楊智鈞#楊聰財#蘇家宏#許聖梅",
+      "date": "",
+      "url": "https://youtu.be/NOt3rJMuo_A",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-cb610cbe",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "血壓波動大氣溫低 防範夜間.凌晨心因性猝死【健康2.0分段】@tvbshealth20  EP3157-1 20260111 #鄭凱云#楊智鈞#楊聰財#蘇家宏#許聖梅",
+      "date": "",
+      "url": "https://youtu.be/eCyQ5TqmKWM",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-9b7d33a8",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "律師手把手教學 只要8分鐘就可以寫好自書遺囑【健康2.0分段】@tvbshealth20  EP3157-4 20260111 #鄭凱云#楊智鈞#楊聰財#蘇家宏#許聖梅",
+      "date": "",
+      "url": "https://youtu.be/6ZXCjfvo7H4",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-123b7d21",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "獨居.不接電話.不出門 是精神醫學的紅色警訊【健康2.0分段】@tvbshealth20  EP3157-2 20260111 #鄭凱云#楊智鈞#楊聰財#蘇家宏#許聖梅",
+      "date": "",
+      "url": "https://youtu.be/FU4wPfJDRco",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-d71a8300",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "冠軍麻辣鍋爆卡！快學101餐盤救命吃法！【聚焦2.0】第607集",
+      "date": "",
+      "url": "https://youtu.be/e5tH1mfNQNA",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-d1e3b121",
+      "show": "祝你健康",
+      "show_network": "",
+      "title": "「心導管手術」過程大揭密！30分鐘救回一命｜祝你健康",
+      "date": "",
+      "url": "https://youtu.be/RTep8_E0w14",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
     }
   ],
   "health_media": [
@@ -750,6 +850,51 @@
       "url": "https://today.line.me/tw/v3/article/wxX2rw",
       "source": "manual",
       "added_date": "2026-02-12"
+    },
+    {
+      "id": "ne-71f9acf9",
+      "outlet": "四季線上4gTV",
+      "title": "縱死猶聞俠骨香，心臟外科「俠醫」的現實與浪漫──楊智鈞醫師專訪",
+      "date": "2023-09-25",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9jOTQ3WmlueGN4SF9TRmRVTjNLMWFrUllCbFdJRkpaRExPdDNLWFRiSVgtcm9taHlVSHVXX0tPWVVxRkkwclhSX2NVYlA5UndEQ0ljU2E0Yw?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "ne-1c9bbf52",
+      "outlet": "良醫健康網",
+      "title": "健康是被訓練出來的！ 心臟外科俠醫楊智鈞的開心生活",
+      "date": "2022-11-23",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1Yc2lCd2RsdWZzekQ4UHZFR0VaQ05FT1JuSEFhTHN6bDQyS2FmUTRpOHV2UGtuOTRERXJwMllES3ViTHVjLXNTOEFhTGZfd2dSc3JPOHNZbHRpbHVtcHB4WjZfYTlsTi1jemc?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "ne-7930a445",
+      "outlet": "50+全國最大熟齡媒體",
+      "title": "55～65歲是主動脈剝離高危險群，一天內有致死可能！楊智鈞醫師：保命4件事，重訓、便秘者要多留意",
+      "date": "2023-02-10",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5yUDZUYlR4MGttdko0RFAya0dWN2Q0QWZtX2Y1clhiTW80Q1lTbGdpcEZWZVlVX1pQRjM4b1Bha0g2TnhidVJIMXRXb29VTVp5Z2ExZkJn?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "ne-98b1cf5a",
+      "outlet": "人間福報電子報",
+      "title": "俠醫楊智鈞 守護您心臟的健康",
+      "date": "2023-03-11",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5QRjhxbFlpREJSekRqV2pqNGNZU0tZcWluOE5GdF91ZEFmN1ZJd3AzT3RITDltMmlYNGpkTlVJQUU4UmVMLVB1SEhONzhFVjZwYVR2R05NRWdpR2F3b3FBa1lqRU1KU0E?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
+    },
+    {
+      "id": "ne-11bbaf72",
+      "outlet": "蕃新聞",
+      "title": "50道心臟密碼 俠醫楊智鈞港都親傳授",
+      "date": "2023-06-11",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9KU2dwa0p0ZXVvOE1GVTI0d2M2LWRpNkVSSlNmSmtGbnkxeFlHWFN3MHZQcmZCQ29GcWREVWR0cEVDd2kxT1U0d2dzUFQ3Ujg3WVE?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-03-02"
     }
   ]
 }
