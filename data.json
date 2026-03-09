@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-02T13:19:50.464294+08:00",
+  "last_updated": "2026-03-09T13:36:59.446950+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 58,
-      "display": "58+"
+      "count": 61,
+      "display": "61+"
     },
     "media_exposure": {
-      "count": 89,
-      "display": "89+"
+      "count": 93,
+      "display": "93+"
     },
     "book_sales": {
       "count": 5000,
@@ -606,6 +606,36 @@
       "url": "https://youtu.be/RTep8_E0w14",
       "source": "auto_search",
       "added_date": "2026-03-02"
+    },
+    {
+      "id": "tv-1f1c18f6",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "壓力大長期便秘，喝「早餐店奶茶」幫助排便？！【#醫師好辣】20211012 part1 EP1216 鄭丞傑 蔣偉文",
+      "date": "",
+      "url": "https://youtu.be/P-ZwFll4ISg",
+      "source": "auto_search",
+      "added_date": "2026-03-09"
+    },
+    {
+      "id": "tv-2054aafd",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "無極限！病患扛著點滴架外出吃大餐？奇葩行徑讓醫師好崩潰！【#醫師好辣】 20190903 完整版 EP803 江坤俊 林婷",
+      "date": "",
+      "url": "https://youtu.be/8p5Qh24BjJc",
+      "source": "auto_search",
+      "added_date": "2026-03-09"
+    },
+    {
+      "id": "tv-e6b831c4",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "艾融答題運超強最終回合停不了！梁赫群逆天獎金運氣挑戰躲歸零？！20230803 曾國城 顏永烈 完整版 勇闖暑假鬼門關的生存智慧王 EP900【全民星攻略】",
+      "date": "",
+      "url": "https://youtu.be/UpD0XRHGXbU",
+      "source": "auto_search",
+      "added_date": "2026-03-09"
     }
   ],
   "health_media": [
@@ -895,6 +925,15 @@
       "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9KU2dwa0p0ZXVvOE1GVTI0d2M2LWRpNkVSSlNmSmtGbnkxeFlHWFN3MHZQcmZCQ29GcWREVWR0cEVDd2kxT1U0d2dzUFQ3Ujg3WVE?oc=5&hl=en-US&gl=US&ceid=US:en",
       "source": "auto_search",
       "added_date": "2026-03-02"
+    },
+    {
+      "id": "ne-053c100f",
+      "outlet": "中時新聞網",
+      "title": "楊智鈞扎根偏鄉 努力翻轉醫療生態",
+      "date": "2022-07-24",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBwOWhsMGQtdDRFRTZPUHlMVWR0ckxkYnA5b1BlcXdRSzhPVW9xM1F1NmZoOWFaamtsQ3o1Mml1ZzBYMHEwZDQtWDVWYUE0QXZyQVQ1aWRJNlFTTXAyeXJpdEZOWkMxR2ExNm5B?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-03-09"
     }
   ]
 }
