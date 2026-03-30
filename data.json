@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-16T11:52:15.720932+08:00",
+  "last_updated": "2026-03-30T11:56:46.953164+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 62,
-      "display": "62+"
+      "count": 63,
+      "display": "63+"
     },
     "media_exposure": {
-      "count": 94,
-      "display": "94+"
+      "count": 95,
+      "display": "95+"
     },
     "book_sales": {
       "count": 5000,
@@ -646,6 +646,16 @@
       "url": "https://youtu.be/0gROYNV4ndg",
       "source": "auto_search",
       "added_date": "2026-03-16"
+    },
+    {
+      "id": "tv-272a0e02",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "楊奇煜不知登記結婚多少錢？蘿莉塔：你是不是沒登記！20240815 曾國城 許瓊月 瑪那熊 Part3 EP1111【全民星攻略】",
+      "date": "",
+      "url": "https://youtu.be/wkGkALN_Zq0",
+      "source": "auto_search",
+      "added_date": "2026-03-30"
     }
   ],
   "health_media": [
