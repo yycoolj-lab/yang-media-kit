@@ -40,6 +40,12 @@ TV_SHOWS = {
     "健康2.0": {"network": "TVBS", "channel_keywords": ["健康2.0", "TVBS"]},
     "聚焦2.0": {"network": "年代", "channel_keywords": ["聚焦2.0", "聚焦"]},
     "祝你健康": {"network": "", "channel_keywords": ["祝你健康"]},
+    "震震有詞": {"network": "高點電視台", "channel_keywords": ["震震有詞"]},
+    "醫次搞定": {"network": "", "channel_keywords": ["醫次搞定"]},
+    "健康好生活": {"network": "年代", "channel_keywords": ["健康好生活"]},
+    "命運好好玩": {"network": "JET", "channel_keywords": ["命運好好玩"]},
+    "小明星大跟班": {"network": "中天", "channel_keywords": ["小明星大跟班"]},
+    "醫師有話說": {"network": "", "channel_keywords": ["醫師有話說"]},
 }
 
 # Known news outlet domains for classification
@@ -55,12 +61,25 @@ NEWS_OUTLET_DOMAINS = {
     "三立新聞": ["setn.com"],
     "NOWnews": ["nownews.com"],
     "匯流新聞網": ["cnews.com.tw"],
+    "蘋果新聞網": ["appledaily.com"],
+    "ELLE": ["elle.com"],
+    "風傳媒": ["storm.mg"],
+    "民視新聞": ["ftvnews.com.tw"],
+    "華視新聞": ["news.cts.com.tw"],
+    "鏡週刊": ["mirrormedia.mg"],
+    "今周刊": ["businesstoday.com.tw"],
+    "天下雜誌": ["cw.com.tw"],
+    "商周": ["businessweekly.com.tw"],
 }
 
 HEALTH_MEDIA_DOMAINS = {
     "早安健康": {"domains": ["edh.tw"], "role": "專欄作者"},
     "康健雜誌": {"domains": ["commonhealth.com.tw"], "role": ""},
     "Heho健康": {"domains": ["heho.com.tw"], "role": ""},
+    "良醫健康網": {"domains": ["health.businessweekly.com.tw"], "role": ""},
+    "健康遠見": {"domains": ["health.gvm.com.tw"], "role": ""},
+    "媽媽寶寶": {"domains": ["mombaby.com.tw"], "role": ""},
+    "華人健康網": {"domains": ["top1health.com"], "role": ""},
 }
 
 
@@ -108,6 +127,20 @@ def get_existing_urls(data):
     return urls
 
 
+def get_existing_titles(data):
+    """Get set of existing titles for fuzzy dedup."""
+    titles = set()
+    for section in ["tv_shows", "health_media", "news_media"]:
+        for item in data.get(section, []):
+            if item.get("title"):
+                # Normalize: remove spaces and common punctuation
+                t = item["title"].strip()
+                titles.add(t)
+                # Also add a simplified version
+                titles.add(re.sub(r'[\s　！!？?。，,、：:；;（）()【】\[\]「」『』]', '', t))
+    return titles
+
+
 def format_follower_count(count):
     """Format follower count in Chinese style."""
     if count >= 10000:
@@ -121,6 +154,16 @@ def format_follower_count(count):
 
 def today_str():
     return datetime.now(TW_TZ).strftime("%Y-%m-%d")
+
+
+def is_duplicate_title(title, existing_titles):
+    """Check if title already exists (fuzzy match)."""
+    if title in existing_titles:
+        return True
+    simplified = re.sub(r'[\s　！!？?。，,、：:；;（）()【】\[\]「」『』]', '', title)
+    if simplified in existing_titles:
+        return True
+    return False
 
 
 # ─── FACEBOOK FOLLOWERS (Playwright) ─────────────────
@@ -144,7 +187,6 @@ def update_facebook_followers(data):
             browser.close()
 
         # Try to extract follower count from page content
-        # Facebook shows counts like "49,234位追蹤者" or "4.9萬位追蹤者"
         patterns = [
             r'([\d,]+)\s*位追蹤者',
             r'([\d.]+)\s*萬\s*位?追蹤者',
@@ -186,7 +228,6 @@ def update_google_rating(data):
     """Fetch Google Maps rating for the clinic."""
     print("[GOOGLE] Fetching Google rating...")
     try:
-        # Use Google Maps search to find the place and extract rating
         search_url = f"https://www.google.com/search?q={urllib.parse.quote(GOOGLE_PLACE_SEARCH)}+評價&hl=zh-TW"
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -195,7 +236,6 @@ def update_google_rating(data):
         resp = requests.get(search_url, headers=headers, timeout=15)
         resp.raise_for_status()
 
-        # Look for rating pattern like "4.9" near "顆星" or rating indicators
         patterns = [
             r'(\d\.\d)\s*顆星',
             r'rating["\s:]+(\d\.\d)',
@@ -220,22 +260,42 @@ def update_google_rating(data):
         return False
 
 
-# ─── GOOGLE NEWS RSS ─────────────────────────────────
+# ─── GOOGLE NEWS RSS (improved) ──────────────────────
 
 def search_google_news(data):
-    """Search Google News RSS for new articles mentioning the doctor."""
+    """Search Google News RSS with multiple query strategies."""
     print("[NEWS] Searching Google News RSS...")
     existing_urls = get_existing_urls(data)
+    existing_titles = get_existing_titles(data)
     new_items = []
 
-    for name in SEARCH_NAMES:
+    # Multiple search queries for broader coverage
+    search_queries = [
+        # Basic name searches
+        "楊智鈞",
+        "俠醫楊智鈞",
+        # Site-specific searches for outlets that often feature the doctor
+        "楊智鈞 site:ltn.com.tw",
+        "楊智鈞 site:udn.com",
+        "楊智鈞 site:ettoday.net",
+        "楊智鈞 site:edh.tw",
+        "楊智鈞 site:heho.com.tw",
+        "楊智鈞 site:commonhealth.com.tw",
+        "楊智鈞 site:tvbs.com.tw",
+        # Broader clinic searches
+        "富足診所 楊智鈞",
+    ]
+
+    for query in search_queries:
         rss_url = (
             f"https://news.google.com/rss/search?"
-            f"q={urllib.parse.quote(name)}&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+            f"q={urllib.parse.quote(query)}&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
         )
         try:
             feed = feedparser.parse(rss_url)
-            for entry in feed.entries[:15]:  # Check latest 15 entries
+            print(f"  [RSS] '{query}' -> {len(feed.entries)} entries")
+
+            for entry in feed.entries[:30]:  # Check up to 30 entries per query
                 title = entry.get("title", "")
                 link = entry.get("link", "")
 
@@ -244,12 +304,14 @@ def search_google_news(data):
                 if not actual_url:
                     actual_url = link
 
-                # Skip if already exists
+                # Skip if already exists (by URL)
                 if actual_url in existing_urls or link in existing_urls:
                     continue
 
-                # Verify relevance: title must contain doctor name
-                if not any(n in title for n in SEARCH_NAMES):
+                # Verify relevance: title or URL must relate to doctor
+                title_relevant = any(n in title for n in SEARCH_NAMES)
+                url_relevant = any(n in actual_url for n in ["%E6%A5%8A%E6%99%BA%E9%88%9E", "楊智鈞"])
+                if not title_relevant and not url_relevant:
                     continue
 
                 # Extract date
@@ -264,6 +326,10 @@ def search_google_news(data):
                     parts = title.rsplit(" - ", 1)
                     title = parts[0].strip()
                     source_name = parts[1].strip()
+
+                # Skip duplicate titles
+                if is_duplicate_title(title, existing_titles):
+                    continue
 
                 # Classify by outlet domain
                 outlet = classify_outlet(actual_url, source_name)
@@ -290,14 +356,117 @@ def search_google_news(data):
 
                 data[category].append(new_item)
                 existing_urls.add(actual_url)
+                existing_titles.add(title)
                 new_items.append(new_item)
                 print(f"  [+] [{outlet}] {title[:60]}...")
 
         except Exception as e:
-            print(f"[NEWS] RSS parse error for '{name}': {e}")
+            print(f"[NEWS] RSS parse error for '{query}': {e}")
 
     print(f"[NEWS] Found {len(new_items)} new articles")
     return new_items
+
+
+# ─── DIRECT SITE SEARCH (for outlets Google News misses) ──
+
+def search_sites_directly(data):
+    """Search specific news sites directly for articles about the doctor."""
+    print("[SITE] Direct site search for missing articles...")
+    existing_urls = get_existing_urls(data)
+    existing_titles = get_existing_titles(data)
+    new_items = []
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept-Language": "zh-TW,zh;q=0.9",
+    }
+
+    # Site-specific search configs
+    site_searches = [
+        {
+            "name": "自由時報",
+            "search_url": "https://search.ltn.com.tw/list?keyword={query}&type=all",
+            "parse_fn": parse_ltn_results,
+        },
+        {
+            "name": "ETtoday",
+            "search_url": "https://www.google.com/search?q=site:ettoday.net+{query}&num=20&hl=zh-TW",
+            "parse_fn": parse_google_search_results,
+        },
+        {
+            "name": "聯合報",
+            "search_url": "https://www.google.com/search?q=site:udn.com+{query}&num=20&hl=zh-TW",
+            "parse_fn": parse_google_search_results,
+        },
+    ]
+
+    for site in site_searches:
+        for name in SEARCH_NAMES[:1]:  # Primary name only
+            url = site["search_url"].format(query=urllib.parse.quote(name))
+            try:
+                resp = requests.get(url, headers=headers, timeout=15)
+                resp.raise_for_status()
+                results = site["parse_fn"](resp.text, name)
+
+                for r in results:
+                    if r["url"] in existing_urls:
+                        continue
+                    if is_duplicate_title(r["title"], existing_titles):
+                        continue
+                    if not any(n in r["title"] for n in SEARCH_NAMES):
+                        continue
+
+                    outlet = classify_outlet(r["url"], site["name"])
+                    category = determine_category(outlet)
+
+                    new_item = {
+                        "id": make_id(category[:2], outlet, r["title"]),
+                        "outlet": outlet,
+                        "title": r["title"],
+                        "date": r.get("date", ""),
+                        "url": r["url"],
+                        "source": "auto_search",
+                        "added_date": today_str(),
+                    }
+
+                    data[category].append(new_item)
+                    existing_urls.add(r["url"])
+                    existing_titles.add(r["title"])
+                    new_items.append(new_item)
+                    print(f"  [+] [{outlet}] {r['title'][:60]}...")
+
+            except Exception as e:
+                print(f"[SITE] Error searching {site['name']}: {e}")
+
+    print(f"[SITE] Found {len(new_items)} new articles from direct search")
+    return new_items
+
+
+def parse_ltn_results(html, search_name):
+    """Parse Liberty Times search results."""
+    results = []
+    soup = BeautifulSoup(html, "lxml")
+    for item in soup.select("a.tit"):
+        title = item.get_text(strip=True)
+        href = item.get("href", "")
+        if search_name in title and href:
+            if not href.startswith("http"):
+                href = "https:" + href if href.startswith("//") else "https://search.ltn.com.tw" + href
+            results.append({"title": title, "url": href, "date": ""})
+    return results[:20]
+
+
+def parse_google_search_results(html, search_name):
+    """Parse Google search results page for article links."""
+    results = []
+    soup = BeautifulSoup(html, "lxml")
+    for h3 in soup.select("h3"):
+        parent_a = h3.find_parent("a")
+        if parent_a:
+            title = h3.get_text(strip=True)
+            href = parent_a.get("href", "")
+            if search_name in title and href.startswith("http"):
+                results.append({"title": title, "url": href, "date": ""})
+    return results[:20]
 
 
 def resolve_google_news_url(google_url):
@@ -308,8 +477,7 @@ def resolve_google_news_url(google_url):
         # Clean tracking params
         if "?" in final_url:
             base = final_url.split("?")[0]
-            # Keep the base URL if it looks like a real article URL
-            if any(ext in base for ext in [".html", ".htm", "/article/", "/news/"]):
+            if any(ext in base for ext in [".html", ".htm", "/article/", "/news/", "/story/"]):
                 return base
         return final_url
     except Exception:
@@ -318,19 +486,17 @@ def resolve_google_news_url(google_url):
 
 def classify_outlet(url, source_name=""):
     """Match a URL or source name to a known outlet."""
-    # Check URL domain first
-    for outlet_name, domains in {**NEWS_OUTLET_DOMAINS, **{k: v["domains"] for k, v in HEALTH_MEDIA_DOMAINS.items()}}.items():
+    all_domains = {**NEWS_OUTLET_DOMAINS, **{k: v["domains"] for k, v in HEALTH_MEDIA_DOMAINS.items()}}
+    for outlet_name, domains in all_domains.items():
         for domain in domains:
             if domain in url:
                 return outlet_name
 
-    # Check source name from Google News
     if source_name:
         for outlet_name in list(NEWS_OUTLET_DOMAINS.keys()) + list(HEALTH_MEDIA_DOMAINS.keys()):
             if outlet_name.replace("／", "").replace("　", "") in source_name.replace(" ", ""):
                 return outlet_name
 
-    # Unknown outlet - use source name or domain
     if source_name:
         return source_name
     try:
@@ -347,12 +513,13 @@ def determine_category(outlet):
     return "news_media"
 
 
-# ─── YOUTUBE SEARCH (yt-dlp) ─────────────────────────
+# ─── YOUTUBE SEARCH (yt-dlp, improved) ───────────────
 
 def search_youtube_shows(data):
     """Use yt-dlp to search YouTube for new TV show appearances."""
     print("[YT] Searching YouTube for new TV appearances...")
     existing_urls = get_existing_urls(data)
+    existing_titles = get_existing_titles(data)
     new_items = []
 
     # Check if yt-dlp is available
@@ -367,74 +534,172 @@ def search_youtube_shows(data):
             print("[YT] Could not install yt-dlp, skipping YouTube search")
             return new_items
 
+    # Strategy 1: Search by show name + doctor name
     for show_name, show_info in TV_SHOWS.items():
-        for name in SEARCH_NAMES[:1]:  # Just primary name to save time
+        for name in SEARCH_NAMES[:1]:
             query = f"{show_name} {name}"
-            try:
-                result = subprocess.run(
-                    [
-                        "yt-dlp",
-                        f"ytsearch5:{query}",
-                        "--dump-json",
-                        "--no-download",
-                        "--flat-playlist",
-                    ],
-                    capture_output=True,
-                    text=True,
-                    timeout=30,
-                )
+            found = _yt_search(query, show_name, show_info, existing_urls, existing_titles, data, new_items, count=10)
+            print(f"  [{show_name}] found {found} new")
 
-                for line in result.stdout.strip().split("\n"):
-                    if not line:
-                        continue
-                    try:
-                        video = json.loads(line)
-                    except json.JSONDecodeError:
-                        continue
+    # Strategy 2: Generic search for doctor name on YouTube (catch unlisted shows)
+    for name in SEARCH_NAMES:
+        query = f"{name} 節目"
+        _yt_search_generic(query, existing_urls, existing_titles, data, new_items, count=15)
 
-                    video_id = video.get("id", "")
-                    title = video.get("title", "")
-                    url = f"https://youtu.be/{video_id}"
+    # Strategy 3: Search for doctor name + interview/專訪
+    _yt_search_generic("楊智鈞 專訪", existing_urls, existing_titles, data, new_items, count=10)
 
-                    # Skip if already exists
-                    if video_id in existing_urls or url in existing_urls:
-                        continue
-
-                    # Verify relevance
-                    if not any(n in title for n in SEARCH_NAMES + [show_name]):
-                        continue
-
-                    # Extract upload date
-                    upload_date = video.get("upload_date", "")
-                    if upload_date and len(upload_date) == 8:
-                        pub_date = f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:8]}"
-                    else:
-                        pub_date = ""
-
-                    new_item = {
-                        "id": make_id("tv", show_name, title),
-                        "show": show_name,
-                        "show_network": show_info["network"],
-                        "title": title,
-                        "date": pub_date,
-                        "url": url,
-                        "source": "auto_search",
-                        "added_date": today_str(),
-                    }
-
-                    data["tv_shows"].append(new_item)
-                    existing_urls.add(video_id)
-                    existing_urls.add(url)
-                    new_items.append(new_item)
-                    print(f"  [+] [{show_name}] {title[:60]}...")
-
-            except subprocess.TimeoutExpired:
-                print(f"[YT] Timeout searching for '{query}'")
-            except Exception as e:
-                print(f"[YT] Error searching for '{query}': {e}")
-
-    print(f"[YT] Found {len(new_items)} new TV appearances")
+    print(f"[YT] Found {len(new_items)} new TV appearances total")
     return new_items
+
+
+def _yt_search(query, show_name, show_info, existing_urls, existing_titles, data, new_items, count=10):
+    """Search YouTube for a specific show."""
+    found = 0
+    try:
+        result = subprocess.run(
+            [
+                "yt-dlp",
+                f"ytsearch{count}:{query}",
+                "--dump-json",
+                "--no-download",
+                "--flat-playlist",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+
+        for line in result.stdout.strip().split("\n"):
+            if not line:
+                continue
+            try:
+                video = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+
+            video_id = video.get("id", "")
+            title = video.get("title", "")
+            url = f"https://youtu.be/{video_id}"
+
+            if video_id in existing_urls or url in existing_urls:
+                continue
+
+            # Verify relevance: must mention doctor name or show name
+            if not any(n in title for n in SEARCH_NAMES + [show_name]):
+                continue
+
+            if is_duplicate_title(title, existing_titles):
+                continue
+
+            upload_date = video.get("upload_date", "")
+            if upload_date and len(upload_date) == 8:
+                pub_date = f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:8]}"
+            else:
+                pub_date = ""
+
+            new_item = {
+                "id": make_id("tv", show_name, title),
+                "show": show_name,
+                "show_network": show_info["network"],
+                "title": title,
+                "date": pub_date,
+                "url": url,
+                "source": "auto_search",
+                "added_date": today_str(),
+            }
+
+            data["tv_shows"].append(new_item)
+            existing_urls.add(video_id)
+            existing_urls.add(url)
+            existing_titles.add(title)
+            new_items.append(new_item)
+            found += 1
+            print(f"  [+] [{show_name}] {title[:60]}...")
+
+    except subprocess.TimeoutExpired:
+        print(f"[YT] Timeout searching for '{query}'")
+    except Exception as e:
+        print(f"[YT] Error searching for '{query}': {e}")
+
+    return found
+
+
+def _yt_search_generic(query, existing_urls, existing_titles, data, new_items, count=10):
+    """Search YouTube generically — auto-detect which show it belongs to."""
+    try:
+        result = subprocess.run(
+            [
+                "yt-dlp",
+                f"ytsearch{count}:{query}",
+                "--dump-json",
+                "--no-download",
+                "--flat-playlist",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+
+        for line in result.stdout.strip().split("\n"):
+            if not line:
+                continue
+            try:
+                video = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+
+            video_id = video.get("id", "")
+            title = video.get("title", "")
+            channel = video.get("channel", "") or video.get("uploader", "") or ""
+            url = f"https://youtu.be/{video_id}"
+
+            if video_id in existing_urls or url in existing_urls:
+                continue
+
+            if not any(n in title for n in SEARCH_NAMES):
+                continue
+
+            if is_duplicate_title(title, existing_titles):
+                continue
+
+            # Try to detect which show this belongs to
+            show_name = "網路直播/專訪"
+            show_network = ""
+            for sn, si in TV_SHOWS.items():
+                if sn in title or sn in channel or any(kw in channel for kw in si["channel_keywords"]):
+                    show_name = sn
+                    show_network = si["network"]
+                    break
+
+            upload_date = video.get("upload_date", "")
+            if upload_date and len(upload_date) == 8:
+                pub_date = f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:8]}"
+            else:
+                pub_date = ""
+
+            new_item = {
+                "id": make_id("tv", show_name, title),
+                "show": show_name,
+                "show_network": show_network,
+                "title": title,
+                "date": pub_date,
+                "url": url,
+                "source": "auto_search",
+                "added_date": today_str(),
+            }
+
+            data["tv_shows"].append(new_item)
+            existing_urls.add(video_id)
+            existing_urls.add(url)
+            existing_titles.add(title)
+            new_items.append(new_item)
+            print(f"  [+] [{show_name}] {title[:60]}...")
+
+    except subprocess.TimeoutExpired:
+        print(f"[YT] Timeout for generic search '{query}'")
+    except Exception as e:
+        print(f"[YT] Error in generic search '{query}': {e}")
 
 
 # ─── RECALCULATE STATS ───────────────────────────────
@@ -469,20 +734,25 @@ def main():
     if update_google_rating(data):
         changes = True
 
-    # 3. Google News search for articles
+    # 3. Google News search for articles (expanded queries)
     news = search_google_news(data)
     if news:
         changes = True
 
-    # 4. YouTube TV show search
+    # 4. Direct site search (for outlets Google News misses)
+    site_news = search_sites_directly(data)
+    if site_news:
+        changes = True
+
+    # 5. YouTube TV show search (expanded)
     yt = search_youtube_shows(data)
     if yt:
         changes = True
 
-    # 5. Recalculate stats
+    # 6. Recalculate stats
     recalculate_stats(data)
 
-    # 6. Save
+    # 7. Save
     save_data(data)
     if changes:
         print(f"\n[DONE] Data updated with new content.")
@@ -494,5 +764,4 @@ def main():
 
 if __name__ == "__main__":
     has_changes = main()
-    # Exit code 0 regardless - let GitHub Actions check git diff
     sys.exit(0)
