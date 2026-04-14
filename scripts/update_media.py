@@ -225,50 +225,62 @@ def update_facebook_followers(data):
 # ─── GOOGLE RATING (Scraping) ────────────────────────
 
 def update_google_rating(data):
-    """Fetch Google Maps rating for the clinic using multiple strategies."""
-    print("[GOOGLE] Fetching Google rating...")
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-        "Accept-Language": "zh-TW,zh;q=0.9",
-    }
+    """Fetch Google Maps rating using Playwright (headless browser)."""
+    print("[GOOGLE] Fetching Google rating via Playwright...")
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+                locale="zh-TW",
+            )
+            page = context.new_page()
 
-    # Strategy 1: Google Maps search page
-    strategies = [
-        f"https://www.google.com/search?q={urllib.parse.quote(GOOGLE_PLACE_SEARCH)}&hl=zh-TW",
-        f"https://www.google.com/search?q={urllib.parse.quote(GOOGLE_PLACE_SEARCH)}+評價&hl=zh-TW",
-        f"https://www.google.com/search?q={urllib.parse.quote('富足診所 台中 評價')}&hl=zh-TW",
-        f"https://www.google.com/maps/search/{urllib.parse.quote(GOOGLE_PLACE_SEARCH)}/?hl=zh-TW",
-    ]
+            strategies = [
+                f"https://www.google.com/search?q={urllib.parse.quote(GOOGLE_PLACE_SEARCH)}&hl=zh-TW",
+                f"https://www.google.com/search?q={urllib.parse.quote(GOOGLE_PLACE_SEARCH + ' 評價')}&hl=zh-TW",
+                f"https://www.google.com/search?q={urllib.parse.quote('富足診所 台中 評價')}&hl=zh-TW",
+            ]
 
-    all_patterns = [
-        r'"ratingValue"\s*:\s*"?(\d\.?\d?)"?',     # JSON-LD schema
-        r'(\d\.?\d?)\s*顆星',                        # "X顆星"
-        r'(\d\.?\d?)</span>\s*<span[^>]*>\s*\(\d',   # rating next to review count
-        r'rating["\s:]+(\d\.?\d?)',                   # generic rating field
-        r'(\d\.\d)\s*分',                             # "X分"
-        r'<span[^>]*>(\d\.\d)</span>[^<]*(?:81|8\d|9\d|\d{2,3})\s*則',  # rating near review count
-    ]
+            all_patterns = [
+                r'"ratingValue"\s*:\s*"?(\d\.?\d?)"?',
+                r'(\d\.?\d?)\s*顆星',
+                r'(\d\.?\d?)</span>\s*<span[^>]*>\s*\(\d',
+                r'rating["\s:]+(\d\.?\d?)',
+                r'(\d\.\d)\s*分',
+                r'<span[^>]*>(\d\.\d)</span>[^<]*(?:\d{2,3})\s*則',
+            ]
 
-    for search_url in strategies:
-        try:
-            resp = requests.get(search_url, headers=headers, timeout=15)
-            resp.raise_for_status()
+            for search_url in strategies:
+                try:
+                    page.goto(search_url, wait_until="domcontentloaded", timeout=20000)
+                    page.wait_for_timeout(2000)
+                    content = page.content()
 
-            for pattern in all_patterns:
-                for match in re.finditer(pattern, resp.text):
-                    try:
-                        rating = float(match.group(1))
-                        if 3.0 <= rating <= 5.0:  # Sanity check
-                            old = data["stats"]["google_rating"].get("score", 0)
-                            data["stats"]["google_rating"]["score"] = rating
-                            print(f"[GOOGLE] Updated rating: {old} -> {rating}")
-                            return True
-                    except (ValueError, IndexError):
-                        continue
+                    for pattern in all_patterns:
+                        for match in re.finditer(pattern, content):
+                            try:
+                                rating = float(match.group(1))
+                                if 3.0 <= rating <= 5.0:
+                                    old = data["stats"]["google_rating"].get("score", 0)
+                                    data["stats"]["google_rating"]["score"] = rating
+                                    print(f"[GOOGLE] Updated rating: {old} -> {rating}")
+                                    browser.close()
+                                    return True
+                            except (ValueError, IndexError):
+                                continue
+                except Exception as e:
+                    print(f"[GOOGLE] Error with strategy: {e}")
 
-        except Exception as e:
-            print(f"[GOOGLE] Error with strategy: {e}")
-            continue
+            browser.close()
+
+    except ImportError:
+        print("[GOOGLE] Playwright not installed, skipping")
+        return False
+    except Exception as e:
+        print(f"[GOOGLE] Error: {e}")
+        return False
 
     print("[GOOGLE] Could not extract rating from any source")
     return False
@@ -277,138 +289,200 @@ def update_google_rating(data):
 # ─── GOOGLE SEARCH SCRAPING (primary method) ────────
 
 def search_google_web(data):
-    """Use Google Search (not News RSS) to find articles — same as manual Google search."""
-    print("[SEARCH] Google Search scraping (primary method)...")
+    """Use Playwright to scrape Google Search for articles — works like a real browser."""
+    print("[SEARCH] Google Search via Playwright (primary method)...")
     existing_urls = get_existing_urls(data)
     existing_titles = get_existing_titles(data)
     new_items = []
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-        "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8",
-        "Accept": "text/html,application/xhtml+xml",
-    }
 
-    # Google searches — exactly like the user would type in Google
     search_queries = [
-        # Site-specific: most reliable for finding all articles per outlet
-        "自由時報 楊智鈞",
-        "site:health.ltn.com.tw 楊智鈞",
-        "site:ltn.com.tw 楊智鈞",
-        "site:udn.com 楊智鈞",
-        "site:ettoday.net 楊智鈞",
-        "site:edh.tw 楊智鈞",
-        "site:heho.com.tw 楊智鈞",
-        "site:commonhealth.com.tw 楊智鈞",
-        "site:tvbs.com.tw 楊智鈞",
-        "site:setn.com 楊智鈞",
-        "site:chinatimes.com 楊智鈞",
-        "site:ctwant.com 楊智鈞",
-        "site:health.businessweekly.com.tw 楊智鈞",
-        "site:top1health.com 楊智鈞",
-        # General searches to catch other outlets
-        "楊智鈞 醫師",
-        "俠醫楊智鈞",
-        "富足診所 楊智鈞",
+        # Site-specific searches — most reliable per outlet
+        ("site:health.ltn.com.tw 楊智鈞", 3),   # 3 pages
+        ("site:ltn.com.tw 楊智鈞", 2),
+        ("site:udn.com 楊智鈞", 2),
+        ("site:ettoday.net 楊智鈞", 2),
+        ("site:edh.tw 楊智鈞", 2),
+        ("site:heho.com.tw 楊智鈞", 2),
+        ("site:commonhealth.com.tw 楊智鈞", 2),
+        ("site:tvbs.com.tw 楊智鈞", 1),
+        ("site:setn.com 楊智鈞", 1),
+        ("site:chinatimes.com 楊智鈞", 1),
+        ("site:ctwant.com 楊智鈞", 1),
+        ("site:health.businessweekly.com.tw 楊智鈞", 1),
+        ("site:top1health.com 楊智鈞", 1),
+        # General searches
+        ("楊智鈞 醫師", 2),
+        ("俠醫楊智鈞", 2),
+        ("富足診所 楊智鈞", 1),
     ]
 
-    for query in search_queries:
-        items = _scrape_google_search(query, headers, existing_urls, existing_titles, data)
-        new_items.extend(items)
-        import time
-        time.sleep(2)  # Be polite to Google
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+                locale="zh-TW",
+            )
+            page = context.new_page()
+
+            for query, max_pages in search_queries:
+                items = _scrape_google_search_pw(page, query, max_pages, existing_urls, existing_titles, data)
+                new_items.extend(items)
+                page.wait_for_timeout(2000)  # Be polite
+
+            browser.close()
+
+    except ImportError:
+        print("[SEARCH] Playwright not installed, falling back to requests...")
+        # Fallback: try requests (may not work if Google blocks)
+        _search_google_web_requests(data, existing_urls, existing_titles, new_items, search_queries)
+    except Exception as e:
+        print(f"[SEARCH] Error: {e}")
 
     print(f"[SEARCH] Found {len(new_items)} new articles from Google Search")
     return new_items
 
 
-def _scrape_google_search(query, headers, existing_urls, existing_titles, data, num=30):
-    """Scrape Google Search results for a query."""
+def _scrape_google_search_pw(page, query, max_pages, existing_urls, existing_titles, data):
+    """Scrape Google Search results using Playwright with pagination."""
+    import time
     new_items = []
-    url = f"https://www.google.com/search?q={urllib.parse.quote(query)}&num={num}&hl=zh-TW&gl=TW"
+    total_found = 0
 
-    try:
-        resp = requests.get(url, headers=headers, timeout=15)
-        resp.raise_for_status()
-        soup = BeautifulSoup(resp.text, "lxml")
+    for page_num in range(max_pages):
+        start = page_num * 10
+        url = f"https://www.google.com/search?q={urllib.parse.quote(query)}&start={start}&hl=zh-TW&gl=TW"
 
-        found_count = 0
-        for a_tag in soup.find_all("a", href=True):
-            href = a_tag["href"]
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=20000)
+            page.wait_for_timeout(2000)
+            content = page.content()
+            soup = BeautifulSoup(content, "lxml")
 
-            # Extract real URL from Google redirect
-            if href.startswith("/url?"):
-                m = re.search(r'q=(https?://[^&]+)', href)
-                if m:
-                    href = urllib.parse.unquote(m.group(1))
-                else:
+            found_this_page = 0
+            for a_tag in soup.find_all("a", href=True):
+                href = a_tag["href"]
+
+                if href.startswith("/url?"):
+                    m = re.search(r'q=(https?://[^&]+)', href)
+                    if m:
+                        href = urllib.parse.unquote(m.group(1))
+                    else:
+                        continue
+                elif not href.startswith("http"):
                     continue
-            elif not href.startswith("http"):
-                continue
 
-            # Skip Google's own pages, ads, etc
-            if any(d in href for d in ["google.com", "youtube.com", "gstatic.com", "googleapis.com", "schema.org"]):
-                continue
+                if any(d in href for d in ["google.com", "youtube.com", "gstatic.com", "googleapis.com", "schema.org"]):
+                    continue
 
-            # Must be a real article URL
-            if not any(d in href for d in [".com", ".tw", ".net", ".org"]):
-                continue
+                if not any(d in href for d in [".com", ".tw", ".net", ".org"]):
+                    continue
 
-            # Get title from the <h3> inside or nearby
-            h3 = a_tag.find("h3")
-            if not h3:
-                continue
-            title = h3.get_text(strip=True)
-            if not title:
-                continue
+                h3 = a_tag.find("h3")
+                if not h3:
+                    continue
+                title = h3.get_text(strip=True)
+                if not title:
+                    continue
 
-            # Clean up URL (remove tracking params)
-            href = re.sub(r'[?&](utm_\w+|fbclid|gclid)=[^&]*', '', href)
+                href = re.sub(r'[?&](utm_\w+|fbclid|gclid)=[^&]*', '', href)
 
-            # Skip if already exists
-            if href in existing_urls:
-                continue
-            if is_duplicate_title(title, existing_titles):
-                continue
+                if href in existing_urls:
+                    continue
+                if is_duplicate_title(title, existing_titles):
+                    continue
 
-            # Classify
-            outlet = classify_outlet(href, "")
-            category = determine_category(outlet)
+                outlet = classify_outlet(href, "")
+                category = determine_category(outlet)
+                pub_date = _extract_date_from_siblings(a_tag)
 
-            # Try to extract date from snippet
-            pub_date = _extract_date_from_siblings(a_tag)
+                role = ""
+                if category == "health_media":
+                    for hm_name, hm_info in HEALTH_MEDIA_DOMAINS.items():
+                        if outlet == hm_name:
+                            role = hm_info.get("role", "")
+                            break
 
-            role = ""
-            if category == "health_media":
-                for hm_name, hm_info in HEALTH_MEDIA_DOMAINS.items():
-                    if outlet == hm_name:
-                        role = hm_info.get("role", "")
-                        break
+                new_item = {
+                    "id": make_id(category[:2], outlet, title),
+                    "outlet": outlet,
+                    "title": title,
+                    "date": pub_date,
+                    "url": href,
+                    "source": "auto_search",
+                    "added_date": today_str(),
+                }
+                if role:
+                    new_item["outlet_role"] = role
 
-            new_item = {
-                "id": make_id(category[:2], outlet, title),
-                "outlet": outlet,
-                "title": title,
-                "date": pub_date,
-                "url": href,
-                "source": "auto_search",
-                "added_date": today_str(),
-            }
-            if role:
-                new_item["outlet_role"] = role
+                data[category].append(new_item)
+                existing_urls.add(href)
+                existing_titles.add(title)
+                new_items.append(new_item)
+                found_this_page += 1
+                total_found += 1
+                print(f"  [+] [{outlet}] {title[:60]}...")
 
-            data[category].append(new_item)
-            existing_urls.add(href)
-            existing_titles.add(title)
-            new_items.append(new_item)
-            found_count += 1
-            print(f"  [+] [{outlet}] {title[:60]}...")
+            if found_this_page == 0 and page_num > 0:
+                break  # No more results
 
-        print(f"  [GOOGLE] '{query}' -> {found_count} new")
+            if page_num < max_pages - 1:
+                page.wait_for_timeout(1500)
 
-    except Exception as e:
-        print(f"  [GOOGLE] Error for '{query}': {e}")
+        except Exception as e:
+            print(f"  [GOOGLE] Error for '{query}' page {page_num}: {e}")
+            break
 
+    print(f"  [GOOGLE] '{query}' -> {total_found} new")
     return new_items
+
+
+def _search_google_web_requests(data, existing_urls, existing_titles, new_items, search_queries):
+    """Fallback: try requests-based Google Search (may be blocked)."""
+    import time
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        "Accept-Language": "zh-TW,zh;q=0.9",
+    }
+    for query, max_pages in search_queries:
+        url = f"https://www.google.com/search?q={urllib.parse.quote(query)}&num=10&hl=zh-TW&gl=TW"
+        try:
+            resp = requests.get(url, headers=headers, timeout=15)
+            soup = BeautifulSoup(resp.text, "lxml")
+            for a_tag in soup.find_all("a", href=True):
+                href = a_tag["href"]
+                if href.startswith("/url?"):
+                    m = re.search(r'q=(https?://[^&]+)', href)
+                    if m:
+                        href = urllib.parse.unquote(m.group(1))
+                    else:
+                        continue
+                elif not href.startswith("http"):
+                    continue
+                if any(d in href for d in ["google.com", "youtube.com", "gstatic.com"]):
+                    continue
+                h3 = a_tag.find("h3")
+                if not h3:
+                    continue
+                title = h3.get_text(strip=True)
+                if not title or href in existing_urls or is_duplicate_title(title, existing_titles):
+                    continue
+                href = re.sub(r'[?&](utm_\w+|fbclid|gclid)=[^&]*', '', href)
+                outlet = classify_outlet(href, "")
+                category = determine_category(outlet)
+                new_item = {
+                    "id": make_id(category[:2], outlet, title),
+                    "outlet": outlet, "title": title, "date": "",
+                    "url": href, "source": "auto_search", "added_date": today_str(),
+                }
+                data[category].append(new_item)
+                existing_urls.add(href)
+                existing_titles.add(title)
+                new_items.append(new_item)
+        except Exception as e:
+            print(f"  [GOOGLE-fallback] Error: {e}")
+        time.sleep(2)
 
 
 def _extract_date_from_siblings(element):
