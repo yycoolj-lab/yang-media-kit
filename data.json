@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-14T21:57:51.875030+08:00",
+  "last_updated": "2026-04-14T22:28:14.241419+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 84,
-      "display": "84+"
+      "count": 85,
+      "display": "85+"
     },
     "media_exposure": {
-      "count": 121,
-      "display": "121+"
+      "count": 122,
+      "display": "122+"
     },
     "book_sales": {
       "count": 5000,
@@ -865,6 +865,16 @@
       "date": "",
       "url": "https://youtu.be/N9tUeUku1wo",
       "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-zz-P2SKtilrg68",
+      "show": "震震有詞",
+      "show_network": "高點電視台",
+      "title": "黑夜奪命殺手猝不及防？！心願未了、遺產紛爭太惱人！",
+      "date": "2026-03-12",
+      "url": "https://youtu.be/P2SKtilrg68",
+      "source": "manual",
       "added_date": "2026-04-14"
     }
   ],

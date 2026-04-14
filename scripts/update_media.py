@@ -585,8 +585,10 @@ def _yt_search(query, show_name, show_info, existing_urls, existing_titles, data
             if video_id in existing_urls or url in existing_urls:
                 continue
 
-            # Verify relevance: must mention doctor name or show name
-            if not any(n in title for n in SEARCH_NAMES + [show_name]):
+            # Verify relevance: check title AND description for doctor name
+            description = video.get("description", "") or ""
+            text_to_check = title + " " + description[:500]
+            if not any(n in text_to_check for n in SEARCH_NAMES + [show_name]):
                 continue
 
             if is_duplicate_title(title, existing_titles):
