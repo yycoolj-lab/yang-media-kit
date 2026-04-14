@@ -260,87 +260,211 @@ def update_google_rating(data):
         return False
 
 
-# ─── GOOGLE NEWS RSS (improved) ──────────────────────
+# ─── GOOGLE SEARCH SCRAPING (primary method) ────────
 
-def search_google_news(data):
-    """Search Google News RSS with multiple query strategies."""
-    print("[NEWS] Searching Google News RSS...")
+def search_google_web(data):
+    """Use Google Search (not News RSS) to find articles — same as manual Google search."""
+    print("[SEARCH] Google Search scraping (primary method)...")
     existing_urls = get_existing_urls(data)
     existing_titles = get_existing_titles(data)
     new_items = []
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8",
+        "Accept": "text/html,application/xhtml+xml",
+    }
 
-    # Multiple search queries for broader coverage
+    # Google searches — exactly like the user would type in Google
     search_queries = [
-        # Basic name searches
-        "楊智鈞",
+        # Site-specific: most reliable for finding all articles per outlet
+        "自由時報 楊智鈞",
+        "site:health.ltn.com.tw 楊智鈞",
+        "site:ltn.com.tw 楊智鈞",
+        "site:udn.com 楊智鈞",
+        "site:ettoday.net 楊智鈞",
+        "site:edh.tw 楊智鈞",
+        "site:heho.com.tw 楊智鈞",
+        "site:commonhealth.com.tw 楊智鈞",
+        "site:tvbs.com.tw 楊智鈞",
+        "site:setn.com 楊智鈞",
+        "site:chinatimes.com 楊智鈞",
+        "site:ctwant.com 楊智鈞",
+        "site:health.businessweekly.com.tw 楊智鈞",
+        "site:top1health.com 楊智鈞",
+        # General searches to catch other outlets
+        "楊智鈞 醫師",
         "俠醫楊智鈞",
-        # Site-specific searches for outlets that often feature the doctor
-        "楊智鈞 site:ltn.com.tw",
-        "楊智鈞 site:udn.com",
-        "楊智鈞 site:ettoday.net",
-        "楊智鈞 site:edh.tw",
-        "楊智鈞 site:heho.com.tw",
-        "楊智鈞 site:commonhealth.com.tw",
-        "楊智鈞 site:tvbs.com.tw",
-        # Broader clinic searches
         "富足診所 楊智鈞",
     ]
 
     for query in search_queries:
+        items = _scrape_google_search(query, headers, existing_urls, existing_titles, data)
+        new_items.extend(items)
+        import time
+        time.sleep(2)  # Be polite to Google
+
+    print(f"[SEARCH] Found {len(new_items)} new articles from Google Search")
+    return new_items
+
+
+def _scrape_google_search(query, headers, existing_urls, existing_titles, data, num=30):
+    """Scrape Google Search results for a query."""
+    new_items = []
+    url = f"https://www.google.com/search?q={urllib.parse.quote(query)}&num={num}&hl=zh-TW&gl=TW"
+
+    try:
+        resp = requests.get(url, headers=headers, timeout=15)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "lxml")
+
+        found_count = 0
+        for a_tag in soup.find_all("a", href=True):
+            href = a_tag["href"]
+
+            # Extract real URL from Google redirect
+            if href.startswith("/url?"):
+                m = re.search(r'q=(https?://[^&]+)', href)
+                if m:
+                    href = urllib.parse.unquote(m.group(1))
+                else:
+                    continue
+            elif not href.startswith("http"):
+                continue
+
+            # Skip Google's own pages, ads, etc
+            if any(d in href for d in ["google.com", "youtube.com", "gstatic.com", "googleapis.com", "schema.org"]):
+                continue
+
+            # Must be a real article URL
+            if not any(d in href for d in [".com", ".tw", ".net", ".org"]):
+                continue
+
+            # Get title from the <h3> inside or nearby
+            h3 = a_tag.find("h3")
+            if not h3:
+                continue
+            title = h3.get_text(strip=True)
+            if not title:
+                continue
+
+            # Clean up URL (remove tracking params)
+            href = re.sub(r'[?&](utm_\w+|fbclid|gclid)=[^&]*', '', href)
+
+            # Skip if already exists
+            if href in existing_urls:
+                continue
+            if is_duplicate_title(title, existing_titles):
+                continue
+
+            # Classify
+            outlet = classify_outlet(href, "")
+            category = determine_category(outlet)
+
+            # Try to extract date from snippet
+            pub_date = _extract_date_from_siblings(a_tag)
+
+            role = ""
+            if category == "health_media":
+                for hm_name, hm_info in HEALTH_MEDIA_DOMAINS.items():
+                    if outlet == hm_name:
+                        role = hm_info.get("role", "")
+                        break
+
+            new_item = {
+                "id": make_id(category[:2], outlet, title),
+                "outlet": outlet,
+                "title": title,
+                "date": pub_date,
+                "url": href,
+                "source": "auto_search",
+                "added_date": today_str(),
+            }
+            if role:
+                new_item["outlet_role"] = role
+
+            data[category].append(new_item)
+            existing_urls.add(href)
+            existing_titles.add(title)
+            new_items.append(new_item)
+            found_count += 1
+            print(f"  [+] [{outlet}] {title[:60]}...")
+
+        print(f"  [GOOGLE] '{query}' -> {found_count} new")
+
+    except Exception as e:
+        print(f"  [GOOGLE] Error for '{query}': {e}")
+
+    return new_items
+
+
+def _extract_date_from_siblings(element):
+    """Try to extract a date from nearby text in search results."""
+    # Look in the parent container for date patterns
+    parent = element.find_parent(["div", "li"])
+    if parent:
+        text = parent.get_text(" ", strip=True)
+        # Match patterns like "2026年3月26日", "2026/03/26", "3 天前", "Mar 26, 2026"
+        patterns = [
+            (r'(\d{4})年(\d{1,2})月(\d{1,2})日', lambda m: f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"),
+            (r'(\d{4})/(\d{1,2})/(\d{1,2})', lambda m: f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"),
+            (r'(\d{4})-(\d{2})-(\d{2})', lambda m: m.group(0)),
+        ]
+        for pattern, fmt_fn in patterns:
+            match = re.search(pattern, text)
+            if match:
+                try:
+                    return fmt_fn(match)
+                except Exception:
+                    pass
+    return ""
+
+
+# ─── GOOGLE NEWS RSS (supplementary) ────────────────
+
+def search_google_news(data):
+    """Search Google News RSS as a supplement to Google Search."""
+    print("[NEWS] Google News RSS (supplementary)...")
+    existing_urls = get_existing_urls(data)
+    existing_titles = get_existing_titles(data)
+    new_items = []
+
+    for name in SEARCH_NAMES:
         rss_url = (
             f"https://news.google.com/rss/search?"
-            f"q={urllib.parse.quote(query)}&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+            f"q={urllib.parse.quote(name)}&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
         )
         try:
             feed = feedparser.parse(rss_url)
-            print(f"  [RSS] '{query}' -> {len(feed.entries)} entries")
-
-            for entry in feed.entries[:30]:  # Check up to 30 entries per query
+            for entry in feed.entries[:30]:
                 title = entry.get("title", "")
                 link = entry.get("link", "")
 
-                # Google News links redirect - try to get actual URL
                 actual_url = resolve_google_news_url(link)
                 if not actual_url:
                     actual_url = link
 
-                # Skip if already exists (by URL)
                 if actual_url in existing_urls or link in existing_urls:
                     continue
 
-                # Verify relevance: title or URL must relate to doctor
-                title_relevant = any(n in title for n in SEARCH_NAMES)
-                url_relevant = any(n in actual_url for n in ["%E6%A5%8A%E6%99%BA%E9%88%9E", "楊智鈞"])
-                if not title_relevant and not url_relevant:
+                if not any(n in title for n in SEARCH_NAMES):
                     continue
 
-                # Extract date
                 pub_date = ""
                 if hasattr(entry, "published_parsed") and entry.published_parsed:
                     dt = datetime(*entry.published_parsed[:6])
                     pub_date = dt.strftime("%Y-%m-%d")
 
-                # Extract source from title (Google News format: "Title - Source")
                 source_name = ""
                 if " - " in title:
                     parts = title.rsplit(" - ", 1)
                     title = parts[0].strip()
                     source_name = parts[1].strip()
 
-                # Skip duplicate titles
                 if is_duplicate_title(title, existing_titles):
                     continue
 
-                # Classify by outlet domain
                 outlet = classify_outlet(actual_url, source_name)
                 category = determine_category(outlet)
-
-                role = ""
-                if category == "health_media":
-                    for hm_name, hm_info in HEALTH_MEDIA_DOMAINS.items():
-                        if outlet == hm_name:
-                            role = hm_info.get("role", "")
-                            break
 
                 new_item = {
                     "id": make_id(category[:2], outlet, title),
@@ -351,8 +475,6 @@ def search_google_news(data):
                     "source": "auto_search",
                     "added_date": today_str(),
                 }
-                if role:
-                    new_item["outlet_role"] = role
 
                 data[category].append(new_item)
                 existing_urls.add(actual_url)
@@ -361,112 +483,10 @@ def search_google_news(data):
                 print(f"  [+] [{outlet}] {title[:60]}...")
 
         except Exception as e:
-            print(f"[NEWS] RSS parse error for '{query}': {e}")
+            print(f"[NEWS] RSS error for '{name}': {e}")
 
-    print(f"[NEWS] Found {len(new_items)} new articles")
+    print(f"[NEWS] Found {len(new_items)} new from RSS")
     return new_items
-
-
-# ─── DIRECT SITE SEARCH (for outlets Google News misses) ──
-
-def search_sites_directly(data):
-    """Search specific news sites directly for articles about the doctor."""
-    print("[SITE] Direct site search for missing articles...")
-    existing_urls = get_existing_urls(data)
-    existing_titles = get_existing_titles(data)
-    new_items = []
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept-Language": "zh-TW,zh;q=0.9",
-    }
-
-    # Site-specific search configs
-    site_searches = [
-        {
-            "name": "自由時報",
-            "search_url": "https://search.ltn.com.tw/list?keyword={query}&type=all",
-            "parse_fn": parse_ltn_results,
-        },
-        {
-            "name": "ETtoday",
-            "search_url": "https://www.google.com/search?q=site:ettoday.net+{query}&num=20&hl=zh-TW",
-            "parse_fn": parse_google_search_results,
-        },
-        {
-            "name": "聯合報",
-            "search_url": "https://www.google.com/search?q=site:udn.com+{query}&num=20&hl=zh-TW",
-            "parse_fn": parse_google_search_results,
-        },
-    ]
-
-    for site in site_searches:
-        for name in SEARCH_NAMES[:1]:  # Primary name only
-            url = site["search_url"].format(query=urllib.parse.quote(name))
-            try:
-                resp = requests.get(url, headers=headers, timeout=15)
-                resp.raise_for_status()
-                results = site["parse_fn"](resp.text, name)
-
-                for r in results:
-                    if r["url"] in existing_urls:
-                        continue
-                    if is_duplicate_title(r["title"], existing_titles):
-                        continue
-                    if not any(n in r["title"] for n in SEARCH_NAMES):
-                        continue
-
-                    outlet = classify_outlet(r["url"], site["name"])
-                    category = determine_category(outlet)
-
-                    new_item = {
-                        "id": make_id(category[:2], outlet, r["title"]),
-                        "outlet": outlet,
-                        "title": r["title"],
-                        "date": r.get("date", ""),
-                        "url": r["url"],
-                        "source": "auto_search",
-                        "added_date": today_str(),
-                    }
-
-                    data[category].append(new_item)
-                    existing_urls.add(r["url"])
-                    existing_titles.add(r["title"])
-                    new_items.append(new_item)
-                    print(f"  [+] [{outlet}] {r['title'][:60]}...")
-
-            except Exception as e:
-                print(f"[SITE] Error searching {site['name']}: {e}")
-
-    print(f"[SITE] Found {len(new_items)} new articles from direct search")
-    return new_items
-
-
-def parse_ltn_results(html, search_name):
-    """Parse Liberty Times search results."""
-    results = []
-    soup = BeautifulSoup(html, "lxml")
-    for item in soup.select("a.tit"):
-        title = item.get_text(strip=True)
-        href = item.get("href", "")
-        if search_name in title and href:
-            if not href.startswith("http"):
-                href = "https:" + href if href.startswith("//") else "https://search.ltn.com.tw" + href
-            results.append({"title": title, "url": href, "date": ""})
-    return results[:20]
-
-
-def parse_google_search_results(html, search_name):
-    """Parse Google search results page for article links."""
-    results = []
-    soup = BeautifulSoup(html, "lxml")
-    for h3 in soup.select("h3"):
-        parent_a = h3.find_parent("a")
-        if parent_a:
-            title = h3.get_text(strip=True)
-            href = parent_a.get("href", "")
-            if search_name in title and href.startswith("http"):
-                results.append({"title": title, "url": href, "date": ""})
-    return results[:20]
 
 
 def resolve_google_news_url(google_url):
@@ -736,14 +756,14 @@ def main():
     if update_google_rating(data):
         changes = True
 
-    # 3. Google News search for articles (expanded queries)
-    news = search_google_news(data)
-    if news:
+    # 3. Google Search scraping (primary — same as manual Google search)
+    web_news = search_google_web(data)
+    if web_news:
         changes = True
 
-    # 4. Direct site search (for outlets Google News misses)
-    site_news = search_sites_directly(data)
-    if site_news:
+    # 4. Google News RSS (supplementary — catches things Google Search misses)
+    news = search_google_news(data)
+    if news:
         changes = True
 
     # 5. YouTube TV show search (expanded)
