@@ -5,157 +5,491 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>楊智鈞醫師 媒體報導總整理</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+        :root {
+            /* 江戶藍染風格配色 */
+            --primary: #1a2744;       /* 紺色 (kon-iro) 深藍 */
+            --primary-light: #2e4a7a; /* 縹色 (hanada-iro) */
+            --indigo: #3a5a8c;        /* 藍色 (ai-iro) */
+            --indigo-light: #6889b4;  /* 浅葱色 (asagi-iro) */
+            --accent: #b7282e;        /* 朱色 (shu-iro) */
+            --accent-light: #d05a5a;
+            --gold: #c8a45c;          /* 金茶 (kincha) */
+            --bg: #f0ebe3;            /* 鳥の子色 (torinoko) 和紙色 */
+            --card-bg: #faf7f0;       /* 生成色 (kinari) */
+            --text: #1a2230;          /* 墨色 (sumi-iro) */
+            --text-light: #5c6470;    /* 鈍色 (nibi-iro) */
+            --radius: 12px;
+            --shadow: 0 4px 24px rgba(26,39,68,0.08);
+            --shadow-hover: 0 8px 32px rgba(26,39,68,0.14);
+            /* 青海波 SVG pattern (seigaiha) */
+            --seigaiha: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40'%3E%3Cpath d='M0 40 C20 40 20 20 40 20 C60 20 60 40 80 40' fill='none' stroke='%233a5a8c' stroke-width='0.5' opacity='0.12'/%3E%3Cpath d='M-40 40 C-20 40 -20 20 0 20 C20 20 20 40 40 40' fill='none' stroke='%233a5a8c' stroke-width='0.5' opacity='0.12'/%3E%3Cpath d='M40 40 C60 40 60 20 80 20 C100 20 100 40 120 40' fill='none' stroke='%233a5a8c' stroke-width='0.5' opacity='0.12'/%3E%3C/svg%3E");
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Sticky Nav ── */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(26, 39, 68, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0 20px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+            border-bottom: 2px solid var(--gold);
+        }
+        .top-nav-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 10px 0;
+        }
+        .top-nav-inner::-webkit-scrollbar { display: none; }
+        .top-nav a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.82em;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            transition: all 0.25s;
+        }
+        .top-nav a:hover, .top-nav a.active {
+            color: #fff;
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* ── Container ── */
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding-bottom: 40px;
+        }
+
+        /* ── Hero Header ── */
+        header {
+            background: linear-gradient(160deg, #0e1a2e 0%, #1a2744 35%, #2e4a7a 100%);
+            color: white;
+            padding: 60px 40px 50px;
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
-        header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--seigaiha);
+            opacity: 0.6;
         }
-        header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        header .subtitle { font-size: 1.2em; opacity: 0.9; margin-bottom: 15px; }
-        header .tags { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        header .tag { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9em; }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 0 6px rgba(200,164,92,0.15), 0 8px 40px rgba(0,0,0,0.3);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        header h1 {
+            font-size: 2.8em;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        header .subtitle {
+            font-size: 1.15em;
+            opacity: 0.85;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            position: relative;
+            z-index: 1;
+        }
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        .tag {
+            background: rgba(200,164,92,0.12);
+            border: 1px solid rgba(200,164,92,0.35);
+            padding: 6px 18px;
+            border-radius: 24px;
+            font-size: 0.88em;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--gold);
+        }
+
+        /* ── Stats Bar ── */
         .stats {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 15px;
-            padding: 30px;
-            background: #f8f9fa;
-        }
-        @media (max-width: 800px) {
-            .stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-                padding: 15px;
-            }
-            .stat-card {
-                padding: 12px 5px;
-            }
-            .stat-card .number {
-                font-size: 1.3em;
-            }
-            .stat-card .label {
-                font-size: 0.75em;
-            }
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            padding: 28px 30px;
+            background: var(--card-bg);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 20px 10px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            transition: all 0.3s;
+            cursor: default;
         }
-        .stat-card .number { font-size: 2em; font-weight: bold; color: #667eea; }
-        .stat-card .label { color: #666; font-size: 0.9em; }
-        .section { padding: 30px; border-bottom: 1px solid #eee; }
-        .section:last-child { border-bottom: none; }
-        .section h2 { font-size: 1.5em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .media-list { display: flex; flex-direction: column; gap: 10px; }
+        .stat-card:hover { background: var(--bg); }
+        .stat-card .number {
+            font-size: 1.9em;
+            font-weight: 900;
+            color: var(--indigo);
+            line-height: 1.2;
+        }
+        .stat-card .label {
+            color: var(--text-light);
+            font-size: 0.82em;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        /* ── Sections ── */
+        .section {
+            padding: 36px 36px;
+            background: var(--card-bg);
+            margin-top: 16px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .section:first-of-type { margin-top: 16px; border-radius: 0 0 var(--radius) var(--radius); }
+        .section h2 {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(58,90,140,0.15);
+        }
+        .section h2 .icon { font-size: 1.1em; }
+
+        /* ── Media List ── */
+        .media-list { display: flex; flex-direction: column; gap: 8px; }
         .media-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s;
+            padding: 14px 18px;
+            background: var(--bg);
+            border-radius: 12px;
+            transition: all 0.25s;
+            border: 1px solid transparent;
         }
-        .media-item:hover { background: #e9ecef; transform: translateX(5px); }
-        .media-item .info { flex: 1; }
-        .media-item .title { font-weight: 500; color: #333; margin-bottom: 5px; }
-        .media-item .meta { font-size: 0.85em; color: #666; }
+        .media-item:hover {
+            background: #eae8e4;
+            border-color: rgba(0,0,0,0.04);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .media-item .info { flex: 1; min-width: 0; }
+        .media-item .title {
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 3px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        .media-item .meta {
+            font-size: 0.82em;
+            color: var(--text-light);
+        }
         .media-item a {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--indigo);
             color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
+            padding: 7px 20px;
+            border-radius: 24px;
             text-decoration: none;
-            font-size: 0.9em;
+            font-size: 0.82em;
+            font-weight: 500;
             white-space: nowrap;
-            transition: transform 0.3s;
+            transition: all 0.25s;
+            margin-left: 12px;
+            flex-shrink: 0;
         }
-        .media-item a:hover { transform: scale(1.05); }
-        .subsection { margin-bottom: 25px; }
+        .media-item a:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(26,39,68,0.3);
+        }
+
+        /* ── Subsection ── */
+        .subsection { margin-bottom: 28px; }
+        .subsection:last-child { margin-bottom: 0; }
         .subsection h3 {
-            font-size: 1.1em;
-            color: #667eea;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #667eea;
+            font-size: 0.95em;
+            font-weight: 700;
+            color: var(--indigo);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--indigo);
             display: inline-block;
+            letter-spacing: 0.03em;
         }
+
+        /* ── Highlight Box ── */
         .highlight-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
-            padding: 30px;
+            padding: 32px;
             text-align: center;
-            border-radius: 15px;
-            margin: 15px 0;
+            border-radius: 14px;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(200,164,92,0.2);
         }
-        .highlight-box h3 { font-size: 1.3em; margin-bottom: 10px; }
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(200,164,92,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .highlight-box h3 {
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-bottom: 10px;
+            opacity: 0.9;
+            position: relative;
+        }
         .highlight-box a {
             color: white;
-            font-size: 1.5em;
-            font-weight: bold;
+            font-size: 1.4em;
+            font-weight: 700;
             text-decoration: none;
             display: block;
-            margin: 10px 0;
+            margin: 8px 0;
+            position: relative;
+            transition: opacity 0.2s;
         }
-        .highlight-box a:hover { text-decoration: underline; }
+        .highlight-box a:hover { opacity: 0.85; text-decoration: underline; }
+        .highlight-box p { opacity: 0.8; font-size: 0.9em; position: relative; }
         .highlight-box .stats-row {
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 15px;
+            margin-top: 16px;
             flex-wrap: wrap;
+            position: relative;
         }
         .highlight-box .stat-item { text-align: center; }
-        .highlight-box .stat-num { font-size: 1.5em; font-weight: bold; }
-        .highlight-box .stat-label { font-size: 0.9em; opacity: 0.9; }
-        footer {
-            background: #1a1a2e;
-            color: white;
-            padding: 30px;
-            text-align: center;
+        .highlight-box .stat-num { font-size: 1.5em; font-weight: 700; }
+        .highlight-box .stat-label { font-size: 0.85em; opacity: 0.85; }
+
+        /* ── Collapsible ── */
+        .collapse-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 10px 24px;
+            background: transparent;
+            border: 1.5px solid var(--indigo);
+            color: var(--indigo);
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 0.88em;
+            font-weight: 500;
+            font-family: inherit;
+            transition: all 0.25s;
+            margin-left: auto;
+            margin-right: auto;
         }
-        footer a { color: #667eea; text-decoration: none; }
+        .collapse-toggle:hover {
+            background: var(--indigo);
+            color: white;
+        }
+        .collapse-toggle .arrow {
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .collapse-toggle.expanded .arrow { transform: rotate(180deg); }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .collapsible-content.expanded { max-height: 50000px; }
+
+        /* ── Badge ── */
         .badge-new {
             display: inline-block;
-            background: #ff6b6b;
+            background: var(--accent);
             color: white;
-            font-size: 0.7em;
+            font-size: 0.65em;
             padding: 2px 8px;
             border-radius: 10px;
             margin-left: 8px;
             vertical-align: middle;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--primary);
+            background-image: var(--seigaiha);
+            color: white;
+            padding: 32px 36px;
+            text-align: center;
+            margin-top: 16px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-top: 3px solid var(--gold);
+            position: relative;
+        }
+        footer p { font-size: 0.95em; }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ── Back to Top ── */
+        .back-to-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            background: var(--indigo);
+            color: white;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            box-shadow: 0 4px 20px rgba(26,39,68,0.4);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 99;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* ── Scroll Animations ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 800px) {
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+                padding: 16px;
+            }
+            .stat-card { padding: 14px 6px; }
+            .stat-card .number { font-size: 1.4em; }
+            .stat-card .label { font-size: 0.75em; }
+            .section { padding: 24px 20px; margin-top: 10px; }
+            header { padding: 40px 24px 36px; }
+            header h1 { font-size: 2em; }
+            .container { padding-bottom: 20px; }
         }
         @media (max-width: 600px) {
             header h1 { font-size: 1.8em; }
-            .media-item { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .media-item a { width: 100%; text-align: center; }
+            .avatar { width: 120px; height: 120px; }
+            .media-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .media-item a {
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+            }
+            .highlight-box { padding: 24px 16px; }
+            .top-nav a { font-size: 0.78em; padding: 5px 10px; }
         }
     </style>
 </head>
 <body>
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav-inner">
+            <a href="#hero">首頁</a>
+            <a href="#clinic">診所</a>
+            <a href="#facebook">Facebook</a>
+            <a href="#youtube">YouTube</a>
+            <a href="#awards">榮譽</a>
+            <a href="#speaking">演講</a>
+            <a href="#tv">電視節目</a>
+            <a href="#health">健康媒體</a>
+            <a href="#news">新聞</a>
+            <a href="#books">著作</a>
+            <a href="#collab">品牌合作</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <header>
-            <img src="photo.jpg?v=9" alt="楊智鈞醫師" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; object-position: center 20%; margin: 0 auto 20px auto; display: block; border: 4px solid rgba(255,255,255,0.3); background: white;">
+        <header id="hero">
+            <img src="photo.jpg?v=9" alt="楊智鈞醫師" class="avatar">
             <h1>俠醫楊智鈞</h1>
             <p class="subtitle">台中富足診所院長｜微創靜脈曲張手術權威</p>
             <div class="tags">
@@ -166,10 +500,9 @@
             </div>
         </header>
 
-        <!-- Stats: dynamically rendered from data.json -->
         <div class="stats" id="stats-container"></div>
 
-        <div class="section">
+        <div class="section fade-up" id="clinic">
             <h2><span class="icon">🏥</span> 富足診所</h2>
             <div class="highlight-box">
                 <h3>官方網站</h3>
@@ -178,7 +511,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section fade-up" id="facebook">
             <h2><span class="icon">📘</span> Facebook 粉絲專頁</h2>
             <div class="highlight-box" style="background: linear-gradient(135deg, #1877f2 0%, #0d5db5 100%);">
                 <h3>俠醫楊智鈞 - 富足診所血管職人</h3>
@@ -192,7 +525,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section fade-up" id="youtube">
             <h2><span class="icon">📺</span> YouTube 頻道</h2>
             <div class="highlight-box" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);">
                 <h3>俠醫楊智鈞</h3>
@@ -200,7 +533,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section fade-up" id="awards">
             <h2><span class="icon">🏆</span> 榮譽獎項</h2>
             <div class="media-list">
                 <div class="media-item">
@@ -230,9 +563,9 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section fade-up" id="speaking">
             <h2><span class="icon">🎤</span> 講師・演講（50+ 場）</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 20px;">主題：簡報技巧｜溝通表達｜醫病關係｜生涯規劃</p>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 24px; font-size: 0.95em;">主題：簡報技巧｜溝通表達｜醫病關係｜生涯規劃</p>
 
             <div class="subsection">
                 <h3>公開課程講師</h3>
@@ -323,24 +656,24 @@
         </div>
 
         <!-- TV Shows: dynamically rendered from data.json -->
-        <div class="section">
+        <div class="section fade-up" id="tv">
             <h2><span class="icon">📺</span> 電視節目</h2>
             <div id="tv-shows-container"></div>
         </div>
 
         <!-- Health Media: dynamically rendered from data.json -->
-        <div class="section">
+        <div class="section fade-up" id="health">
             <h2><span class="icon">🩺</span> 權威健康媒體</h2>
             <div id="health-media-container"></div>
         </div>
 
         <!-- News Media: dynamically rendered from data.json -->
-        <div class="section">
+        <div class="section fade-up" id="news">
             <h2><span class="icon">🗞️</span> 新聞媒體報導</h2>
             <div id="news-media-container"></div>
         </div>
 
-        <div class="section">
+        <div class="section fade-up" id="books">
             <h2><span class="icon">📚</span> 著作・專欄・Podcast</h2>
             <div class="media-list">
                 <div class="media-item">
@@ -381,7 +714,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section fade-up" id="collab">
             <h2><span class="icon">🤝</span> 品牌合作</h2>
             <div class="media-list">
                 <div class="media-item">
@@ -410,9 +743,11 @@
 
         <footer>
             <p><strong>俠醫楊智鈞｜富足診所</strong></p>
-            <p id="last-updated" style="margin-top: 15px; opacity: 0.7;">媒體包整理中...</p>
+            <p id="last-updated" style="margin-top: 12px; opacity: 0.7; font-size: 0.85em;">媒體包整理中...</p>
         </footer>
     </div>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0})">&#9650;</button>
 
     <script>
     (async function() {
@@ -434,7 +769,7 @@
         const fbEl = document.getElementById('fb-follower-display');
         if (fbEl) fbEl.textContent = data.stats.facebook_followers.display;
 
-        // --- Render TV Shows (grouped by show) ---
+        // --- Render TV Shows (grouped by show) with collapse ---
         renderGroupedSection(
             'tv-shows-container',
             data.tv_shows,
@@ -442,7 +777,8 @@
             function(item) {
                 return item.show_network ? item.show + '（' + item.show_network + '）' : item.show;
             },
-            '觀看'
+            '觀看',
+            5 // show first N items per group, collapse rest
         );
 
         // --- Render Health Media (grouped by outlet) ---
@@ -454,7 +790,8 @@
                 var role = item.outlet_role ? '（' + item.outlet_role + '）' : '';
                 return item.outlet + role;
             },
-            '閱讀'
+            '閱讀',
+            5
         );
 
         // --- Render News Media (grouped by outlet) ---
@@ -463,7 +800,8 @@
             data.news_media,
             'outlet',
             function(item) { return item.outlet; },
-            '閱讀'
+            '閱讀',
+            5
         );
 
         // --- Update footer date ---
@@ -472,6 +810,11 @@
             var d = new Date(data.last_updated);
             footerEl.textContent = '資料自動更新：' + d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
         }
+
+        // --- Scroll animations ---
+        initScrollAnimations();
+        initBackToTop();
+        initNavHighlight();
 
         // ─── Helper Functions ───────────────────────────
 
@@ -496,11 +839,10 @@
             }).join('');
         }
 
-        function renderGroupedSection(containerId, items, groupField, labelFn, defaultBtnText) {
+        function renderGroupedSection(containerId, items, groupField, labelFn, defaultBtnText, collapseAfter) {
             var container = document.getElementById(containerId);
             if (!container || !items) return;
 
-            // Group items preserving insertion order
             var groups = {};
             var groupOrder = [];
             items.forEach(function(item) {
@@ -512,37 +854,63 @@
                 groups[key].push(item);
             });
 
-            // Sort within each group by date descending
             Object.keys(groups).forEach(function(key) {
                 groups[key].sort(function(a, b) {
                     return (b.date || '').localeCompare(a.date || '');
                 });
             });
 
-            // Check if item was added in last 30 days
             var thirtyDaysAgo = new Date();
             thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
             var cutoff = thirtyDaysAgo.toISOString().slice(0, 10);
+            var collapseId = 0;
 
             container.innerHTML = groupOrder.map(function(key) {
                 var groupItems = groups[key];
                 var label = labelFn(groupItems[0]);
-                return '<div class="subsection">' +
-                    '<h3>' + escHtml(label) + '</h3>' +
+                var visibleItems = groupItems;
+                var hiddenItems = [];
+                var needCollapse = collapseAfter && groupItems.length > collapseAfter;
+
+                if (needCollapse) {
+                    visibleItems = groupItems.slice(0, collapseAfter);
+                    hiddenItems = groupItems.slice(collapseAfter);
+                }
+
+                var cid = containerId + '-collapse-' + (collapseId++);
+
+                function renderItem(item) {
+                    var btnText = item.link_label || defaultBtnText;
+                    var newBadge = (item.source === 'auto_search' && item.added_date >= cutoff)
+                        ? '<span class="badge-new">NEW</span>' : '';
+                    return '<div class="media-item">' +
+                        '<div class="info">' +
+                        '<div class="title">' + escHtml(item.title) + newBadge + '</div>' +
+                        '<div class="meta">' + escHtml(item.date || '') + '</div>' +
+                        '</div>' +
+                        (item.url ? '<a href="' + escHtml(item.url) + '" target="_blank">' + escHtml(btnText) + '</a>' : '') +
+                        '</div>';
+                }
+
+                var html = '<div class="subsection">' +
+                    '<h3>' + escHtml(label) + ' <span style="font-weight:400;color:var(--text-light);font-size:0.85em;">(' + groupItems.length + ')</span></h3>' +
                     '<div class="media-list">' +
-                    groupItems.map(function(item) {
-                        var btnText = item.link_label || defaultBtnText;
-                        var newBadge = (item.source === 'auto_search' && item.added_date >= cutoff)
-                            ? '<span class="badge-new">NEW</span>' : '';
-                        return '<div class="media-item">' +
-                            '<div class="info">' +
-                            '<div class="title">' + escHtml(item.title) + newBadge + '</div>' +
-                            '<div class="meta">' + escHtml(item.date || '') + '</div>' +
-                            '</div>' +
-                            (item.url ? '<a href="' + escHtml(item.url) + '" target="_blank">' + escHtml(btnText) + '</a>' : '') +
-                            '</div>';
-                    }).join('') +
-                    '</div></div>';
+                    visibleItems.map(renderItem).join('');
+
+                if (needCollapse) {
+                    html += '</div>' +
+                        '<div class="collapsible-content" id="' + cid + '">' +
+                        '<div class="media-list" style="margin-top:8px;">' +
+                        hiddenItems.map(renderItem).join('') +
+                        '</div></div>' +
+                        '<button class="collapse-toggle" onclick="toggleCollapse(\'' + cid + '\', this)">' +
+                        '展開其餘 ' + hiddenItems.length + ' 筆 <span class="arrow">▼</span></button>';
+                } else {
+                    html += '</div>';
+                }
+
+                html += '</div>';
+                return html;
             }).join('');
         }
 
@@ -550,7 +918,59 @@
             if (!str) return '';
             return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         }
+
+        function initScrollAnimations() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.06 });
+
+            document.querySelectorAll('.fade-up').forEach(function(el) {
+                observer.observe(el);
+            });
+        }
+
+        function initBackToTop() {
+            var btn = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 600) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            }, { passive: true });
+        }
+
+        function initNavHighlight() {
+            var sections = document.querySelectorAll('.section[id], header[id]');
+            var navLinks = document.querySelectorAll('.top-nav a');
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var id = entry.target.id;
+                        navLinks.forEach(function(link) {
+                            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                        });
+                    }
+                });
+            }, { rootMargin: '-20% 0px -70% 0px' });
+
+            sections.forEach(function(s) { observer.observe(s); });
+        }
     })();
+
+    function toggleCollapse(id, btn) {
+        var el = document.getElementById(id);
+        var isExpanded = el.classList.toggle('expanded');
+        btn.classList.toggle('expanded', isExpanded);
+        var count = el.querySelectorAll('.media-item').length;
+        btn.innerHTML = isExpanded
+            ? '收合 <span class="arrow" style="transform:rotate(180deg);display:inline-block;">▼</span>'
+            : '展開其餘 ' + count + ' 筆 <span class="arrow">▼</span>';
+    }
     </script>
 </body>
 </html>
