@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-13T12:17:52.758249+08:00",
+  "last_updated": "2026-04-14T21:57:51.875030+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 65,
-      "display": "65+"
+      "count": 84,
+      "display": "84+"
     },
     "media_exposure": {
-      "count": 97,
-      "display": "97+"
+      "count": 121,
+      "display": "121+"
     },
     "book_sales": {
       "count": 5000,
@@ -676,6 +676,196 @@
       "url": "https://youtu.be/yJJEjAli7Kk",
       "source": "auto_search",
       "added_date": "2026-04-13"
+    },
+    {
+      "id": "tv-6d0ffbb7",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "14歲少女肚子腫脹？竟罹患卵巢癌？！【醫師好辣】 20190515 part1 EP740 陳保仁 馮媛甄",
+      "date": "",
+      "url": "https://youtu.be/TCMV1Efi47w",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-9ff0912c",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "病菌就是這樣來的！阿伯舌頭長膿包醫師竟要驗愛滋？日常這舉動讓細菌有機可趁！【醫師好辣】 必看精彩片段 江坤俊 紀炳銓 陳木榮",
+      "date": "",
+      "url": "https://youtu.be/eBFybjEgQCo",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-edd255d5",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "病患無極限！耐不住酒癮，偷跑出去竟車禍？！【醫師好辣】 精選 EP803｜江坤俊 林婷",
+      "date": "",
+      "url": "https://youtu.be/j9BHothdTxw",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-a13e75fc",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "疾病居然會挑對象？部落客罹癌摘除子宮，竟遭小三嗆：比你健康？！【醫師好辣】精選 EP740｜陳保仁 馮媛甄",
+      "date": "",
+      "url": "https://youtu.be/JFcXOhY6ZjE",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-ab5234ef",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "哪種人會講話嗲聲嗲氣？蔡尚樺裝可愛失敗：今天燒聲？！20230209 曾國城 賴盈達 張忘形 Part2 EP800【全民星攻略】",
+      "date": "",
+      "url": "https://youtu.be/sfBF9FwSC0c",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-c7e6cc54",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "搭機13小時痛暈竟是肺栓塞！腿腫抽筋發紅恐靜脈栓塞！謝金燕水腫成象腿4器官恐發求救訊號！健康2.0 20250420【完整版】#鄭凱云 #楊智鈞 #王健宇 #張宏銘 #葉懿昕 #芳瑜",
+      "date": "",
+      "url": "https://youtu.be/pjWO2Huvhow",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-c79ff512",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "享受新加坡米其林免出國！「麥片蝦.松鼠魚」道道都是招牌菜！【聚焦2.0】第607集",
+      "date": "",
+      "url": "https://youtu.be/93ZfAUlxxKY",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-90343014",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "影后男星心臟停跳 惡性心律不整恐猝死！ 高血壓免吃藥？ 電燒腎動脈神經有救！ 綜藝教母秋咳嚴重 食補達人教潤肺料理 20230916【聚焦2.0】第506集",
+      "date": "",
+      "url": "https://youtu.be/VsUiDkChon8",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-2f7f012f",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "帥出新高度！世界太極金牌男神孫家閎來了！解痛太極這樣練！心臟變形成「章魚壺」？資深媒體人遇生死劫？「一罐水」救命！炎炎夏日必吃瓜！營養博士傳授「最高明吃法」血糖不飆升！【聚焦2.0】第541集",
+      "date": "",
+      "url": "https://youtu.be/SOj3-T_zG98",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-3264fec9",
+      "show": "健康好生活",
+      "show_network": "年代",
+      "title": "李偉浩：腰痠背痛別只依賴止痛藥，當心婦科疾病拖成大病!  喜歡翹二郎腿的習慣改不了嗎? 當心腹壓高，容易讓器官脫垂?!【健康好生活】",
+      "date": "",
+      "url": "https://youtu.be/RCMnP1ksPw0",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-e945b5a5",
+      "show": "健康好生活",
+      "show_network": "年代",
+      "title": "陳欣湄：身體器官也會怕冷，循環變差血壓易高!【健康好生活】",
+      "date": "",
+      "url": "https://youtu.be/3bzQ23ZLes8",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-ec78d6d2",
+      "show": "健康好生活",
+      "show_network": "年代",
+      "title": "王健宇 ：家醫科推薦長者必吃的營養食材!!  吃魚助慢性病回春，健康預防腸道疾病!【健康好生活】",
+      "date": "",
+      "url": "https://youtu.be/FZdIwYkfsvU",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-01192bb5",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "做哪件事有助如廁更順暢？楊智鈞掏心掏肺分享城哥笑歪？！20230213 曾國城 李偉浩 張宜雯 Part2 EP801【全民星攻略】",
+      "date": "",
+      "url": "https://youtu.be/_k-L9XpbLPs",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-470da61a",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "降血脂藥不影響肝腎功能 抗生素.止痛藥恐傷腎【健康2.0 分段】@tvbshealth20  EP3029-1  20250524 #鄭凱云#楊智鈞#蕭敦仁#劉怡里#許聖梅",
+      "date": "",
+      "url": "https://youtu.be/HQrOJwobe-E",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-c8beb059",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "飛碟聯播網《飛碟早餐 唐湘龍時間》2023.01.31 台中沙鹿/大甲光田綜合醫院心臟外科主任 楊智鈞《俠醫楊智鈞的50道心臟密碼》",
+      "date": "",
+      "url": "https://youtu.be/vXh3oSokRaw",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-5aa6c3dc",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "教育葳來說｜楊智鈞醫師｜醫俠三遷，築夢葳格：楊智鈞醫師對教育理想國的執著追尋｜#葳格小學北屯校區 WAGOR TIMES 葳格人專訪（CC字幕）",
+      "date": "",
+      "url": "https://youtu.be/fzo1-NaT_9s",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-30af412e",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "楊智鈞自我介紹影片",
+      "date": "",
+      "url": "https://youtu.be/kBBz2YLKJWQ",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-69042bcc",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "縫合2-3mm的血管也OK！SMILE全飛秒近視雷射 經驗分享｜心臟血管外科 楊智鈞 醫師｜醫師的眼科醫師 張聰麒｜遠見眼科",
+      "date": "",
+      "url": "https://youtu.be/cEKDy94mAuo",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-d6dca601",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "外科醫師大滅絕-台中榮總心臟血管外科主治醫師楊智鈞@[超級簡報力]課程",
+      "date": "",
+      "url": "https://youtu.be/N9tUeUku1wo",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
     }
   ],
   "health_media": [
@@ -738,6 +928,26 @@
       "url": "https://edh.tw/articles/9KQYTmv",
       "source": "manual",
       "added_date": "2026-02-12"
+    },
+    {
+      "id": "he-23cd400d",
+      "outlet": "早安健康",
+      "title": "楊智鈞 醫師",
+      "date": "2025-09-07",
+      "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1JcU9vUHdRQm9aTF9ncUdaWFhiOVhTWmtQX1FlMmY0OXZkbDVkVWZhOTN2OXBvVFFEV29qZS1OX3otSkpk?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-04-14",
+      "outlet_role": "專欄作者"
+    },
+    {
+      "id": "he-4d962591",
+      "outlet": "早安健康",
+      "title": "喝咖啡用這招！俠醫楊智鈞腰圍瘦16cm、甩8kg脂肪，6訣竅有感大推",
+      "date": "2025-04-12",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9KWkJuQTY5MzZFUXBCNDdZOHpMOXhhU3U3a29JbUg4ZE9pNE9KRm8ybFIwVjd5a0pHTVhvUXRhQzhJZFd6Nnc?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-04-14",
+      "outlet_role": "專欄作者"
     }
   ],
   "news_media": [
@@ -974,6 +1184,33 @@
       "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBwOWhsMGQtdDRFRTZPUHlMVWR0ckxkYnA5b1BlcXdRSzhPVW9xM1F1NmZoOWFaamtsQ3o1Mml1ZzBYMHEwZDQtWDVWYUE0QXZyQVQ1aWRJNlFTTXAyeXJpdEZOWkMxR2ExNm5B?oc=5&hl=en-US&gl=US&ceid=US:en",
       "source": "auto_search",
       "added_date": "2026-03-09"
+    },
+    {
+      "id": "ne-aabccb17",
+      "outlet": "Newtalk新聞",
+      "title": "兒童疫苗該選莫德納還是BNT？醫師楊智鈞：都不考慮讓孩子施打| 生活",
+      "date": "2022-05-02",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1yb2NnNmMyWEZBSE5CNUJBSjJNNThsTHZsS1I1b3dVcGpETDU2YkJ2cnJ0TF8wZU40QWNod3Nid1J1ZS1sTWRJdXdBeWZWSUVFMXNHcHQ2ZmJkUQ?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "ne-be2d94e2",
+      "outlet": "TNL The News Lens 關鍵評論網",
+      "title": "快閃店穩爆紅？營運顧問楊智鈞分享5大關鍵",
+      "date": "2020-02-13",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE44NVJuWnR1YmZybmhJV3paYnZscGFBU2VjbDlObGh0RG5Jb1VUT1ZfcVd1S0gyMTNBcUlIWkRIUEk2aEdlaV9obFdsWkd0SUVKNmRTLQ?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
+    },
+    {
+      "id": "ne-507aaab5",
+      "outlet": "ETtoday",
+      "title": "楊智鈞／一張圖教你看穿 DRG 新制！",
+      "date": "2016-02-01",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBWZlNJdndHR0hVNTV2aTB2dG5JZXVwSUYtbXRsODFiMjBvam1vQjE5V1RrdkJOdzNHYWtrWmMxSUNlWnRBWlJXYnlHc1JyZ9IBakFVX3lxTE01ZERhbFJaaW92eDNSbXlfallwZno0S085SDRqbXdnc1RNRElReXNpRkJ0bldLOC0yQVpuZTVKbUlhRjJBSGJsaWxIckw4MnJoX3R5ZnBMajhOTE1RYXlIRkNVbXpGRkw3YWc?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-04-14"
     }
   ]
 }
