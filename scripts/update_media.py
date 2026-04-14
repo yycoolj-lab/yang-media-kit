@@ -225,39 +225,53 @@ def update_facebook_followers(data):
 # ─── GOOGLE RATING (Scraping) ────────────────────────
 
 def update_google_rating(data):
-    """Fetch Google Maps rating for the clinic."""
+    """Fetch Google Maps rating for the clinic using multiple strategies."""
     print("[GOOGLE] Fetching Google rating...")
-    try:
-        search_url = f"https://www.google.com/search?q={urllib.parse.quote(GOOGLE_PLACE_SEARCH)}+評價&hl=zh-TW"
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept-Language": "zh-TW,zh;q=0.9",
-        }
-        resp = requests.get(search_url, headers=headers, timeout=15)
-        resp.raise_for_status()
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        "Accept-Language": "zh-TW,zh;q=0.9",
+    }
 
-        patterns = [
-            r'(\d\.\d)\s*顆星',
-            r'rating["\s:]+(\d\.\d)',
-            r'(\d\.\d)</span>\s*<span[^>]*>\s*\(\d',
-        ]
+    # Strategy 1: Google Maps search page
+    strategies = [
+        f"https://www.google.com/search?q={urllib.parse.quote(GOOGLE_PLACE_SEARCH)}&hl=zh-TW",
+        f"https://www.google.com/search?q={urllib.parse.quote(GOOGLE_PLACE_SEARCH)}+評價&hl=zh-TW",
+        f"https://www.google.com/search?q={urllib.parse.quote('富足診所 台中 評價')}&hl=zh-TW",
+        f"https://www.google.com/maps/search/{urllib.parse.quote(GOOGLE_PLACE_SEARCH)}/?hl=zh-TW",
+    ]
 
-        for pattern in patterns:
-            match = re.search(pattern, resp.text)
-            if match:
-                rating = float(match.group(1))
-                if 1.0 <= rating <= 5.0:
-                    old = data["stats"]["google_rating"].get("score", 0)
-                    data["stats"]["google_rating"]["score"] = rating
-                    print(f"[GOOGLE] Updated rating: {old} -> {rating}")
-                    return True
+    all_patterns = [
+        r'"ratingValue"\s*:\s*"?(\d\.?\d?)"?',     # JSON-LD schema
+        r'(\d\.?\d?)\s*顆星',                        # "X顆星"
+        r'(\d\.?\d?)</span>\s*<span[^>]*>\s*\(\d',   # rating next to review count
+        r'rating["\s:]+(\d\.?\d?)',                   # generic rating field
+        r'(\d\.\d)\s*分',                             # "X分"
+        r'<span[^>]*>(\d\.\d)</span>[^<]*(?:81|8\d|9\d|\d{2,3})\s*則',  # rating near review count
+    ]
 
-        print("[GOOGLE] Could not extract rating from search results")
-        return False
+    for search_url in strategies:
+        try:
+            resp = requests.get(search_url, headers=headers, timeout=15)
+            resp.raise_for_status()
 
-    except Exception as e:
-        print(f"[GOOGLE] Error: {e}")
-        return False
+            for pattern in all_patterns:
+                for match in re.finditer(pattern, resp.text):
+                    try:
+                        rating = float(match.group(1))
+                        if 3.0 <= rating <= 5.0:  # Sanity check
+                            old = data["stats"]["google_rating"].get("score", 0)
+                            data["stats"]["google_rating"]["score"] = rating
+                            print(f"[GOOGLE] Updated rating: {old} -> {rating}")
+                            return True
+                    except (ValueError, IndexError):
+                        continue
+
+        except Exception as e:
+            print(f"[GOOGLE] Error with strategy: {e}")
+            continue
+
+    print("[GOOGLE] Could not extract rating from any source")
+    return False
 
 
 # ─── GOOGLE SEARCH SCRAPING (primary method) ────────
