@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-14T22:32:35.676005+08:00",
+  "last_updated": "2026-04-15T08:09:08.653952+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 85,
-      "display": "85+"
+      "count": 90,
+      "display": "90+"
     },
     "media_exposure": {
-      "count": 122,
-      "display": "122+"
+      "count": 158,
+      "display": "158+"
     },
     "book_sales": {
       "count": 5000,
@@ -876,6 +876,56 @@
       "url": "https://youtu.be/P2SKtilrg68",
       "source": "manual",
       "added_date": "2026-04-14"
+    },
+    {
+      "id": "tv-e311d7dc",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "正確剪指甲！名醫教1招根治甲溝炎 跟凍甲說掰掰！【 如果云知道 鄭凱云 】feat. 朱家宏 足踝專科醫師",
+      "date": "",
+      "url": "https://youtu.be/GBi41iGuxvk",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "tv-3b6f9a0a",
+      "show": "震震有詞",
+      "show_network": "高點電視台",
+      "title": "搶救劉真！葉克膜真的是萬能嗎？！",
+      "date": "",
+      "url": "https://youtu.be/EROVUQnqwSg",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "tv-877ede6a",
+      "show": "醫次搞定",
+      "show_network": "",
+      "title": "20150622中天新聞　被高鐵閘門夾大腿　名醫批高鐵「不貼心」",
+      "date": "",
+      "url": "https://youtu.be/v5agpKyRJ8s",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "tv-cf466094",
+      "show": "健康好生活",
+      "show_network": "年代",
+      "title": "洪永祥：湯頭鮮美、藏危機？當心「傷腎」大地雷！慢性腎衰竭這樣吃！「低氮澱粉」飲食！這些小吃藏陷阱、飲食壞習慣會傷腎！ 【健康好生活】",
+      "date": "",
+      "url": "https://youtu.be/LeAUJoLYx4s",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "tv-0643c742",
+      "show": "命運好好玩",
+      "show_network": "JET",
+      "title": "【精華版】心臟停了腦波還在      外科醫生神奇病例不鐵齒",
+      "date": "",
+      "url": "https://youtu.be/VEebPklUlJA",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
     }
   ],
   "health_media": [
@@ -1221,6 +1271,285 @@
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBWZlNJdndHR0hVNTV2aTB2dG5JZXVwSUYtbXRsODFiMjBvam1vQjE5V1RrdkJOdzNHYWtrWmMxSUNlWnRBWlJXYnlHc1JyZ9IBakFVX3lxTE01ZERhbFJaaW92eDNSbXlfallwZno0S085SDRqbXdnc1RNRElReXNpRkJ0bldLOC0yQVpuZTVKbUlhRjJBSGJsaWxIckw4MnJoX3R5ZnBMajhOTE1RYXlIRkNVbXpGRkw3YWc?oc=5&hl=en-US&gl=US&ceid=US:en",
       "source": "auto_search",
       "added_date": "2026-04-14"
+    },
+    {
+      "id": "ne-bb009de0",
+      "outlet": "自由時報",
+      "title": "健康網》舉重、如廁用力恐猝死 醫：4類人危險",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5398732",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-a5e97ea9",
+      "outlet": "自由時報",
+      "title": "健康網》減肥別只看腰圍 醫：內臟脂肪才是大敵！降低4招",
+      "date": "2026-04-04",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5392495",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-9f03f211",
+      "outlet": "自由時報",
+      "title": "健康網》阿嬤「靜脈曲張」術後復發 醫：2原因常見",
+      "date": "2026-04-03",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5392387",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-fb8c0646",
+      "outlet": "自由時報",
+      "title": "健康網》爬樓梯都喘 身體沒電！醫：需要「輔酶Q10」充電",
+      "date": "2026-04-01",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5388960",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-2e032ff7",
+      "outlet": "自由時報",
+      "title": "健康網》8成睡眠猝逝 關乎心血管！醫：嚴重打呼當心",
+      "date": "2026-03-26",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5383877",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-29a330ae",
+      "outlet": "自由時報",
+      "title": "健檢好好看》天生高膽固醇體質 「俠醫」這樣找回健康人生",
+      "date": "2026-03-26",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5382405",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-e7bebdf7",
+      "outlet": "自由時報",
+      "title": "健康網》「保肝藥」無助脂肪肝！醫：脂肪肝恐釀心梗",
+      "date": "2026-03-14",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5370049",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-68b92e6d",
+      "outlet": "自由時報",
+      "title": "健康網》出遊慎防「經濟艙症候群」醫談機上保命3招",
+      "date": "2026-02-21",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5340498",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-621f039b",
+      "outlet": "自由時報",
+      "title": "健康網》咖啡、茶能預防失智 醫：有這才有效",
+      "date": "2026-02-12",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5340649",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-639c019d",
+      "outlet": "自由時報",
+      "title": "健康網》醫：血脂異常非單一數字問題 長期累積釀動脈硬化",
+      "date": "2025-12-17",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5281243",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-e6614a4e",
+      "outlet": "自由時報",
+      "title": "健康網》「跑出」大腸瘜肉？ 研究揭跑者隱形炸彈",
+      "date": "2025-12-07",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5269919",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-53b10aae",
+      "outlet": "自由時報",
+      "title": "健康網》心臟小洞險奪命 壯年女搭機釀中風「血栓從腳衝腦」",
+      "date": "2025-11-16",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5245115",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-69bb377a",
+      "outlet": "自由時報",
+      "title": "健康網》醫師敷衍：「等一下」 靜脈栓塞病人就是等死",
+      "date": "2025-11-05",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5235918",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-d17baa7d",
+      "outlet": "自由時報",
+      "title": "健康網》上手術台阿嬤硬喊卡 醫：讀懂她的心最重要",
+      "date": "2025-09-24",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5189902",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-dcaab5e1",
+      "outlet": "自由時報",
+      "title": "8旬婦肺動脈栓塞休克  葉克膜搭抗凝血療法成功救回",
+      "date": "2022-01-12",
+      "url": "https://health.ltn.com.tw/article/breakingnews/3798398",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-5bbd7c03",
+      "outlet": "自由時報",
+      "title": "重訓習慣閉氣用力 當心大動脈受傷",
+      "date": "2021-03-19",
+      "url": "https://health.ltn.com.tw/article/paper/1438040",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-d6f6c0f0",
+      "outlet": "自由時報",
+      "title": "重訓習慣閉氣用力 小心造成大動脈受傷",
+      "date": "2021-03-18",
+      "url": "https://health.ltn.com.tw/article/breakingnews/3470890",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-ed03dc50",
+      "outlet": "自由時報",
+      "title": "動脈硬化 3種血管病變「齊爆」",
+      "date": "2020-12-30",
+      "url": "https://health.ltn.com.tw/article/paper/1422282",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-a30cce4d",
+      "outlet": "自由時報",
+      "title": "下肢血管阻塞嚴重恐截肢 糖友腎友別輕忽",
+      "date": "2020-12-04",
+      "url": "https://health.ltn.com.tw/article/breakingnews/3371078",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-d43a422e",
+      "outlet": "自由時報",
+      "title": "8旬婦黑腳ㄚ 球囊通血管及時保住腿",
+      "date": "2020-05-21",
+      "url": "https://health.ltn.com.tw/article/breakingnews/3172519",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-e5ec6587",
+      "outlet": "自由時報",
+      "title": "審核通過獲資格 苗栗也有醫院可做微創主動脈支架手術",
+      "date": "2020-04-27",
+      "url": "https://health.ltn.com.tw/article/breakingnews/3146974",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-2a55544c",
+      "outlet": "自由時報",
+      "title": "高齡主動脈瘤支架手術 這醫院3年成功率100％",
+      "date": "2017-01-03",
+      "url": "https://health.ltn.com.tw/article/breakingnews/1936284",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-99b9297c",
+      "outlet": "自由時報",
+      "title": "如何保養洗腎的血管？ 安南醫院醫師建議…",
+      "date": "2016-06-02",
+      "url": "https://health.ltn.com.tw/article/breakingnews/1717098",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-523b3172",
+      "outlet": "ETtoday",
+      "title": "700萬人中鏢！脂肪肝傷心臟「血管像爆漿餐包」　醫：40%沒症狀",
+      "date": "2026-03-16",
+      "url": "https://health.ettoday.net/news/3132193",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-509577b8",
+      "outlet": "ETtoday",
+      "title": "比肥肉還傷肝！醫師點名喝「這杯」是頭號殺手　下肚瞬間累積",
+      "date": "2026-02-21",
+      "url": "https://www.ettoday.net/news/20260221/3121159.htm",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-bd58aaee",
+      "outlet": "ETtoday",
+      "title": "少年白髮罹心臟病機率「風險高5倍」！30歲男被送醫才知事情大條",
+      "date": "2022-11-03",
+      "url": "https://www.ettoday.net/news/20221103/2372592.htm",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-17893a6c",
+      "outlet": "ETtoday",
+      "title": "魚油挑選3重點！醫：選小顆粒「吃半年以上才有效」　這時間吃最好",
+      "date": "2022-09-06",
+      "url": "https://health.ettoday.net/news/2331194",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-74345048",
+      "outlet": "ETtoday",
+      "title": "醫表態兒童疫苗「莫德納、BNT」都不打　陳時中：尊重但利大於弊",
+      "date": "2022-05-02",
+      "url": "https://www.ettoday.net/news/20220502/2242354.htm",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-452f9f96",
+      "outlet": "ETtoday",
+      "title": "23歲男模運動猝死　醫：主動脈剝離多逾50歲「這情況例外」有3忌",
+      "date": "2021-03-18",
+      "url": "https://health.ettoday.net/news/1941175",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-20da441f",
+      "outlet": "聯合報／元氣網",
+      "title": "上大號用力過猛死亡 醫揭高風險族群：心血管撐不住",
+      "date": "2026-04-12",
+      "url": "https://udn.com/news/story/7266/9436808",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-33532ce2",
+      "outlet": "聯合報／元氣網",
+      "title": "長途飛行怎麼坐才安全？ 醫揭「經濟艙症候群」自保3要訣",
+      "date": "2025-07-24",
+      "url": "https://udn.com/news/story/7934/8893996",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
     }
   ]
 }
