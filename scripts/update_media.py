@@ -286,225 +286,251 @@ def update_google_rating(data):
     return False
 
 
-# ─── GOOGLE SEARCH SCRAPING (primary method) ────────
+# ─── DIRECT SITE SEARCH (primary method) ─────────────
+# Scrape each media outlet's own search page directly.
+# This avoids Google blocking and is more reliable than Google Search scraping.
 
-def search_google_web(data):
-    """Use Playwright to scrape Google Search for articles — works like a real browser."""
-    print("[SEARCH] Google Search via Playwright (primary method)...")
+# Site search configurations: (name, url_template, parser_function, max_pages)
+SITE_SEARCH_CONFIGS = [
+    {
+        "name": "自由時報",
+        "url_template": "https://search.ltn.com.tw/list?keyword={kw}&type=all&page={page}",
+        "parser": "_parse_ltn",
+        "max_pages": 3,
+    },
+    {
+        "name": "ETtoday",
+        "url_template": "https://www.ettoday.net/news_search/doSearch.php?search_term_string={kw}&page={page}",
+        "parser": "_parse_ettoday",
+        "max_pages": 2,
+    },
+    {
+        "name": "UDN",
+        "url_template": "https://udn.com/search/word/2/{kw}",
+        "parser": "_parse_udn",
+        "max_pages": 1,
+    },
+    {
+        "name": "Heho",
+        "url_template": "https://heho.com.tw/?s={kw}",
+        "parser": "_parse_heho",
+        "max_pages": 1,
+    },
+]
+
+
+def search_media_sites(data):
+    """Search each media outlet's own site directly — no Google needed."""
+    print("[SEARCH] Direct site search (primary method)...")
     existing_urls = get_existing_urls(data)
     existing_titles = get_existing_titles(data)
     new_items = []
-
-    search_queries = [
-        # Site-specific searches — most reliable per outlet
-        ("site:health.ltn.com.tw 楊智鈞", 3),   # 3 pages
-        ("site:ltn.com.tw 楊智鈞", 2),
-        ("site:udn.com 楊智鈞", 2),
-        ("site:ettoday.net 楊智鈞", 2),
-        ("site:edh.tw 楊智鈞", 2),
-        ("site:heho.com.tw 楊智鈞", 2),
-        ("site:commonhealth.com.tw 楊智鈞", 2),
-        ("site:tvbs.com.tw 楊智鈞", 1),
-        ("site:setn.com 楊智鈞", 1),
-        ("site:chinatimes.com 楊智鈞", 1),
-        ("site:ctwant.com 楊智鈞", 1),
-        ("site:health.businessweekly.com.tw 楊智鈞", 1),
-        ("site:top1health.com 楊智鈞", 1),
-        # General searches
-        ("楊智鈞 醫師", 2),
-        ("俠醫楊智鈞", 2),
-        ("富足診所 楊智鈞", 1),
-    ]
-
-    try:
-        from playwright.sync_api import sync_playwright
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            context = browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-                locale="zh-TW",
-            )
-            page = context.new_page()
-
-            for query, max_pages in search_queries:
-                items = _scrape_google_search_pw(page, query, max_pages, existing_urls, existing_titles, data)
-                new_items.extend(items)
-                page.wait_for_timeout(2000)  # Be polite
-
-            browser.close()
-
-    except ImportError:
-        print("[SEARCH] Playwright not installed, falling back to requests...")
-        # Fallback: try requests (may not work if Google blocks)
-        _search_google_web_requests(data, existing_urls, existing_titles, new_items, search_queries)
-    except Exception as e:
-        print(f"[SEARCH] Error: {e}")
-
-    print(f"[SEARCH] Found {len(new_items)} new articles from Google Search")
-    return new_items
-
-
-def _scrape_google_search_pw(page, query, max_pages, existing_urls, existing_titles, data):
-    """Scrape Google Search results using Playwright with pagination."""
-    import time
-    new_items = []
-    total_found = 0
-
-    for page_num in range(max_pages):
-        start = page_num * 10
-        url = f"https://www.google.com/search?q={urllib.parse.quote(query)}&start={start}&hl=zh-TW&gl=TW"
-
-        try:
-            page.goto(url, wait_until="domcontentloaded", timeout=20000)
-            page.wait_for_timeout(2000)
-            content = page.content()
-            soup = BeautifulSoup(content, "lxml")
-
-            found_this_page = 0
-            for a_tag in soup.find_all("a", href=True):
-                href = a_tag["href"]
-
-                if href.startswith("/url?"):
-                    m = re.search(r'q=(https?://[^&]+)', href)
-                    if m:
-                        href = urllib.parse.unquote(m.group(1))
-                    else:
-                        continue
-                elif not href.startswith("http"):
-                    continue
-
-                if any(d in href for d in ["google.com", "youtube.com", "gstatic.com", "googleapis.com", "schema.org"]):
-                    continue
-
-                if not any(d in href for d in [".com", ".tw", ".net", ".org"]):
-                    continue
-
-                h3 = a_tag.find("h3")
-                if not h3:
-                    continue
-                title = h3.get_text(strip=True)
-                if not title:
-                    continue
-
-                href = re.sub(r'[?&](utm_\w+|fbclid|gclid)=[^&]*', '', href)
-
-                if href in existing_urls:
-                    continue
-                if is_duplicate_title(title, existing_titles):
-                    continue
-
-                outlet = classify_outlet(href, "")
-                category = determine_category(outlet)
-                pub_date = _extract_date_from_siblings(a_tag)
-
-                role = ""
-                if category == "health_media":
-                    for hm_name, hm_info in HEALTH_MEDIA_DOMAINS.items():
-                        if outlet == hm_name:
-                            role = hm_info.get("role", "")
-                            break
-
-                new_item = {
-                    "id": make_id(category[:2], outlet, title),
-                    "outlet": outlet,
-                    "title": title,
-                    "date": pub_date,
-                    "url": href,
-                    "source": "auto_search",
-                    "added_date": today_str(),
-                }
-                if role:
-                    new_item["outlet_role"] = role
-
-                data[category].append(new_item)
-                existing_urls.add(href)
-                existing_titles.add(title)
-                new_items.append(new_item)
-                found_this_page += 1
-                total_found += 1
-                print(f"  [+] [{outlet}] {title[:60]}...")
-
-            if found_this_page == 0 and page_num > 0:
-                break  # No more results
-
-            if page_num < max_pages - 1:
-                page.wait_for_timeout(1500)
-
-        except Exception as e:
-            print(f"  [GOOGLE] Error for '{query}' page {page_num}: {e}")
-            break
-
-    print(f"  [GOOGLE] '{query}' -> {total_found} new")
-    return new_items
-
-
-def _search_google_web_requests(data, existing_urls, existing_titles, new_items, search_queries):
-    """Fallback: try requests-based Google Search (may be blocked)."""
-    import time
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
         "Accept-Language": "zh-TW,zh;q=0.9",
     }
-    for query, max_pages in search_queries:
-        url = f"https://www.google.com/search?q={urllib.parse.quote(query)}&num=10&hl=zh-TW&gl=TW"
-        try:
-            resp = requests.get(url, headers=headers, timeout=15)
-            soup = BeautifulSoup(resp.text, "lxml")
-            for a_tag in soup.find_all("a", href=True):
-                href = a_tag["href"]
-                if href.startswith("/url?"):
-                    m = re.search(r'q=(https?://[^&]+)', href)
-                    if m:
-                        href = urllib.parse.unquote(m.group(1))
-                    else:
-                        continue
-                elif not href.startswith("http"):
-                    continue
-                if any(d in href for d in ["google.com", "youtube.com", "gstatic.com"]):
-                    continue
-                h3 = a_tag.find("h3")
-                if not h3:
-                    continue
-                title = h3.get_text(strip=True)
-                if not title or href in existing_urls or is_duplicate_title(title, existing_titles):
-                    continue
-                href = re.sub(r'[?&](utm_\w+|fbclid|gclid)=[^&]*', '', href)
-                outlet = classify_outlet(href, "")
-                category = determine_category(outlet)
-                new_item = {
-                    "id": make_id(category[:2], outlet, title),
-                    "outlet": outlet, "title": title, "date": "",
-                    "url": href, "source": "auto_search", "added_date": today_str(),
-                }
-                data[category].append(new_item)
-                existing_urls.add(href)
-                existing_titles.add(title)
-                new_items.append(new_item)
-        except Exception as e:
-            print(f"  [GOOGLE-fallback] Error: {e}")
-        time.sleep(2)
+
+    for config in SITE_SEARCH_CONFIGS:
+        site_name = config["name"]
+        parser_name = config["parser"]
+        parser_fn = globals().get(parser_name)
+        if not parser_fn:
+            print(f"  [{site_name}] Parser not found: {parser_name}")
+            continue
+
+        found = 0
+        for page_num in range(1, config["max_pages"] + 1):
+            import time
+            kw_encoded = urllib.parse.quote("楊智鈞")
+            url = config["url_template"].format(kw=kw_encoded, page=page_num)
+
+            try:
+                resp = requests.get(url, headers=headers, timeout=15)
+                if resp.status_code != 200:
+                    print(f"  [{site_name}] HTTP {resp.status_code}")
+                    break
+
+                items = parser_fn(resp.text, existing_urls, existing_titles, data)
+                found += len(items)
+                new_items.extend(items)
+
+                if len(items) == 0 and page_num > 1:
+                    break
+
+            except Exception as e:
+                print(f"  [{site_name}] Error page {page_num}: {e}")
+                break
+
+            time.sleep(1)
+
+        print(f"  [{site_name}] -> {found} new")
+
+    print(f"[SEARCH] Found {len(new_items)} new articles from direct site search")
+    return new_items
 
 
-def _extract_date_from_siblings(element):
-    """Try to extract a date from nearby text in search results."""
-    # Look in the parent container for date patterns
-    parent = element.find_parent(["div", "li"])
-    if parent:
-        text = parent.get_text(" ", strip=True)
-        # Match patterns like "2026年3月26日", "2026/03/26", "3 天前", "Mar 26, 2026"
-        patterns = [
-            (r'(\d{4})年(\d{1,2})月(\d{1,2})日', lambda m: f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"),
-            (r'(\d{4})/(\d{1,2})/(\d{1,2})', lambda m: f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"),
-            (r'(\d{4})-(\d{2})-(\d{2})', lambda m: m.group(0)),
-        ]
-        for pattern, fmt_fn in patterns:
-            match = re.search(pattern, text)
-            if match:
-                try:
-                    return fmt_fn(match)
-                except Exception:
-                    pass
-    return ""
+def _add_article(title, href, date_str, existing_urls, existing_titles, data):
+    """Helper: add a single article if not duplicate. Returns the item or None."""
+    if not title or len(title) < 5:
+        return None
+
+    href = re.sub(r'[?&](utm_\w+|fbclid|gclid)=[^&]*', '', href)
+
+    if href in existing_urls:
+        return None
+    if is_duplicate_title(title, existing_titles):
+        return None
+
+    outlet = classify_outlet(href, "")
+    category = determine_category(outlet)
+
+    role = ""
+    if category == "health_media":
+        for hm_name, hm_info in HEALTH_MEDIA_DOMAINS.items():
+            if outlet == hm_name:
+                role = hm_info.get("role", "")
+                break
+
+    new_item = {
+        "id": make_id(category[:2], outlet, title),
+        "outlet": outlet,
+        "title": title,
+        "date": date_str,
+        "url": href,
+        "source": "auto_search",
+        "added_date": today_str(),
+    }
+    if role:
+        new_item["outlet_role"] = role
+
+    data[category].append(new_item)
+    existing_urls.add(href)
+    existing_titles.add(title)
+    print(f"  [+] [{outlet}] {title[:60]}...")
+    return new_item
+
+
+def _parse_ltn(html, existing_urls, existing_titles, data):
+    """Parse 自由時報 search results. Verify relevance by checking if article
+    snippet/context mentions the doctor's name (LTN search can return broad matches)."""
+    soup = BeautifulSoup(html, "lxml")
+    items = []
+    for div in soup.find_all("div", class_="cont"):
+        a = div.find("a", href=re.compile(r'ltn\.com\.tw/article'))
+        if not a:
+            continue
+        href = a.get("href", "")
+        tit = div.find(class_="tit")
+        title = tit.get_text(strip=True) if tit else a.get_text(strip=True)
+
+        # Relevance check: the search result context should mention the doctor
+        context_text = div.get_text(" ", strip=True)
+        if not any(n in context_text for n in SEARCH_NAMES + ["富足診所", "俠醫"]):
+            continue
+
+        date_str = ""
+        time_el = div.find(class_="time")
+        if time_el:
+            raw = time_el.get_text(strip=True)
+            dm = re.search(r'(\d{4})/(\d{2})/(\d{2})', raw)
+            if dm:
+                date_str = f"{dm.group(1)}-{dm.group(2)}-{dm.group(3)}"
+
+        item = _add_article(title, href, date_str, existing_urls, existing_titles, data)
+        if item:
+            items.append(item)
+    return items
+
+
+def _parse_ettoday(html, existing_urls, existing_titles, data):
+    """Parse ETtoday search results. ETtoday search already filters by keyword,
+    so articles may not have the name in the title — verify via snippet."""
+    soup = BeautifulSoup(html, "lxml")
+    items = []
+    # Collect all links with titles (skip image links with empty text)
+    seen = set()
+    candidates = []
+    for a in soup.find_all("a", href=re.compile(r'ettoday\.net/news/')):
+        href = a.get("href", "")
+        if not href.startswith("http"):
+            href = "https:" + href if href.startswith("//") else "https://www.ettoday.net" + href
+        title = a.get_text(strip=True)
+        if title and len(title) >= 8 and href not in seen:
+            seen.add(href)
+            candidates.append((title, href, a))
+
+    for title, href, a_tag in candidates:
+        # Verify relevance: check snippet/parent context for doctor's name
+        parent = a_tag.find_parent(["div", "li", "td"])
+        snippet = parent.get_text(" ", strip=True) if parent else title
+        if not any(n in snippet for n in SEARCH_NAMES + ["俠醫", "富足診所"]):
+            continue
+
+        date_str = ""
+        if parent:
+            dm = re.search(r'(\d{4})[/-](\d{2})[/-](\d{2})', parent.get_text(" "))
+            if dm:
+                date_str = f"{dm.group(1)}-{dm.group(2)}-{dm.group(3)}"
+
+        item = _add_article(title, href, date_str, existing_urls, existing_titles, data)
+        if item:
+            items.append(item)
+    return items
+
+
+def _parse_udn(html, existing_urls, existing_titles, data):
+    """Parse UDN search results. Only take results with 'from=searchresult' to avoid
+    unrelated sidebar/trending news."""
+    soup = BeautifulSoup(html, "lxml")
+    items = []
+    for a in soup.find_all("a", href=re.compile(r'udn\.com/news/story/.*searchresult')):
+        href = a.get("href", "")
+        title = a.get_text(strip=True)
+        if not title or len(title) < 8:
+            continue
+        # Clean tracking params
+        href = re.sub(r'\?from=.*$', '', href)
+
+        date_str = ""
+        parent = a.find_parent(["div", "li"])
+        if parent:
+            dm = re.search(r'(\d{4})[/-](\d{2})[/-](\d{2})', parent.get_text(" "))
+            if dm:
+                date_str = f"{dm.group(1)}-{dm.group(2)}-{dm.group(3)}"
+
+        item = _add_article(title, href, date_str, existing_urls, existing_titles, data)
+        if item:
+            items.append(item)
+    return items
+
+
+def _parse_heho(html, existing_urls, existing_titles, data):
+    """Parse Heho health search results."""
+    soup = BeautifulSoup(html, "lxml")
+    items = []
+    for a in soup.find_all("a", href=re.compile(r'heho\.com\.tw/')):
+        href = a.get("href", "")
+        title = a.get_text(strip=True)
+        if not title or len(title) < 8:
+            continue
+        if not any(n in title for n in SEARCH_NAMES):
+            continue
+        if '/archives/' not in href and '/article/' not in href:
+            continue
+
+        date_str = ""
+        parent = a.find_parent(["div", "li", "article"])
+        if parent:
+            time_el = parent.find("time")
+            if time_el:
+                dt = time_el.get("datetime", "")
+                if dt:
+                    date_str = dt[:10]
+
+        item = _add_article(title, href, date_str, existing_urls, existing_titles, data)
+        if item:
+            items.append(item)
+    return items
 
 
 # ─── GOOGLE NEWS RSS (supplementary) ────────────────
@@ -844,9 +870,9 @@ def main():
     if update_google_rating(data):
         changes = True
 
-    # 3. Google Search scraping (primary — same as manual Google search)
-    web_news = search_google_web(data)
-    if web_news:
+    # 3. Direct site search (primary — scrape each media outlet directly)
+    site_news = search_media_sites(data)
+    if site_news:
         changes = True
 
     # 4. Google News RSS (supplementary — catches things Google Search misses)
