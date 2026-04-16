@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-15T08:09:08.653952+08:00",
+  "last_updated": "2026-04-16T12:15:10.307776+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 90,
-      "display": "90+"
+      "count": 92,
+      "display": "92+"
     },
     "media_exposure": {
-      "count": 158,
-      "display": "158+"
+      "count": 160,
+      "display": "160+"
     },
     "book_sales": {
       "count": 5000,
@@ -926,6 +926,26 @@
       "url": "https://youtu.be/VEebPklUlJA",
       "source": "auto_search",
       "added_date": "2026-04-15"
+    },
+    {
+      "id": "tv-b7d70a9b",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "尚樺玩塔羅「驚人秘密」遭揭穿？Albee笑：內心蠢蠢欲動！20241216 曾國城 何妤玟 完整版 人人都有一套身心靈的保養祕訣 EP1180【全民星攻略】",
+      "date": "",
+      "url": "https://youtu.be/AcKZtJlc7rI",
+      "source": "auto_search",
+      "added_date": "2026-04-16"
+    },
+    {
+      "id": "tv-c1b33514",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "孔鏘水腫成「米其林腿」按壓竟彈不回?!醫示警奪命危機！他擄獲木村拓哉味蕾！五星廚神曝光！必點招牌是？竹筒拔火罐！孔鏘老師被揪出心肺淤堵？踩竹筒能長高？!【聚焦2.0】第577集",
+      "date": "",
+      "url": "https://youtu.be/S8Qz3bjcuQ4",
+      "source": "auto_search",
+      "added_date": "2026-04-16"
     }
   ],
   "health_media": [
