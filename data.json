@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-16T12:15:10.307776+08:00",
+  "last_updated": "2026-04-20T12:20:06.914464+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 92,
-      "display": "92+"
+      "count": 97,
+      "display": "97+"
     },
     "media_exposure": {
-      "count": 160,
-      "display": "160+"
+      "count": 166,
+      "display": "166+"
     },
     "book_sales": {
       "count": 5000,
@@ -946,6 +946,56 @@
       "url": "https://youtu.be/S8Qz3bjcuQ4",
       "source": "auto_search",
       "added_date": "2026-04-16"
+    },
+    {
+      "id": "tv-5f9c85ea",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "台灣大腸癌地圖 這區死亡率最高？ 大腸癌6大症狀 綠拿鐵黃金比例護腸 健康2.0 20230506【完整版】江坤俊 韋汝 糠榮誠 陳欣湄 吳明珠 許瓊月 MIYA @tvbshealth20​",
+      "date": "",
+      "url": "https://youtu.be/2rV8FyqCqPk",
+      "source": "auto_search",
+      "added_date": "2026-04-20"
+    },
+    {
+      "id": "tv-e938b749",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "鄰桌神秘男驚吐妳長腦瘤 一查真罹病危險5特徵！按壓耳朵3區調養腦下垂體 氣功三攪式+洗頭顫掌戶腦通督派！ 健康2.0 20230917【完整版】鄭凱云 丁賢偉 鄔定宇 吳宏乾 梁惠雯 彥寬",
+      "date": "",
+      "url": "https://youtu.be/F3VMLywV4BI",
+      "source": "auto_search",
+      "added_date": "2026-04-20"
+    },
+    {
+      "id": "tv-12a900ea",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "40歲爸感冒燒三天竟心衰竭！3毒素正在虐心！台大名醫養腸早餐曝光！【聚焦2.0】第624集",
+      "date": "",
+      "url": "https://youtu.be/OHH7X3SK2mA",
+      "source": "auto_search",
+      "added_date": "2026-04-20"
+    },
+    {
+      "id": "tv-4cea52f2",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "母罹罕見「血管瘤癌」4個月驟逝！愛雅香辣鍋藏洋蔥！花椒入魂思母情！【聚焦2.0】第624集",
+      "date": "",
+      "url": "https://youtu.be/5sRkQXC8W7I",
+      "source": "auto_search",
+      "added_date": "2026-04-20"
+    },
+    {
+      "id": "tv-6550216f",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "恐怖秒殺！唇發紫誤當疲勞！26歲網紅睡夢中猝逝！ 心臟比你老？一張表秒測心臟年齡！陳國元實測76歲！【聚焦2.0】第624集",
+      "date": "",
+      "url": "https://youtu.be/ij77bZOPynU",
+      "source": "auto_search",
+      "added_date": "2026-04-20"
     }
   ],
   "health_media": [
@@ -1570,6 +1620,15 @@
       "url": "https://udn.com/news/story/7934/8893996",
       "source": "auto_search",
       "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-0dac8c09",
+      "outlet": "ETtoday",
+      "title": "瘦男血脂飆破3000！醫揭「致死率50%疾病」：能活著出院算幸運",
+      "date": "2026-04-20",
+      "url": "https://health.ettoday.net/news/3152059",
+      "source": "auto_search",
+      "added_date": "2026-04-20"
     }
   ]
 }
