@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-27T12:31:26.864330+08:00",
+  "last_updated": "2026-04-30T12:32:27.338815+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 101,
-      "display": "101+"
+      "count": 103,
+      "display": "103+"
     },
     "media_exposure": {
-      "count": 171,
-      "display": "171+"
+      "count": 173,
+      "display": "173+"
     },
     "book_sales": {
       "count": 5000,
@@ -1036,6 +1036,26 @@
       "url": "https://youtu.be/kk7eUVTCk5g",
       "source": "auto_search",
       "added_date": "2026-04-27"
+    },
+    {
+      "id": "tv-969b1ac9",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "醫師堅持做肛門指診，病患痛到跑去投訴？！【#醫師好辣】20210121 part1 EP1088 陳榮堅 曲艾玲",
+      "date": "",
+      "url": "https://youtu.be/VLIyyIUHvm0",
+      "source": "auto_search",
+      "added_date": "2026-04-30"
+    },
+    {
+      "id": "tv-fa22d5f7",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "超大咖「女神」藝人看診！竟讓醫師不知不覺講40分鐘？！【醫師好辣】精選 EP1162｜賈蔚 陳榮堅",
+      "date": "",
+      "url": "https://youtu.be/G-uk5lRTTcM",
+      "source": "auto_search",
+      "added_date": "2026-04-30"
     }
   ],
   "health_media": [
