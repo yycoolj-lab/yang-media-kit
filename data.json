@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-04T12:40:15.120138+08:00",
+  "last_updated": "2026-05-07T12:34:30.879355+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 103,
-      "display": "103+"
+      "count": 105,
+      "display": "105+"
     },
     "media_exposure": {
-      "count": 173,
-      "display": "173+"
+      "count": 176,
+      "display": "176+"
     },
     "book_sales": {
       "count": 5000,
@@ -1056,6 +1056,26 @@
       "url": "https://youtu.be/G-uk5lRTTcM",
       "source": "auto_search",
       "added_date": "2026-04-30"
+    },
+    {
+      "id": "tv-a8742e3a",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "起床勿運動!長時間空腹缺水造成低血糖恐昏倒【健康2.0 分段】@tvbshealth20  EP3041-3 20250614 #鄭凱云#陳冠任#楊智鈞#鄒瑋倫#洪素卿",
+      "date": "",
+      "url": "https://youtu.be/sQlvBjZWJVQ",
+      "source": "auto_search",
+      "added_date": "2026-05-07"
+    },
+    {
+      "id": "tv-86e7783f",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "驚傳上廁所猝死危機？醫揭「這瞬間」心臟在求救！日常一動作幫心臟減壓，如何發現心血管的不定時炸彈? Feat.楊智鈞醫師｜週五首播｜主持人洪素卿｜【健康早知道】S5EP2 猝死危機",
+      "date": "",
+      "url": "https://youtu.be/FE-MewwenQM",
+      "source": "auto_search",
+      "added_date": "2026-05-07"
     }
   ],
   "health_media": [
@@ -1698,6 +1718,15 @@
       "url": "https://health.ltn.com.tw/article/breakingnews/5412773",
       "source": "auto_search",
       "added_date": "2026-04-23"
+    },
+    {
+      "id": "ne-32ed2d75",
+      "outlet": "自由時報",
+      "title": "健康網》乃哥腿上「大蚯蚓」開刀 醫揭靜脈曲張8招術後照護防復發",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5427720",
+      "source": "auto_search",
+      "added_date": "2026-05-07"
     }
   ]
 }
