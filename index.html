@@ -870,6 +870,14 @@
             var thirtyDaysAgo = new Date();
             thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
             var cutoff = thirtyDaysAgo.toISOString().slice(0, 10);
+            var newestAutoId = null;
+            var newestAutoDate = '';
+            items.forEach(function(it) {
+                if (it.source === 'auto_search' && it.added_date >= cutoff && it.added_date > newestAutoDate) {
+                    newestAutoDate = it.added_date;
+                    newestAutoId = it.id;
+                }
+            });
             var collapseId = 0;
 
             container.innerHTML = groupOrder.map(function(key) {
@@ -887,8 +895,9 @@
                 var cid = containerId + '-collapse-' + (collapseId++);
 
                 function renderItem(item, idx) {
+                    var isNewest = (item.id === newestAutoId);
                     var btnText = item.link_label || defaultBtnText;
-                    var newBadge = (idx === 0 && item.source === 'auto_search' && item.added_date >= cutoff)
+                    var newBadge = isNewest
                         ? '<span class="badge-new">NEW</span>' : '';
                     return '<div class="media-item">' +
                         '<div class="info">' +
