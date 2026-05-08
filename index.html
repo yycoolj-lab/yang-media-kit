@@ -886,9 +886,9 @@
 
                 var cid = containerId + '-collapse-' + (collapseId++);
 
-                function renderItem(item) {
+                function renderItem(item, idx) {
                     var btnText = item.link_label || defaultBtnText;
-                    var newBadge = (item.source === 'auto_search' && item.added_date >= cutoff)
+                    var newBadge = (idx === 0 && item.source === 'auto_search' && item.added_date >= cutoff)
                         ? '<span class="badge-new">NEW</span>' : '';
                     return '<div class="media-item">' +
                         '<div class="info">' +
