@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-11T12:58:28.129856+08:00",
+  "last_updated": "2026-05-14T12:42:55.166644+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 106,
-      "display": "106+"
+      "count": 109,
+      "display": "109+"
     },
     "media_exposure": {
-      "count": 177,
-      "display": "177+"
+      "count": 181,
+      "display": "181+"
     },
     "book_sales": {
       "count": 5000,
@@ -1086,6 +1086,36 @@
       "url": "https://youtu.be/55epygauBcQ",
       "source": "auto_search",
       "added_date": "2026-05-11"
+    },
+    {
+      "id": "tv-b5a52e34",
+      "show": "祝你健康",
+      "show_network": "",
+      "title": "愛翹腳、低頭滑手機？超虐4行為加速脊椎退化！熬夜、睡姿不良、久站久坐…要小心｜脊椎出事百病生！上班族腰酸背痛、凸腹救星｜黃如玉醫師、莊碧玉、夏宇禾｜奕起聊健康 郭奕均｜健康節目｜健康知識 都在祝你健康",
+      "date": "",
+      "url": "https://youtu.be/rZalJpYVCBE",
+      "source": "auto_search",
+      "added_date": "2026-05-14"
+    },
+    {
+      "id": "tv-2937eac9",
+      "show": "健康好生活",
+      "show_network": "年代",
+      "title": "睡眠呼吸中止症誘發心臟停跳？🌙打呼、半夜尿尿恐是心臟求救警訊！Feat.楊智鈞醫師｜週五首播｜主持人洪素卿｜【健康早知道】S5EP2 猝死危機",
+      "date": "",
+      "url": "https://youtu.be/QGFBIFpaRUU",
+      "source": "auto_search",
+      "added_date": "2026-05-14"
+    },
+    {
+      "id": "tv-938cdf17",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "40歲後必做的２大心臟檢查？醫師親授「勾腳抬腿操」養護心血管循環！Feat.楊智鈞醫師｜週五首播｜主持人洪素卿｜【健康早知道】S5EP2 猝死危機",
+      "date": "",
+      "url": "https://youtu.be/x2t4hhDzygw",
+      "source": "auto_search",
+      "added_date": "2026-05-14"
     }
   ],
   "health_media": [
@@ -1737,6 +1767,15 @@
       "url": "https://health.ltn.com.tw/article/breakingnews/5427720",
       "source": "auto_search",
       "added_date": "2026-05-07"
+    },
+    {
+      "id": "ne-b849a72f",
+      "outlet": "自由時報",
+      "title": "健康網》承億創辦人戴俊郎腦溢血離世 醫談5可能原因",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5434083",
+      "source": "auto_search",
+      "added_date": "2026-05-14"
     }
   ]
 }
