@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-14T12:42:55.166644+08:00",
+  "last_updated": "2026-05-18T13:06:09.363089+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 109,
-      "display": "109+"
+      "count": 110,
+      "display": "110+"
     },
     "media_exposure": {
-      "count": 181,
-      "display": "181+"
+      "count": 182,
+      "display": "182+"
     },
     "book_sales": {
       "count": 5000,
@@ -1116,6 +1116,16 @@
       "url": "https://youtu.be/x2t4hhDzygw",
       "source": "auto_search",
       "added_date": "2026-05-14"
+    },
+    {
+      "id": "tv-3271215a",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "闌尾炎不敢開刀！腹部器官「黏成一團」 手術折騰2小時？【#醫師好辣】20220627 part2 EP1359 洪永祥 亞美將",
+      "date": "",
+      "url": "https://youtu.be/xj-7HFNrNQA",
+      "source": "auto_search",
+      "added_date": "2026-05-18"
     }
   ],
   "health_media": [
