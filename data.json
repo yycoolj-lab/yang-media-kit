@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-25T13:19:23.918248+08:00",
+  "last_updated": "2026-05-28T13:08:37.969866+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 110,
-      "display": "110+"
+      "count": 111,
+      "display": "111+"
     },
     "media_exposure": {
-      "count": 182,
-      "display": "182+"
+      "count": 183,
+      "display": "183+"
     },
     "book_sales": {
       "count": 5000,
@@ -1126,6 +1126,16 @@
       "url": "https://youtu.be/xj-7HFNrNQA",
       "source": "auto_search",
       "added_date": "2026-05-18"
+    },
+    {
+      "id": "tv-f3078f4c",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "腸中風死亡率90% 比腸癌更兇險！ 肚子痛 小心腸扭轉 腸阻塞 延遲恐敗血症！健康2.0 20230827【完整版】江坤俊 韋汝 許秉毅 陳欣湄 吳明珠 陳麗華 雷議宗@tvbshealth20",
+      "date": "",
+      "url": "https://youtu.be/EDsnmKKPaYQ",
+      "source": "auto_search",
+      "added_date": "2026-05-28"
     }
   ],
   "health_media": [
