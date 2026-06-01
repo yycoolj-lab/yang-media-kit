@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-28T13:08:37.969866+08:00",
+  "last_updated": "2026-06-01T14:01:41.148361+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 111,
-      "display": "111+"
+      "count": 112,
+      "display": "112+"
     },
     "media_exposure": {
-      "count": 183,
-      "display": "183+"
+      "count": 185,
+      "display": "185+"
     },
     "book_sales": {
       "count": 5000,
@@ -1136,6 +1136,16 @@
       "url": "https://youtu.be/EDsnmKKPaYQ",
       "source": "auto_search",
       "added_date": "2026-05-28"
+    },
+    {
+      "id": "tv-d999ad5a",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "超強救援神手！無國界醫生遇反叛軍？花蓮地震赴現場支援？！【#醫師好辣】20220120 完整版 超強救援神手 EP1274 賈蔚 阿布",
+      "date": "",
+      "url": "https://youtu.be/LPIIUB9nxpg",
+      "source": "auto_search",
+      "added_date": "2026-06-01"
     }
   ],
   "health_media": [
@@ -1796,6 +1806,15 @@
       "url": "https://health.ltn.com.tw/article/breakingnews/5434083",
       "source": "auto_search",
       "added_date": "2026-05-14"
+    },
+    {
+      "id": "ne-c9543cf1",
+      "outlet": "自由時報",
+      "title": "健康網》牧師寇紹恩腦出血急手術  醫曝照護8原則  避免二次傷害",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5455521",
+      "source": "auto_search",
+      "added_date": "2026-06-01"
     }
   ]
 }
