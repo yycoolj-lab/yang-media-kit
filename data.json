@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-04T13:56:46.828044+08:00",
+  "last_updated": "2026-06-08T13:50:06.722705+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 114,
-      "display": "114+"
+      "count": 115,
+      "display": "115+"
     },
     "media_exposure": {
-      "count": 188,
-      "display": "188+"
+      "count": 189,
+      "display": "189+"
     },
     "book_sales": {
       "count": 5000,
@@ -1166,6 +1166,16 @@
       "url": "https://youtu.be/31pg7hqVvMs",
       "source": "auto_search",
       "added_date": "2026-06-04"
+    },
+    {
+      "id": "tv-8e4f8f55",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "鄭文奇 vs 楊智鈞(第四局)",
+      "date": "",
+      "url": "https://youtu.be/FPIu3LgC1o8",
+      "source": "auto_search",
+      "added_date": "2026-06-08"
     }
   ],
   "health_media": [
