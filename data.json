@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-11T13:27:39.047886+08:00",
+  "last_updated": "2026-06-15T14:22:37.712986+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 119,
-      "display": "119+"
+      "count": 120,
+      "display": "120+"
     },
     "media_exposure": {
-      "count": 193,
-      "display": "193+"
+      "count": 194,
+      "display": "194+"
     },
     "book_sales": {
       "count": 5000,
@@ -1216,6 +1216,16 @@
       "url": "https://youtu.be/S0oT677F4HE",
       "source": "auto_search",
       "added_date": "2026-06-11"
+    },
+    {
+      "id": "tv-6ba0863b",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "簡單2招 血脂、便祕一次解決！｜如果云知道 #鄭凱云 #陳欣湄 #韋汝 #黃淑惠 #鍾雲霓",
+      "date": "",
+      "url": "https://youtu.be/OmBY-adOp8g",
+      "source": "auto_search",
+      "added_date": "2026-06-15"
     }
   ],
   "health_media": [
