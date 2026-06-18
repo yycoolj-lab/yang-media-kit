@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-15T14:22:37.712986+08:00",
+  "last_updated": "2026-06-18T13:55:04.902502+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 120,
-      "display": "120+"
+      "count": 121,
+      "display": "121+"
     },
     "media_exposure": {
-      "count": 194,
-      "display": "194+"
+      "count": 196,
+      "display": "196+"
     },
     "book_sales": {
       "count": 5000,
@@ -1226,6 +1226,16 @@
       "url": "https://youtu.be/OmBY-adOp8g",
       "source": "auto_search",
       "added_date": "2026-06-15"
+    },
+    {
+      "id": "tv-ee3bee0d",
+      "show": "祝你健康",
+      "show_network": "",
+      "title": "顱內致命炸彈 身體半邊麻痺恐是腦病變！腦瘤破裂前沒症狀 小心高血壓引爆！ 健康2.0 20231029【完整版】 鄭凱云 陳龍 楊智鈞 劉怡里 梁惠雯 雷議宗 @tvbshealth20",
+      "date": "",
+      "url": "https://youtu.be/Q5mkELZZLI8",
+      "source": "auto_search",
+      "added_date": "2026-06-18"
     }
   ],
   "health_media": [
@@ -1904,6 +1914,15 @@
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE04X0pGUGtXVkZ0cm1OVXV1MHFtVEtUUFNnVHZSb3d4aUFLS0VIWWFlRGU5MEFLam5vNE1uYWt1eDNNSU9ROGZNWmhuN0xMYXJnZVUzeUVCdTV4dEXSAVtBVV95cUxNOF9KRlBrV1ZGdHJtTlV1dTBxbVRLVFBTZ1R2Um93eGlBS0tFSFlhZURlOTBBS2pubzRNbmFrdXgzTUlPUThmTVpobjdMTGFyZ2VVM3lFQnU1eHRF?oc=5&hl=en-US&gl=US&ceid=US:en",
       "source": "auto_search",
       "added_date": "2026-06-04"
+    },
+    {
+      "id": "ne-6e880e35",
+      "outlet": "自由時報",
+      "title": "健康網》黃大煒猝逝歌迷不捨！ 曾心臟衰竭送醫 醫警1疾病恐是隱形殺手",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5472981",
+      "source": "auto_search",
+      "added_date": "2026-06-18"
     }
   ]
 }
