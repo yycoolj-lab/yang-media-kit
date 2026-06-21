@@ -416,6 +416,66 @@
         .highlight-box .stat-num { font-size: 1.5em; font-weight: 700; }
         .highlight-box .stat-label { font-size: 0.85em; opacity: 0.85; }
 
+        /* ── Platform Cards (clinic / FB / YouTube) ── */
+        .platform-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--card-bg);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 14px;
+            overflow: hidden;
+            padding: 18px 22px;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .platform-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        .platform-edge {
+            width: 5px;
+            align-self: stretch;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        .platform-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .platform-icon svg { width: 28px; height: 28px; display: block; }
+        .platform-icon.logo { background: #fff; border: 1px solid rgba(0,0,0,0.06); padding: 5px; }
+        .platform-icon.logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .platform-body { flex: 1; min-width: 0; }
+        .platform-name { font-weight: 700; color: var(--text); font-size: 1.05em; line-height: 1.45; }
+        .platform-handle { color: var(--text-light); font-size: 0.88em; margin-top: 3px; word-break: break-word; }
+        .platform-stat { text-align: center; flex-shrink: 0; }
+        .platform-stat .n { font-weight: 900; font-size: 1.5em; line-height: 1; }
+        .platform-stat .l { color: var(--text-light); font-size: 0.78em; margin-top: 3px; }
+        .platform-cta {
+            flex-shrink: 0;
+            color: #fff;
+            font-size: 0.85em;
+            font-weight: 500;
+            padding: 9px 22px;
+            border-radius: 24px;
+            white-space: nowrap;
+            transition: transform 0.2s, filter 0.2s;
+        }
+        .platform-card:hover .platform-cta { filter: brightness(1.08); }
+        @media (max-width: 600px) {
+            .platform-card { flex-wrap: wrap; gap: 12px; }
+            .platform-body { flex-basis: calc(100% - 86px); }
+            .platform-stat, .platform-cta { margin-left: 70px; }
+            .platform-cta { width: auto; }
+        }
+
         /* ── Collapsible ── */
         .collapse-toggle {
             display: flex;
@@ -676,33 +736,49 @@
 
         <div class="section fade-up" id="clinic">
             <h2><span class="icon">🏥</span> 富足診所</h2>
-            <div class="highlight-box">
-                <h3>官方網站</h3>
-                <a href="https://good-leg.com" target="_blank">🌐 good-leg.com</a>
-                <p>台中市北屯區敦富六街8號 ｜ (04) 2437-9900</p>
-            </div>
+            <a class="platform-card" href="https://good-leg.com" target="_blank">
+                <span class="platform-edge" style="background:#114330;"></span>
+                <span class="platform-icon logo"><img src="assets/clinic-logo.png" alt="富足診所 LOGO"></span>
+                <div class="platform-body">
+                    <div class="platform-name">富足診所 ｜ 官方網站</div>
+                    <div class="platform-handle">good-leg.com ・ 台中市北屯區敦富六街8號 ・ (04) 2437-9900</div>
+                </div>
+                <span class="platform-cta" style="background:#114330;">前往官網</span>
+            </a>
         </div>
 
         <div class="section fade-up" id="facebook">
             <h2><span class="icon">📘</span> Facebook 粉絲專頁</h2>
-            <div class="highlight-box" style="background: linear-gradient(135deg, #1877f2 0%, #0d5db5 100%);">
-                <h3>俠醫楊智鈞 - 富足診所血管職人</h3>
-                <a href="https://www.facebook.com/good.leg.clinic/" target="_blank">fb.com/good.leg.clinic</a>
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <div class="stat-num" id="fb-follower-display">載入中...</div>
-                        <div class="stat-label">追蹤者</div>
-                    </div>
+            <a class="platform-card" href="https://www.facebook.com/good.leg.clinic/" target="_blank">
+                <span class="platform-edge" style="background:#1877F2;"></span>
+                <span class="platform-icon" style="background:#1877F2;">
+                    <svg viewBox="0 0 320 512" fill="#fff" aria-hidden="true"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+                </span>
+                <div class="platform-body">
+                    <div class="platform-name">俠醫楊智鈞 - 富足診所血管職人</div>
+                    <div class="platform-handle">fb.com/good.leg.clinic</div>
                 </div>
-            </div>
+                <div class="platform-stat" style="color:#1877F2;">
+                    <div class="n" id="fb-follower-display">載入中...</div>
+                    <div class="l">追蹤者</div>
+                </div>
+                <span class="platform-cta" style="background:#1877F2;">追蹤</span>
+            </a>
         </div>
 
         <div class="section fade-up" id="youtube">
             <h2><span class="icon">📺</span> YouTube 頻道</h2>
-            <div class="highlight-box" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);">
-                <h3>俠醫楊智鈞</h3>
-                <a href="https://www.youtube.com/@yycoolj" target="_blank">youtube.com/@yycoolj</a>
-            </div>
+            <a class="platform-card" href="https://www.youtube.com/@yycoolj" target="_blank">
+                <span class="platform-edge" style="background:#FF0000;"></span>
+                <span class="platform-icon" style="background:#FF0000;">
+                    <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M9 7l8 5-8 5z"/></svg>
+                </span>
+                <div class="platform-body">
+                    <div class="platform-name">俠醫楊智鈞</div>
+                    <div class="platform-handle">youtube.com/@yycoolj</div>
+                </div>
+                <span class="platform-cta" style="background:#FF0000;">訂閱</span>
+            </a>
         </div>
 
         <div class="section fade-up" id="awards">
