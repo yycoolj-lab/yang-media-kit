@@ -423,12 +423,34 @@
 
         /* ── Featured Book ── */
         .featured-book {
+            display: flex;
+            align-items: center;
+            gap: 22px;
             background: var(--bg);
             color: var(--text);
             padding: 20px 24px;
             border-radius: 12px;
             margin-bottom: 16px;
             border: 2px solid var(--accent);
+        }
+        .featured-book-body { flex: 1; min-width: 0; }
+        .featured-book-cover {
+            flex-shrink: 0;
+            display: block;
+            width: 116px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(26,39,68,0.22);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .featured-book-cover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(26,39,68,0.3);
+        }
+        .featured-book-cover img {
+            display: block;
+            width: 100%;
+            height: auto;
         }
         .featured-book-head {
             display: flex;
@@ -574,6 +596,15 @@
             }
             .highlight-box { padding: 24px 16px; }
             .top-nav a { font-size: 0.78em; padding: 5px 10px; }
+            .featured-book {
+                flex-direction: column-reverse;
+                align-items: stretch;
+                gap: 16px;
+            }
+            .featured-book-cover {
+                width: 130px;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -786,20 +817,25 @@
         <div class="section fade-up" id="books">
             <h2><span class="icon">📚</span> 著作・專欄・Podcast</h2>
             <div class="featured-book">
-                <div class="featured-book-head">
-                    <span class="badge-new">新書</span>
-                    <div class="featured-book-title">《俠醫楊智鈞的50道靜脈疾病密碼》</div>
+                <div class="featured-book-body">
+                    <div class="featured-book-head">
+                        <span class="badge-new">新書</span>
+                        <div class="featured-book-title">《俠醫楊智鈞的50道靜脈疾病密碼》</div>
+                    </div>
+                    <div class="featured-book-meta">原水文化 2026/06/18 出版｜ISBN 9786267827376｜定價 550 元</div>
+                    <div class="featured-book-links">
+                        <a href="https://www.books.com.tw/products/0011054245" target="_blank">博客來</a>
+                        <a href="https://www.cite.com.tw/book?id=107937" target="_blank">城邦讀書花園</a>
+                        <a href="https://www.kingstone.com.tw/basic/2014150612912/" target="_blank">金石堂</a>
+                        <a href="https://www.sanmin.com.tw/product/index/015561288" target="_blank">三民書店</a>
+                        <a href="https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=15338763" target="_blank">momo</a>
+                        <a href="https://www.rakuten.com.tw/shop/cite8888/product/HD0214/" target="_blank">樂天市場</a>
+                        <a href="https://www.eslite.com/product/10012013192683164715003" target="_blank">誠品線上</a>
+                    </div>
                 </div>
-                <div class="featured-book-meta">原水文化 2026/06/18 出版｜ISBN 9786267827376｜定價 550 元</div>
-                <div class="featured-book-links">
-                    <a href="https://www.books.com.tw/products/0011054245" target="_blank">博客來</a>
-                    <a href="https://www.cite.com.tw/book?id=107937" target="_blank">城邦讀書花園</a>
-                    <a href="https://www.kingstone.com.tw/basic/2014150612912/" target="_blank">金石堂</a>
-                    <a href="https://www.sanmin.com.tw/product/index/015561288" target="_blank">三民書店</a>
-                    <a href="https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=15338763" target="_blank">momo</a>
-                    <a href="https://www.rakuten.com.tw/shop/cite8888/product/HD0214/" target="_blank">樂天市場</a>
-                    <a href="https://www.eslite.com/product/10012013192683164715003" target="_blank">誠品線上</a>
-                </div>
+                <a class="featured-book-cover" href="https://www.books.com.tw/products/0011054245" target="_blank" aria-label="購買《俠醫楊智鈞的50道靜脈疾病密碼》">
+                    <img src="assets/book-vein.jpg" alt="《俠醫楊智鈞的50道靜脈疾病密碼》書封" loading="lazy" width="475" height="600">
+                </a>
             </div>
             <div class="media-list">
                 <div class="media-item">
