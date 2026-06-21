@@ -264,12 +264,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
             padding: 16px 20px;
             background: var(--bg);
             border-radius: 12px;
             transition: all 0.25s;
             border: 1px solid transparent;
         }
+        .media-item.has-summary { align-items: flex-start; }
         .media-item:hover {
             background: #eae8e4;
             border-color: rgba(0,0,0,0.04);
@@ -283,6 +285,14 @@
             margin-bottom: 4px;
             font-size: 1em;
             line-height: 1.65;
+        }
+        .media-item .summary {
+            font-size: 0.88em;
+            color: var(--text-light);
+            line-height: 1.65;
+            margin: 2px 0 6px;
+            padding-left: 11px;
+            border-left: 2px solid var(--gold);
         }
         .media-item .meta {
             font-size: 0.85em;
@@ -1070,9 +1080,13 @@
                     var btnText = item.link_label || defaultBtnText;
                     var newBadge = isNewest
                         ? '<span class="badge-new">NEW</span>' : '';
-                    return '<div class="media-item">' +
+                    var summaryHtml = item.summary
+                        ? '<div class="summary">' + escHtml(item.summary) + '</div>' : '';
+                    var itemClass = item.summary ? 'media-item has-summary' : 'media-item';
+                    return '<div class="' + itemClass + '">' +
                         '<div class="info">' +
                         '<div class="title">' + escHtml(item.title) + newBadge + '</div>' +
+                        summaryHtml +
                         '<div class="meta">' + escHtml(item.date || '') + '</div>' +
                         '</div>' +
                         (item.url ? '<a href="' + escHtml(item.url) + '" target="_blank">' + escHtml(btnText) + '</a>' : '') +

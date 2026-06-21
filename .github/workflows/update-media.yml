@@ -35,6 +35,9 @@ jobs:
       - name: Run update script
         run: python scripts/update_media.py
 
+      - name: Fetch article summaries (fills new/empty items only)
+        run: python scripts/fetch_summaries.py || true
+
       - name: Check for changes
         id: check
         run: |
