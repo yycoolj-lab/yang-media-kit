@@ -156,14 +156,14 @@ def get_existing_titles(data):
 
 
 def format_follower_count(count):
-    """Format follower count in Chinese style."""
+    """Format follower count in Chinese style with one-decimal 萬 (e.g. 5.3萬)."""
     if count >= 10000:
         wan = count / 10000
         if wan == int(wan):
-            return f"{int(wan)}萬+"
+            return f"{int(wan)}萬"
         else:
-            return f"{wan:.1f}萬+"
-    return f"{count:,}+"
+            return f"{wan:.1f}萬"
+    return f"{count:,}"
 
 
 def today_str():
