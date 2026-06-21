@@ -284,23 +284,26 @@
             transform: translateY(-1px);
             box-shadow: 0 2px 12px rgba(0,0,0,0.05);
         }
-        .media-thumb {
+        .media-item .media-thumb {
             flex-shrink: 0;
             display: block;
-            width: 84px;
-            height: 84px;
+            width: 100px;
+            height: 128px;
+            padding: 0;
+            margin-left: 4px;
             border-radius: 8px;
             overflow: hidden;
             background: var(--card-bg);
             border: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 2px 8px rgba(26,39,68,0.12);
+            box-shadow: 0 3px 12px rgba(26,39,68,0.16);
             transition: transform 0.25s, box-shadow 0.25s;
         }
-        .media-thumb:hover {
+        .media-item .media-thumb:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(26,39,68,0.25);
+            background: var(--card-bg);
+            box-shadow: 0 10px 24px rgba(26,39,68,0.28);
         }
-        .media-thumb img {
+        .media-item .media-thumb img {
             display: block;
             width: 100%;
             height: 100%;
@@ -867,54 +870,54 @@
             </div>
             <div class="media-list">
                 <div class="media-item">
-                    <a class="media-thumb" href="https://www.books.com.tw/products/0011032131" target="_blank">
-                        <img src="assets/thumbs/book-heart-rev.jpg" alt="《俠醫楊智鈞的50道心臟密碼【全新增修版】》書封" loading="lazy">
-                    </a>
                     <div class="info">
                         <div class="title">《俠醫楊智鈞的50道心臟密碼【全新增修版】》</div>
                         <div class="meta">2024 全新增修版｜銷售 5,000+ 本</div>
                     </div>
                     <a href="https://www.books.com.tw/products/0011032131" target="_blank">購買</a>
+                    <a class="media-thumb" href="https://www.books.com.tw/products/0011032131" target="_blank">
+                        <img src="assets/thumbs/book-heart-rev.jpg" alt="《俠醫楊智鈞的50道心臟密碼【全新增修版】》書封" loading="lazy">
+                    </a>
                 </div>
                 <div class="media-item">
-                    <a class="media-thumb" href="https://www.books.com.tw/products/E050154428" target="_blank">
-                        <img src="assets/thumbs/book-heart-ebook.jpg" alt="《俠醫楊智鈞的50道心臟密碼》電子書書封" loading="lazy">
-                    </a>
                     <div class="info">
                         <div class="title">《俠醫楊智鈞的50道心臟密碼》電子書</div>
                         <div class="meta">初版電子書</div>
                     </div>
                     <a href="https://www.books.com.tw/products/E050154428" target="_blank">購買</a>
+                    <a class="media-thumb" href="https://www.books.com.tw/products/E050154428" target="_blank">
+                        <img src="assets/thumbs/book-heart-ebook.jpg" alt="《俠醫楊智鈞的50道心臟密碼》電子書書封" loading="lazy">
+                    </a>
                 </div>
                 <div class="media-item">
-                    <a class="media-thumb" href="https://podcasts.apple.com/tw/podcast/俠路相逢-楊智鈞醫師的podcast節目/id1710937955" target="_blank">
-                        <img src="assets/thumbs/podcast-xialu.jpg" alt="俠路相逢 Podcast 封面" loading="lazy">
-                    </a>
                     <div class="info">
                         <div class="title">俠路相逢｜楊智鈞醫師的Podcast</div>
                         <div class="meta">Apple Podcasts</div>
                     </div>
                     <a href="https://podcasts.apple.com/tw/podcast/俠路相逢-楊智鈞醫師的podcast節目/id1710937955" target="_blank">收聽</a>
+                    <a class="media-thumb" href="https://podcasts.apple.com/tw/podcast/俠路相逢-楊智鈞醫師的podcast節目/id1710937955" target="_blank">
+                        <img src="assets/thumbs/podcast-xialu.jpg" alt="俠路相逢 Podcast 封面" loading="lazy">
+                    </a>
                 </div>
                 <div class="media-item">
-                    <a class="media-thumb" href="https://www.darencademy.com/article/author/id/17" target="_blank">
-                        <img src="assets/thumbs/column-daren.jpg" alt="大人學" loading="lazy">
-                    </a>
                     <div class="info">
                         <div class="title">大人學專欄</div>
                         <div class="meta">專欄作者</div>
                     </div>
                     <a href="https://www.darencademy.com/article/author/id/17" target="_blank">閱讀</a>
+                    <a class="media-thumb" href="https://www.darencademy.com/article/author/id/17" target="_blank">
+                        <img src="assets/thumbs/column-daren.jpg" alt="大人學" loading="lazy">
+                    </a>
                 </div>
                 <div class="media-item">
-                    <a class="media-thumb" href="https://med-era.com.tw/authors/yangggu" target="_blank">
-                        <img src="assets/thumbs/column-medera.jpg" alt="生醫時代" loading="lazy">
-                    </a>
                     <div class="info">
                         <div class="title">生醫時代專欄</div>
                         <div class="meta">專欄作者</div>
                     </div>
                     <a href="https://med-era.com.tw/authors/yangggu" target="_blank">閱讀</a>
+                    <a class="media-thumb" href="https://med-era.com.tw/authors/yangggu" target="_blank">
+                        <img src="assets/thumbs/column-medera.jpg" alt="生醫時代" loading="lazy">
+                    </a>
                 </div>
             </div>
         </div>
@@ -925,24 +928,24 @@
                 <h3>合作品牌</h3>
                 <div class="media-list">
                     <div class="media-item">
-                        <a class="media-thumb" href="https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=8082347" target="_blank">
-                            <img src="assets/thumbs/brand-fishoil.jpg" alt="大研生醫 德國頂級魚油" loading="lazy">
-                        </a>
                         <div class="info">
                             <div class="title">大研生醫 德國頂級魚油</div>
                             <div class="meta">專業醫師推薦｜momo 銷售 30萬+</div>
                         </div>
                         <a href="https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=8082347" target="_blank">購買</a>
+                        <a class="media-thumb" href="https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=8082347" target="_blank">
+                            <img src="assets/thumbs/brand-fishoil.jpg" alt="大研生醫 德國頂級魚油" loading="lazy">
+                        </a>
                     </div>
                     <div class="media-item">
-                        <a class="media-thumb" href="https://www.hankmax.com/products/askr-bread" target="_blank">
-                            <img src="assets/thumbs/brand-shoes.jpg" alt="日本朝倉商会 放鬆麵包鞋" loading="lazy">
-                        </a>
                         <div class="info">
                             <div class="title">日本朝倉商会 放鬆麵包鞋</div>
                             <div class="meta">醫護人員推薦｜舒適與專業兼具</div>
                         </div>
                         <a href="https://www.hankmax.com/products/askr-bread" target="_blank">購買</a>
+                        <a class="media-thumb" href="https://www.hankmax.com/products/askr-bread" target="_blank">
+                            <img src="assets/thumbs/brand-shoes.jpg" alt="日本朝倉商会 放鬆麵包鞋" loading="lazy">
+                        </a>
                     </div>
                     <div class="media-item">
                         <div class="info">
@@ -952,14 +955,14 @@
                         <a href="https://www.zeczec.com/projects/guan-yin" target="_blank">了解</a>
                     </div>
                     <div class="media-item">
-                        <a class="media-thumb" href="https://www.ystudiostyle.com/" target="_blank">
-                            <img src="assets/thumbs/brand-pen.jpg" alt="物外 ystudio 鋼筆" loading="lazy">
-                        </a>
                         <div class="info">
                             <div class="title">物外 ystudio 鋼筆</div>
                             <div class="meta">台灣設計文具精品｜書寫俠醫手感</div>
                         </div>
                         <a href="https://www.ystudiostyle.com/" target="_blank">了解</a>
+                        <a class="media-thumb" href="https://www.ystudiostyle.com/" target="_blank">
+                            <img src="assets/thumbs/brand-pen.jpg" alt="物外 ystudio 鋼筆" loading="lazy">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -967,64 +970,64 @@
                 <h3>代言影片</h3>
                 <div class="media-list">
                     <div class="media-item">
-                        <a class="media-thumb" href="https://www.instagram.com/reel/DZfAbQhikUk/" target="_blank">
-                            <img src="assets/thumbs/vid-fishoil-ig.jpg" alt="大研生醫魚油 Omega-3 衛教影片" loading="lazy">
-                        </a>
                         <div class="info">
                             <div class="title">大研生醫魚油｜誰適合吃魚油？Omega-3 衛教</div>
                             <div class="meta">2026/06/12｜Instagram</div>
                         </div>
                         <a href="https://www.instagram.com/reel/DZfAbQhikUk/" target="_blank">觀看</a>
+                        <a class="media-thumb" href="https://www.instagram.com/reel/DZfAbQhikUk/" target="_blank">
+                            <img src="assets/thumbs/vid-fishoil-ig.jpg" alt="大研生醫魚油 Omega-3 衛教影片" loading="lazy">
+                        </a>
                     </div>
                     <div class="media-item">
-                        <a class="media-thumb" href="https://www.instagram.com/reel/DZZ5TRggS76/" target="_blank">
-                            <img src="assets/thumbs/vid-xinjing.jpg" alt="墨寫心經影片" loading="lazy">
-                        </a>
                         <div class="info">
                             <div class="title">墨寫心經｜謝季芸老師七種字體・免墨臨摹水寫布</div>
                             <div class="meta">2026/06/10｜Instagram</div>
                         </div>
                         <a href="https://www.instagram.com/reel/DZZ5TRggS76/" target="_blank">觀看</a>
+                        <a class="media-thumb" href="https://www.instagram.com/reel/DZZ5TRggS76/" target="_blank">
+                            <img src="assets/thumbs/vid-xinjing.jpg" alt="墨寫心經影片" loading="lazy">
+                        </a>
                     </div>
                     <div class="media-item">
-                        <a class="media-thumb" href="https://youtu.be/FLz0nh7kYvc" target="_blank">
-                            <img src="assets/thumbs/vid-fishoil-yt.jpg" alt="魚油功效與禁忌完整解析影片" loading="lazy">
-                        </a>
                         <div class="info">
                             <div class="title">大研生醫魚油｜魚油功效與禁忌完整解析</div>
                             <div class="meta">2026/06/08｜YouTube</div>
                         </div>
                         <a href="https://youtu.be/FLz0nh7kYvc" target="_blank">觀看</a>
+                        <a class="media-thumb" href="https://youtu.be/FLz0nh7kYvc" target="_blank">
+                            <img src="assets/thumbs/vid-fishoil-yt.jpg" alt="魚油功效與禁忌完整解析影片" loading="lazy">
+                        </a>
                     </div>
                     <div class="media-item">
-                        <a class="media-thumb" href="https://www.instagram.com/reel/DYmSj1KgaIJ/" target="_blank">
-                            <img src="assets/thumbs/vid-chair.jpg" alt="輝葉 COZY SEAT 垂直律動椅影片" loading="lazy">
-                        </a>
                         <div class="info">
                             <div class="title">輝葉 COZY SEAT 垂直律動椅</div>
                             <div class="meta">2026/05/21｜Instagram</div>
                         </div>
                         <a href="https://www.instagram.com/reel/DYmSj1KgaIJ/" target="_blank">觀看</a>
+                        <a class="media-thumb" href="https://www.instagram.com/reel/DYmSj1KgaIJ/" target="_blank">
+                            <img src="assets/thumbs/vid-chair.jpg" alt="輝葉 COZY SEAT 垂直律動椅影片" loading="lazy">
+                        </a>
                     </div>
                     <div class="media-item">
-                        <a class="media-thumb" href="https://www.instagram.com/reel/DW9CoxMCFU8/" target="_blank">
-                            <img src="assets/thumbs/vid-pen1.jpg" alt="物外 ystudio 經典款黃銅鋼筆影片" loading="lazy">
-                        </a>
                         <div class="info">
                             <div class="title">物外 ystudio 經典款黃銅鋼筆</div>
                             <div class="meta">2026/04/10｜Instagram</div>
                         </div>
                         <a href="https://www.instagram.com/reel/DW9CoxMCFU8/" target="_blank">觀看</a>
+                        <a class="media-thumb" href="https://www.instagram.com/reel/DW9CoxMCFU8/" target="_blank">
+                            <img src="assets/thumbs/vid-pen1.jpg" alt="物外 ystudio 經典款黃銅鋼筆影片" loading="lazy">
+                        </a>
                     </div>
                     <div class="media-item">
-                        <a class="media-thumb" href="https://www.instagram.com/reel/DWxqzk4AiTf/" target="_blank">
-                            <img src="assets/thumbs/vid-pen2.jpg" alt="物外 ystudio 雲龍箔鋼筆影片" loading="lazy">
-                        </a>
                         <div class="info">
                             <div class="title">物外 ystudio 雲龍箔鋼筆</div>
                             <div class="meta">2026/04/06｜Instagram</div>
                         </div>
                         <a href="https://www.instagram.com/reel/DWxqzk4AiTf/" target="_blank">觀看</a>
+                        <a class="media-thumb" href="https://www.instagram.com/reel/DWxqzk4AiTf/" target="_blank">
+                            <img src="assets/thumbs/vid-pen2.jpg" alt="物外 ystudio 雲龍箔鋼筆影片" loading="lazy">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1194,13 +1197,13 @@
                           '<img src="' + escHtml(item.thumb) + '" alt="" loading="lazy"></a>'
                         : '';
                     return '<div class="' + itemClass + '">' +
-                        thumbHtml +
                         '<div class="info">' +
                         '<div class="title">' + escHtml(item.title) + newBadge + '</div>' +
                         summaryHtml +
                         '<div class="meta">' + escHtml(item.date || '') + '</div>' +
                         '</div>' +
                         (item.url ? '<a href="' + escHtml(item.url) + '" target="_blank">' + escHtml(btnText) + '</a>' : '') +
+                        thumbHtml +
                         '</div>';
                 }
 
