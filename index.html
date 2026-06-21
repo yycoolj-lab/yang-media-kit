@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // Always open at the top (hero). Strips any stale #section hash before the
+        // matching element is parsed, and stops the browser restoring scroll on reload.
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    </script>
     <title>俠醫楊智鈞｜心臟血管外科醫師・富足診所創辦人・媒體包</title>
     <meta name="description" content="俠醫楊智鈞，本名楊智鈞，英文名 Chih-Chun Yang / David C.C. Yang,是台灣心臟血管外科醫師、富足診所創辦人，專注靜脈醫學、足部血管健康、心血管預防醫學與醫療科普寫作。">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
