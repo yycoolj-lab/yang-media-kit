@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "yang-media-kit",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8231"],
+      "port": 8231
+    }
+  ]
+}

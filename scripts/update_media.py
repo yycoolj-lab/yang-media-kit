@@ -110,20 +110,34 @@ def make_id(category, outlet, title):
     return f"{category}-{h}"
 
 
+def _add_url_variants(urls, url):
+    if "youtu.be/" in url:
+        vid = url.split("youtu.be/")[-1].split("?")[0]
+        urls.add(vid)
+    elif "youtube.com/watch" in url:
+        vid = url.split("v=")[-1].split("&")[0]
+        urls.add(vid)
+    urls.add(url)
+
+
 def get_existing_urls(data):
     urls = set()
     for section in ["tv_shows", "health_media", "news_media"]:
         for item in data.get(section, []):
             if item.get("url"):
-                # Normalize YouTube URLs
-                url = item["url"]
-                if "youtu.be/" in url:
-                    vid = url.split("youtu.be/")[-1].split("?")[0]
-                    urls.add(vid)
-                elif "youtube.com/watch" in url:
-                    vid = url.split("v=")[-1].split("&")[0]
-                    urls.add(vid)
-                urls.add(url)
+                _add_url_variants(urls, item["url"])
+
+    # Blocklist: items manually removed (irrelevant / same-name different person).
+    # Never re-add these via auto search.
+    removed_file = DATA_FILE.parent / "removed_items.json"
+    if removed_file.exists():
+        try:
+            for item in json.loads(removed_file.read_text(encoding="utf-8")):
+                if item.get("url"):
+                    _add_url_variants(urls, item["url"])
+        except Exception:
+            pass
+
     return urls
 
 
@@ -719,10 +733,11 @@ def _yt_search(query, show_name, show_info, existing_urls, existing_titles, data
             if video_id in existing_urls or url in existing_urls:
                 continue
 
-            # Verify relevance: check title AND description for doctor name
+            # Verify relevance: the DOCTOR'S NAME must appear in title or description.
+            # (Matching only the show name lets other doctors' episodes through.)
             description = video.get("description", "") or ""
-            text_to_check = title + " " + description[:500]
-            if not any(n in text_to_check for n in SEARCH_NAMES + [show_name]):
+            text_to_check = title + " " + description
+            if not any(n in text_to_check for n in SEARCH_NAMES):
                 continue
 
             if is_duplicate_title(title, existing_titles):

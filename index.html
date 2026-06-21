@@ -259,12 +259,12 @@
         .section h2 .icon { font-size: 1.1em; }
 
         /* ── Media List ── */
-        .media-list { display: flex; flex-direction: column; gap: 8px; }
+        .media-list { display: flex; flex-direction: column; gap: 10px; }
         .media-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 18px;
+            padding: 16px 20px;
             background: var(--bg);
             border-radius: 12px;
             transition: all 0.25s;
@@ -280,13 +280,14 @@
         .media-item .title {
             font-weight: 500;
             color: var(--text);
-            margin-bottom: 3px;
-            font-size: 0.95em;
-            line-height: 1.5;
+            margin-bottom: 4px;
+            font-size: 1em;
+            line-height: 1.65;
         }
         .media-item .meta {
-            font-size: 0.82em;
+            font-size: 0.85em;
             color: var(--text-light);
+            letter-spacing: 0.02em;
         }
         .media-item a {
             background: var(--indigo);
@@ -311,14 +312,14 @@
         .subsection { margin-bottom: 28px; }
         .subsection:last-child { margin-bottom: 0; }
         .subsection h3 {
-            font-size: 0.95em;
+            font-size: 1.05em;
             font-weight: 700;
             color: var(--indigo);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             padding-bottom: 6px;
             border-bottom: 2px solid var(--indigo);
             display: inline-block;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.04em;
         }
 
         /* ── Highlight Box ── */
@@ -409,6 +410,56 @@
             transition: max-height 0.5s ease;
         }
         .collapsible-content.expanded { max-height: 50000px; }
+
+        /* ── Featured Book ── */
+        .featured-book {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--indigo) 100%);
+            color: white;
+            padding: 24px 28px;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(200,164,92,0.3);
+            box-shadow: 0 4px 20px rgba(26,39,68,0.15);
+        }
+        .featured-book-head {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .featured-book-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .featured-book-meta {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+        }
+        .featured-book-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .featured-book-links a {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(200,164,92,0.4);
+            color: var(--gold);
+            padding: 7px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .featured-book-links a:hover {
+            background: var(--gold);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
 
         /* ── Badge ── */
         .badge-new {
@@ -724,6 +775,22 @@
 
         <div class="section fade-up" id="books">
             <h2><span class="icon">📚</span> 著作・專欄・Podcast</h2>
+            <div class="featured-book">
+                <div class="featured-book-head">
+                    <span class="badge-new">新書</span>
+                    <div class="featured-book-title">《俠醫楊智鈞的50道靜脈疾病密碼》</div>
+                </div>
+                <div class="featured-book-meta">原水文化 2026/06/18 出版｜ISBN 9786267827376｜定價 550 元</div>
+                <div class="featured-book-links">
+                    <a href="https://www.books.com.tw/products/0011054245" target="_blank">博客來</a>
+                    <a href="https://www.cite.com.tw/book?id=107937" target="_blank">城邦讀書花園</a>
+                    <a href="https://www.kingstone.com.tw/basic/2014150612912/" target="_blank">金石堂</a>
+                    <a href="https://www.sanmin.com.tw/product/index/015561288" target="_blank">三民書店</a>
+                    <a href="https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=15338763" target="_blank">momo</a>
+                    <a href="https://www.rakuten.com.tw/shop/cite8888/product/HD0214/" target="_blank">樂天市場</a>
+                    <a href="https://www.eslite.com/product/10012013192683164715003" target="_blank">誠品線上</a>
+                </div>
+            </div>
             <div class="media-list">
                 <div class="media-item">
                     <div class="info">
@@ -914,6 +981,11 @@
                 groups[key].sort(function(a, b) {
                     return (b.date || '').localeCompare(a.date || '');
                 });
+            });
+
+            // Show the most substantial groups first (more items = more prominent)
+            groupOrder.sort(function(a, b) {
+                return groups[b].length - groups[a].length;
             });
 
             var thirtyDaysAgo = new Date();

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-18T13:55:04.902502+08:00",
+  "last_updated": "2026-06-18T19:07:18.244563+08:00",
   "stats": {
     "facebook_followers": {
       "count": 50000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 121,
-      "display": "121+"
+      "count": 95,
+      "display": "95+"
     },
     "media_exposure": {
-      "count": 196,
-      "display": "196+"
+      "count": 166,
+      "display": "166+"
     },
     "book_sales": {
       "count": 5000,
@@ -508,26 +508,6 @@
       "added_date": "2026-02-12"
     },
     {
-      "id": "tv-37df05e8",
-      "show": "醫師好辣",
-      "show_network": "東森",
-      "title": "【心臟科】病患無外傷喊病危 醫師一聽竟是心臟瓣膜斷裂？！【醫師好辣】袁明琦 必看精彩片段",
-      "date": "",
-      "url": "https://youtu.be/5VcGTmNAV38",
-      "source": "auto_search",
-      "added_date": "2026-03-02"
-    },
-    {
-      "id": "tv-b7c07a32",
-      "show": "醫師好辣",
-      "show_network": "東森",
-      "title": "不為人知的冷門行業！「器官捐贈協調師」分享感人案例，讓主持人淚灑攝影棚？！【#醫師好辣】20220124 完整版 冷門行業 EP1275 袁明琦 張錦姝 胡瓜",
-      "date": "",
-      "url": "https://youtu.be/PqkWHi3Hf-0",
-      "source": "auto_search",
-      "added_date": "2026-03-02"
-    },
-    {
       "id": "tv-ac368277",
       "show": "醫師好辣",
       "show_network": "東森",
@@ -598,26 +578,6 @@
       "added_date": "2026-03-02"
     },
     {
-      "id": "tv-d1e3b121",
-      "show": "祝你健康",
-      "show_network": "",
-      "title": "「心導管手術」過程大揭密！30分鐘救回一命｜祝你健康",
-      "date": "",
-      "url": "https://youtu.be/RTep8_E0w14",
-      "source": "auto_search",
-      "added_date": "2026-03-02"
-    },
-    {
-      "id": "tv-1f1c18f6",
-      "show": "醫師好辣",
-      "show_network": "東森",
-      "title": "壓力大長期便秘，喝「早餐店奶茶」幫助排便？！【#醫師好辣】20211012 part1 EP1216 鄭丞傑 蔣偉文",
-      "date": "",
-      "url": "https://youtu.be/P-ZwFll4ISg",
-      "source": "auto_search",
-      "added_date": "2026-03-09"
-    },
-    {
       "id": "tv-2054aafd",
       "show": "醫師好辣",
       "show_network": "東森",
@@ -658,16 +618,6 @@
       "added_date": "2026-03-30"
     },
     {
-      "id": "tv-a997a948",
-      "show": "醫師好辣",
-      "show_network": "東森",
-      "title": "【神經內科】中風治療刻不容緩？命在旦夕堅持問「神」擲筊決定！【醫師好辣】 陳龍醫師 必看精彩片段",
-      "date": "",
-      "url": "https://youtu.be/K0gPIsUdMwg",
-      "source": "auto_search",
-      "added_date": "2026-04-06"
-    },
-    {
       "id": "tv-a98eb8ed",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
@@ -684,16 +634,6 @@
       "title": "14歲少女肚子腫脹？竟罹患卵巢癌？！【醫師好辣】 20190515 part1 EP740 陳保仁 馮媛甄",
       "date": "",
       "url": "https://youtu.be/TCMV1Efi47w",
-      "source": "auto_search",
-      "added_date": "2026-04-14"
-    },
-    {
-      "id": "tv-9ff0912c",
-      "show": "醫師好辣",
-      "show_network": "東森",
-      "title": "病菌就是這樣來的！阿伯舌頭長膿包醫師竟要驗愛滋？日常這舉動讓細菌有機可趁！【醫師好辣】 必看精彩片段 江坤俊 紀炳銓 陳木榮",
-      "date": "",
-      "url": "https://youtu.be/eBFybjEgQCo",
       "source": "auto_search",
       "added_date": "2026-04-14"
     },
@@ -718,16 +658,6 @@
       "added_date": "2026-04-14"
     },
     {
-      "id": "tv-ab5234ef",
-      "show": "全民星攻略",
-      "show_network": "衛視中文台",
-      "title": "哪種人會講話嗲聲嗲氣？蔡尚樺裝可愛失敗：今天燒聲？！20230209 曾國城 賴盈達 張忘形 Part2 EP800【全民星攻略】",
-      "date": "",
-      "url": "https://youtu.be/sfBF9FwSC0c",
-      "source": "auto_search",
-      "added_date": "2026-04-14"
-    },
-    {
       "id": "tv-c7e6cc54",
       "show": "健康2.0",
       "show_network": "TVBS",
@@ -748,52 +678,12 @@
       "added_date": "2026-04-14"
     },
     {
-      "id": "tv-90343014",
-      "show": "聚焦2.0",
-      "show_network": "年代",
-      "title": "影后男星心臟停跳 惡性心律不整恐猝死！ 高血壓免吃藥？ 電燒腎動脈神經有救！ 綜藝教母秋咳嚴重 食補達人教潤肺料理 20230916【聚焦2.0】第506集",
-      "date": "",
-      "url": "https://youtu.be/VsUiDkChon8",
-      "source": "auto_search",
-      "added_date": "2026-04-14"
-    },
-    {
       "id": "tv-2f7f012f",
       "show": "聚焦2.0",
       "show_network": "年代",
       "title": "帥出新高度！世界太極金牌男神孫家閎來了！解痛太極這樣練！心臟變形成「章魚壺」？資深媒體人遇生死劫？「一罐水」救命！炎炎夏日必吃瓜！營養博士傳授「最高明吃法」血糖不飆升！【聚焦2.0】第541集",
       "date": "",
       "url": "https://youtu.be/SOj3-T_zG98",
-      "source": "auto_search",
-      "added_date": "2026-04-14"
-    },
-    {
-      "id": "tv-3264fec9",
-      "show": "健康好生活",
-      "show_network": "年代",
-      "title": "李偉浩：腰痠背痛別只依賴止痛藥，當心婦科疾病拖成大病!  喜歡翹二郎腿的習慣改不了嗎? 當心腹壓高，容易讓器官脫垂?!【健康好生活】",
-      "date": "",
-      "url": "https://youtu.be/RCMnP1ksPw0",
-      "source": "auto_search",
-      "added_date": "2026-04-14"
-    },
-    {
-      "id": "tv-e945b5a5",
-      "show": "健康好生活",
-      "show_network": "年代",
-      "title": "陳欣湄：身體器官也會怕冷，循環變差血壓易高!【健康好生活】",
-      "date": "",
-      "url": "https://youtu.be/3bzQ23ZLes8",
-      "source": "auto_search",
-      "added_date": "2026-04-14"
-    },
-    {
-      "id": "tv-ec78d6d2",
-      "show": "健康好生活",
-      "show_network": "年代",
-      "title": "王健宇 ：家醫科推薦長者必吃的營養食材!!  吃魚助慢性病回春，健康預防腸道疾病!【健康好生活】",
-      "date": "",
-      "url": "https://youtu.be/FZdIwYkfsvU",
       "source": "auto_search",
       "added_date": "2026-04-14"
     },
@@ -878,16 +768,6 @@
       "added_date": "2026-04-14"
     },
     {
-      "id": "tv-e311d7dc",
-      "show": "健康2.0",
-      "show_network": "TVBS",
-      "title": "正確剪指甲！名醫教1招根治甲溝炎 跟凍甲說掰掰！【 如果云知道 鄭凱云 】feat. 朱家宏 足踝專科醫師",
-      "date": "",
-      "url": "https://youtu.be/GBi41iGuxvk",
-      "source": "auto_search",
-      "added_date": "2026-04-15"
-    },
-    {
       "id": "tv-3b6f9a0a",
       "show": "震震有詞",
       "show_network": "高點電視台",
@@ -904,26 +784,6 @@
       "title": "20150622中天新聞　被高鐵閘門夾大腿　名醫批高鐵「不貼心」",
       "date": "",
       "url": "https://youtu.be/v5agpKyRJ8s",
-      "source": "auto_search",
-      "added_date": "2026-04-15"
-    },
-    {
-      "id": "tv-cf466094",
-      "show": "健康好生活",
-      "show_network": "年代",
-      "title": "洪永祥：湯頭鮮美、藏危機？當心「傷腎」大地雷！慢性腎衰竭這樣吃！「低氮澱粉」飲食！這些小吃藏陷阱、飲食壞習慣會傷腎！ 【健康好生活】",
-      "date": "",
-      "url": "https://youtu.be/LeAUJoLYx4s",
-      "source": "auto_search",
-      "added_date": "2026-04-15"
-    },
-    {
-      "id": "tv-0643c742",
-      "show": "命運好好玩",
-      "show_network": "JET",
-      "title": "【精華版】心臟停了腦波還在      外科醫生神奇病例不鐵齒",
-      "date": "",
-      "url": "https://youtu.be/VEebPklUlJA",
       "source": "auto_search",
       "added_date": "2026-04-15"
     },
@@ -946,26 +806,6 @@
       "url": "https://youtu.be/S8Qz3bjcuQ4",
       "source": "auto_search",
       "added_date": "2026-04-16"
-    },
-    {
-      "id": "tv-5f9c85ea",
-      "show": "健康2.0",
-      "show_network": "TVBS",
-      "title": "台灣大腸癌地圖 這區死亡率最高？ 大腸癌6大症狀 綠拿鐵黃金比例護腸 健康2.0 20230506【完整版】江坤俊 韋汝 糠榮誠 陳欣湄 吳明珠 許瓊月 MIYA @tvbshealth20​",
-      "date": "",
-      "url": "https://youtu.be/2rV8FyqCqPk",
-      "source": "auto_search",
-      "added_date": "2026-04-20"
-    },
-    {
-      "id": "tv-e938b749",
-      "show": "健康2.0",
-      "show_network": "TVBS",
-      "title": "鄰桌神秘男驚吐妳長腦瘤 一查真罹病危險5特徵！按壓耳朵3區調養腦下垂體 氣功三攪式+洗頭顫掌戶腦通督派！ 健康2.0 20230917【完整版】鄭凱云 丁賢偉 鄔定宇 吳宏乾 梁惠雯 彥寬",
-      "date": "",
-      "url": "https://youtu.be/F3VMLywV4BI",
-      "source": "auto_search",
-      "added_date": "2026-04-20"
     },
     {
       "id": "tv-12a900ea",
@@ -1028,16 +868,6 @@
       "added_date": "2026-04-27"
     },
     {
-      "id": "tv-f7dedfed",
-      "show": "醫師好辣",
-      "show_network": "東森",
-      "title": "國家大事！友邦總統做「心臟手術」！保鑣群盯場醫護怕被抓起來？【#醫師好辣】20230625 part4 吳欣岱 哈平遠",
-      "date": "",
-      "url": "https://youtu.be/kk7eUVTCk5g",
-      "source": "auto_search",
-      "added_date": "2026-04-27"
-    },
-    {
       "id": "tv-969b1ac9",
       "show": "醫師好辣",
       "show_network": "東森",
@@ -1078,26 +908,6 @@
       "added_date": "2026-05-07"
     },
     {
-      "id": "tv-1412ff58",
-      "show": "健康好生活",
-      "show_network": "年代",
-      "title": "健康好生活  20231031  吃辣能長壽？自製「辣椒醬」辣得剛剛好！",
-      "date": "",
-      "url": "https://youtu.be/55epygauBcQ",
-      "source": "auto_search",
-      "added_date": "2026-05-11"
-    },
-    {
-      "id": "tv-b5a52e34",
-      "show": "祝你健康",
-      "show_network": "",
-      "title": "愛翹腳、低頭滑手機？超虐4行為加速脊椎退化！熬夜、睡姿不良、久站久坐…要小心｜脊椎出事百病生！上班族腰酸背痛、凸腹救星｜黃如玉醫師、莊碧玉、夏宇禾｜奕起聊健康 郭奕均｜健康節目｜健康知識 都在祝你健康",
-      "date": "",
-      "url": "https://youtu.be/rZalJpYVCBE",
-      "source": "auto_search",
-      "added_date": "2026-05-14"
-    },
-    {
       "id": "tv-2937eac9",
       "show": "健康好生活",
       "show_network": "年代",
@@ -1116,36 +926,6 @@
       "url": "https://youtu.be/x2t4hhDzygw",
       "source": "auto_search",
       "added_date": "2026-05-14"
-    },
-    {
-      "id": "tv-3271215a",
-      "show": "醫師好辣",
-      "show_network": "東森",
-      "title": "闌尾炎不敢開刀！腹部器官「黏成一團」 手術折騰2小時？【#醫師好辣】20220627 part2 EP1359 洪永祥 亞美將",
-      "date": "",
-      "url": "https://youtu.be/xj-7HFNrNQA",
-      "source": "auto_search",
-      "added_date": "2026-05-18"
-    },
-    {
-      "id": "tv-f3078f4c",
-      "show": "健康2.0",
-      "show_network": "TVBS",
-      "title": "腸中風死亡率90% 比腸癌更兇險！ 肚子痛 小心腸扭轉 腸阻塞 延遲恐敗血症！健康2.0 20230827【完整版】江坤俊 韋汝 許秉毅 陳欣湄 吳明珠 陳麗華 雷議宗@tvbshealth20",
-      "date": "",
-      "url": "https://youtu.be/EDsnmKKPaYQ",
-      "source": "auto_search",
-      "added_date": "2026-05-28"
-    },
-    {
-      "id": "tv-d999ad5a",
-      "show": "醫師好辣",
-      "show_network": "東森",
-      "title": "超強救援神手！無國界醫生遇反叛軍？花蓮地震赴現場支援？！【#醫師好辣】20220120 完整版 超強救援神手 EP1274 賈蔚 阿布",
-      "date": "",
-      "url": "https://youtu.be/LPIIUB9nxpg",
-      "source": "auto_search",
-      "added_date": "2026-06-01"
     },
     {
       "id": "tv-80e0d099",
@@ -1168,26 +948,6 @@
       "added_date": "2026-06-04"
     },
     {
-      "id": "tv-8e4f8f55",
-      "show": "網路直播/專訪",
-      "show_network": "",
-      "title": "鄭文奇 vs 楊智鈞(第四局)",
-      "date": "",
-      "url": "https://youtu.be/FPIu3LgC1o8",
-      "source": "auto_search",
-      "added_date": "2026-06-08"
-    },
-    {
-      "id": "tv-a638b60f",
-      "show": "醫師好辣",
-      "show_network": "東森",
-      "title": "【腎臟科】病患肌肉失控全身癱瘓？檢查竟是身體缺鉀釀大禍？！【醫師好辣】 洪永祥醫師 必看精彩片段",
-      "date": "",
-      "url": "https://youtu.be/xnwjSg2at1o",
-      "source": "auto_search",
-      "added_date": "2026-06-11"
-    },
-    {
       "id": "tv-8076bb94",
       "show": "醫師好辣",
       "show_network": "東森",
@@ -1208,32 +968,12 @@
       "added_date": "2026-06-11"
     },
     {
-      "id": "tv-fcf2c0d6",
-      "show": "全民星攻略",
+      "id": "tv-6e9c3c42",
+      "show": "醫師好辣",
       "show_network": "衛視中文台",
-      "title": "【鴻兔大展迎新春】手氣火到不行！FEniX最強忙內李承隆想按什麼都中？城哥：有拜過九天玄女？！ 20230122 原子偶像家族 Part3X兔年特輯【全民星攻略】",
+      "title": "\"個性\"暴露你的病！A型人格易暴怒？無心之言竟害貝童彤大崩潰？！【醫師好辣】20220722 精選 EP1378｜徐乃麟 楊智鈞",
       "date": "",
-      "url": "https://youtu.be/S0oT677F4HE",
-      "source": "auto_search",
-      "added_date": "2026-06-11"
-    },
-    {
-      "id": "tv-6ba0863b",
-      "show": "健康2.0",
-      "show_network": "TVBS",
-      "title": "簡單2招 血脂、便祕一次解決！｜如果云知道 #鄭凱云 #陳欣湄 #韋汝 #黃淑惠 #鍾雲霓",
-      "date": "",
-      "url": "https://youtu.be/OmBY-adOp8g",
-      "source": "auto_search",
-      "added_date": "2026-06-15"
-    },
-    {
-      "id": "tv-ee3bee0d",
-      "show": "祝你健康",
-      "show_network": "",
-      "title": "顱內致命炸彈 身體半邊麻痺恐是腦病變！腦瘤破裂前沒症狀 小心高血壓引爆！ 健康2.0 20231029【完整版】 鄭凱云 陳龍 楊智鈞 劉怡里 梁惠雯 雷議宗 @tvbshealth20",
-      "date": "",
-      "url": "https://youtu.be/Q5mkELZZLI8",
+      "url": "https://youtu.be/nCp3eDEh5M0",
       "source": "auto_search",
       "added_date": "2026-06-18"
     }
@@ -1565,15 +1305,6 @@
       "added_date": "2026-04-14"
     },
     {
-      "id": "ne-be2d94e2",
-      "outlet": "TNL The News Lens 關鍵評論網",
-      "title": "快閃店穩爆紅？營運顧問楊智鈞分享5大關鍵",
-      "date": "2020-02-13",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE44NVJuWnR1YmZybmhJV3paYnZscGFBU2VjbDlObGh0RG5Jb1VUT1ZfcVd1S0gyMTNBcUlIWkRIUEk2aEdlaV9obFdsWkd0SUVKNmRTLQ?oc=5&hl=en-US&gl=US&ceid=US:en",
-      "source": "auto_search",
-      "added_date": "2026-04-14"
-    },
-    {
       "id": "ne-507aaab5",
       "outlet": "ETtoday",
       "title": "楊智鈞／一張圖教你看穿 DRG 新制！",
@@ -1790,60 +1521,6 @@
       "added_date": "2026-04-15"
     },
     {
-      "id": "ne-523b3172",
-      "outlet": "ETtoday",
-      "title": "700萬人中鏢！脂肪肝傷心臟「血管像爆漿餐包」　醫：40%沒症狀",
-      "date": "2026-03-16",
-      "url": "https://health.ettoday.net/news/3132193",
-      "source": "auto_search",
-      "added_date": "2026-04-15"
-    },
-    {
-      "id": "ne-509577b8",
-      "outlet": "ETtoday",
-      "title": "比肥肉還傷肝！醫師點名喝「這杯」是頭號殺手　下肚瞬間累積",
-      "date": "2026-02-21",
-      "url": "https://www.ettoday.net/news/20260221/3121159.htm",
-      "source": "auto_search",
-      "added_date": "2026-04-15"
-    },
-    {
-      "id": "ne-bd58aaee",
-      "outlet": "ETtoday",
-      "title": "少年白髮罹心臟病機率「風險高5倍」！30歲男被送醫才知事情大條",
-      "date": "2022-11-03",
-      "url": "https://www.ettoday.net/news/20221103/2372592.htm",
-      "source": "auto_search",
-      "added_date": "2026-04-15"
-    },
-    {
-      "id": "ne-17893a6c",
-      "outlet": "ETtoday",
-      "title": "魚油挑選3重點！醫：選小顆粒「吃半年以上才有效」　這時間吃最好",
-      "date": "2022-09-06",
-      "url": "https://health.ettoday.net/news/2331194",
-      "source": "auto_search",
-      "added_date": "2026-04-15"
-    },
-    {
-      "id": "ne-74345048",
-      "outlet": "ETtoday",
-      "title": "醫表態兒童疫苗「莫德納、BNT」都不打　陳時中：尊重但利大於弊",
-      "date": "2022-05-02",
-      "url": "https://www.ettoday.net/news/20220502/2242354.htm",
-      "source": "auto_search",
-      "added_date": "2026-04-15"
-    },
-    {
-      "id": "ne-452f9f96",
-      "outlet": "ETtoday",
-      "title": "23歲男模運動猝死　醫：主動脈剝離多逾50歲「這情況例外」有3忌",
-      "date": "2021-03-18",
-      "url": "https://health.ettoday.net/news/1941175",
-      "source": "auto_search",
-      "added_date": "2026-04-15"
-    },
-    {
       "id": "ne-20da441f",
       "outlet": "聯合報／元氣網",
       "title": "上大號用力過猛死亡 醫揭高風險族群：心血管撐不住",
@@ -1860,15 +1537,6 @@
       "url": "https://udn.com/news/story/7934/8893996",
       "source": "auto_search",
       "added_date": "2026-04-15"
-    },
-    {
-      "id": "ne-0dac8c09",
-      "outlet": "ETtoday",
-      "title": "瘦男血脂飆破3000！醫揭「致死率50%疾病」：能活著出院算幸運",
-      "date": "2026-04-20",
-      "url": "https://health.ettoday.net/news/3152059",
-      "source": "auto_search",
-      "added_date": "2026-04-20"
     },
     {
       "id": "ne-5d0efe9f",
@@ -1914,6 +1582,42 @@
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE04X0pGUGtXVkZ0cm1OVXV1MHFtVEtUUFNnVHZSb3d4aUFLS0VIWWFlRGU5MEFLam5vNE1uYWt1eDNNSU9ROGZNWmhuN0xMYXJnZVUzeUVCdTV4dEXSAVtBVV95cUxNOF9KRlBrV1ZGdHJtTlV1dTBxbVRLVFBTZ1R2Um93eGlBS0tFSFlhZURlOTBBS2pubzRNbmFrdXgzTUlPUThmTVpobjdMTGFyZ2VVM3lFQnU1eHRF?oc=5&hl=en-US&gl=US&ceid=US:en",
       "source": "auto_search",
       "added_date": "2026-06-04"
+    },
+    {
+      "id": "ne-523b3172",
+      "outlet": "ETtoday",
+      "title": "700萬人中鏢！脂肪肝傷心臟「血管像爆漿餐包」　醫：40%沒症狀",
+      "date": "2026-03-16",
+      "url": "https://health.ettoday.net/news/3132193",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-509577b8",
+      "outlet": "ETtoday",
+      "title": "比肥肉還傷肝！醫師點名喝「這杯」是頭號殺手　下肚瞬間累積",
+      "date": "2026-02-21",
+      "url": "https://www.ettoday.net/news/20260221/3121159.htm",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-bd58aaee",
+      "outlet": "ETtoday",
+      "title": "少年白髮罹心臟病機率「風險高5倍」！30歲男被送醫才知事情大條",
+      "date": "2022-11-03",
+      "url": "https://www.ettoday.net/news/20221103/2372592.htm",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
+    },
+    {
+      "id": "ne-17893a6c",
+      "outlet": "ETtoday",
+      "title": "魚油挑選3重點！醫：選小顆粒「吃半年以上才有效」　這時間吃最好",
+      "date": "2022-09-06",
+      "url": "https://health.ettoday.net/news/2331194",
+      "source": "auto_search",
+      "added_date": "2026-04-15"
     },
     {
       "id": "ne-6e880e35",
