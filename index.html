@@ -616,76 +616,52 @@
         footer a:hover { text-decoration: underline; }
 
         /* ── Back to Top ── */
+        /* ── Back-to-top = 浮動大頭（搖擺頭像） ── */
         .back-to-top {
             position: fixed;
             bottom: 28px;
             right: 28px;
-            width: 48px;
-            height: 48px;
-            background: var(--indigo);
-            color: white;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2em;
-            box-shadow: 0 4px 20px rgba(26,39,68,0.4);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s;
-            z-index: 99;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .back-to-top:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        /* ── Floating Avatar (浮動大頭) ── */
-        .floating-avatar {
-            position: fixed;
-            left: 24px;
-            bottom: 24px;
-            width: 96px;
-            height: 96px;
+            width: 58px;
+            height: 58px;
             padding: 0;
+            background: var(--card-bg);
             border: 3px solid var(--gold);
             border-radius: 50%;
             overflow: hidden;
-            background: var(--card-bg);
-            box-shadow: 0 8px 28px rgba(26,39,68,0.35);
             cursor: pointer;
-            z-index: 98;
+            box-shadow: 0 6px 22px rgba(26,39,68,0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 99;
             transform-origin: 50% 85%;
             animation: avatarSway 3.2s ease-in-out infinite;
         }
-        .floating-avatar img {
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center 18%;
             display: block;
         }
-        .floating-avatar:hover { animation: avatarWave 0.6s ease-in-out infinite; }
+        .back-to-top:hover { animation: avatarWave 0.6s ease-in-out infinite; }
         @keyframes avatarSway {
             0%, 100% { transform: translateY(0) rotate(-6deg); }
-            50%      { transform: translateY(-7px) rotate(6deg); }
+            50%      { transform: translateY(-6px) rotate(6deg); }
         }
         @keyframes avatarWave {
             0%, 100% { transform: rotate(-13deg); }
             50%      { transform: rotate(13deg); }
         }
         @media (max-width: 600px) {
-            .floating-avatar { width: 62px; height: 62px; left: 14px; bottom: 14px; border-width: 2px; }
+            .back-to-top { width: 52px; height: 52px; bottom: 18px; right: 18px; border-width: 2px; }
         }
         @media (prefers-reduced-motion: reduce) {
-            .floating-avatar { animation: none; }
-            .floating-avatar:hover { animation: none; }
+            .back-to-top, .back-to-top:hover { animation: none; }
         }
 
         /* ── Scroll Animations ── */
@@ -1180,11 +1156,9 @@
         </footer>
     </div>
 
-    <button class="floating-avatar" aria-label="回到頁首" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <button class="back-to-top" id="backToTop" aria-label="回到頁首" onclick="window.scrollTo({top:0, behavior:'smooth'})">
         <img src="photo.jpg?v=9" alt="楊智鈞醫師">
     </button>
-
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0})">&#9650;</button>
 
     <script>
     (async function() {
