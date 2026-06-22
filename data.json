@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-18T19:07:18.244563+08:00",
+  "last_updated": "2026-06-22T14:28:45.530132+08:00",
   "stats": {
     "facebook_followers": {
       "count": 53000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 95,
-      "display": "95+"
+      "count": 96,
+      "display": "96+"
     },
     "media_exposure": {
-      "count": 166,
-      "display": "166+"
+      "count": 167,
+      "display": "167+"
     },
     "book_sales": {
       "count": 5000,
@@ -976,6 +976,16 @@
       "url": "https://youtu.be/nCp3eDEh5M0",
       "source": "auto_search",
       "added_date": "2026-06-18"
+    },
+    {
+      "id": "tv-ee3bee0d",
+      "show": "祝你健康",
+      "show_network": "",
+      "title": "顱內致命炸彈 身體半邊麻痺恐是腦病變！腦瘤破裂前沒症狀 小心高血壓引爆！ 健康2.0 20231029【完整版】 鄭凱云 陳龍 楊智鈞 劉怡里 梁惠雯 雷議宗 @tvbshealth20",
+      "date": "",
+      "url": "https://youtu.be/Q5mkELZZLI8",
+      "source": "auto_search",
+      "added_date": "2026-06-22"
     }
   ],
   "health_media": [
