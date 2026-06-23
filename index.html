@@ -1211,15 +1211,8 @@
             5
         );
 
-        // --- Render News Media (grouped by outlet) ---
-        renderGroupedSection(
-            'news-media-container',
-            data.news_media,
-            'outlet',
-            function(item) { return item.outlet; },
-            '閱讀',
-            5
-        );
+        // --- Render News Media (flat list, newest first) ---
+        renderFlatSection('news-media-container', data.news_media, '閱讀', 8);
 
         // --- Update footer date ---
         var footerEl = document.getElementById('last-updated');
@@ -1352,6 +1345,69 @@
                 html += '</div>';
                 return html;
             }).join('');
+        }
+
+        // Flat list, newest first (used for news — chronological feed)
+        function renderFlatSection(containerId, items, defaultBtnText, collapseAfter) {
+            var container = document.getElementById(containerId);
+            if (!container || !items) return;
+
+            var sorted = items.slice().sort(function(a, b) {
+                return (b.date || '').localeCompare(a.date || '');
+            });
+
+            var thirtyDaysAgo = new Date();
+            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+            var cutoff = thirtyDaysAgo.toISOString().slice(0, 10);
+            var newestAutoId = null, newestAutoDate = '';
+            items.forEach(function(it) {
+                if (it.source === 'auto_search' && it.added_date >= cutoff && it.added_date > newestAutoDate) {
+                    newestAutoDate = it.added_date;
+                    newestAutoId = it.id;
+                }
+            });
+
+            function renderItem(item) {
+                var newBadge = (item.id === newestAutoId) ? '<span class="badge-new">NEW</span>' : '';
+                var btnText = item.link_label || defaultBtnText;
+                var summaryHtml = item.summary ? '<div class="summary">' + escHtml(item.summary) + '</div>' : '';
+                var itemClass = item.summary ? 'media-item has-summary' : 'media-item';
+                var thumbHtml = item.thumb
+                    ? '<a class="media-thumb" href="' + escHtml(item.url || '#') + '" target="_blank">' +
+                      '<img src="' + escHtml(item.thumb) + '" alt="" loading="lazy"></a>'
+                    : '';
+                var metaParts = [];
+                if (item.outlet) metaParts.push(escHtml(item.outlet));
+                if (item.date) metaParts.push(escHtml(item.date));
+                return '<div class="' + itemClass + '">' +
+                    '<div class="info">' +
+                    '<div class="title">' + escHtml(item.title) + newBadge + '</div>' +
+                    summaryHtml +
+                    '<div class="meta">' + metaParts.join(' ・ ') + '</div>' +
+                    '</div>' +
+                    (item.url ? '<a href="' + escHtml(item.url) + '" target="_blank">' + escHtml(btnText) + '</a>' : '') +
+                    thumbHtml +
+                    '</div>';
+            }
+
+            var visible = sorted, hidden = [];
+            var needCollapse = collapseAfter && sorted.length > collapseAfter;
+            if (needCollapse) {
+                visible = sorted.slice(0, collapseAfter);
+                hidden = sorted.slice(collapseAfter);
+            }
+            var cid = containerId + '-flat-collapse';
+
+            var html = '<div class="media-list">' + visible.map(renderItem).join('') + '</div>';
+            if (needCollapse) {
+                html += '<div class="collapsible-content" id="' + cid + '">' +
+                    '<div class="media-list" style="margin-top:10px;">' +
+                    hidden.map(renderItem).join('') +
+                    '</div></div>' +
+                    '<button class="collapse-toggle" onclick="toggleCollapse(\'' + cid + '\', this)">' +
+                    '展開其餘 ' + hidden.length + ' 筆 <span class="arrow">▼</span></button>';
+            }
+            container.innerHTML = html;
         }
 
         function escHtml(str) {
