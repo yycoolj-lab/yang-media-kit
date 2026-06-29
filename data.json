@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-25T13:04:41.429442+08:00",
+  "last_updated": "2026-06-29T13:49:19.164644+08:00",
   "stats": {
     "facebook_followers": {
       "count": 53000,
@@ -15,8 +15,8 @@
       "display": "96+"
     },
     "media_exposure": {
-      "count": 168,
-      "display": "168+"
+      "count": 169,
+      "display": "169+"
     },
     "book_sales": {
       "count": 5000,
@@ -1700,6 +1700,16 @@
       "summary": "一名男子為降血糖自行網購中藥材熬煮服用，卻因未經專業炮製的附子含有烏頭鹼而中毒身亡，這起悲劇再次凸顯「天然不代表無毒」的重要警訊。心臟外科醫師楊智鈞指…",
       "source": "manual",
       "added_date": "2026-06-23"
+    },
+    {
+      "id": "ne-1d6eadc3",
+      "outlet": "自由時報",
+      "title": "健康網》3大電解質缺乏恐心律不整 醫建議吃這些",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5485250",
+      "source": "auto_search",
+      "added_date": "2026-06-29",
+      "summary": "三大電解質「鉀、鈣、鎂」看似微小，卻是維持心臟穩定跳動的重要電解質，台中富足診所院長、心臟外科醫師楊智鈞在臉書粉專「俠醫楊智鈞 - 富足診所血管職人」…"
     }
   ]
 }
