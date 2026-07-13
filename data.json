@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-09T12:51:57.397902+08:00",
+  "last_updated": "2026-07-13T12:29:48.682363+08:00",
   "stats": {
     "facebook_followers": {
       "count": 53000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 98,
-      "display": "98+"
+      "count": 100,
+      "display": "100+"
     },
     "media_exposure": {
-      "count": 171,
-      "display": "171+"
+      "count": 173,
+      "display": "173+"
     },
     "book_sales": {
       "count": 5000,
@@ -1006,6 +1006,26 @@
       "url": "https://youtu.be/-cUwtd_rfO4",
       "source": "auto_search",
       "added_date": "2026-07-09"
+    },
+    {
+      "id": "tv-65251888",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "【醫師好辣】史上最熱夏天，高溫讓你頻繁進醫院？！ EP1794 預告｜每週六日下午5點 東森綜合32頻道",
+      "date": "",
+      "url": "https://youtu.be/BQA4qpyXxl4",
+      "source": "auto_search",
+      "added_date": "2026-07-13"
+    },
+    {
+      "id": "tv-a69e87b9",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "泡澡 排尿 血壓掉 秋冬浴室是猝死高風險區！ 心臟外科醫師教戰 2招護心運動！ 健康2.0 20240204【完整版】鄭凱云 楊智鈞 陳欣湄 黃淑惠 洪素卿 陳之穎@tvbshealth20",
+      "date": "",
+      "url": "https://youtu.be/UwhFMH7uEuA",
+      "source": "auto_search",
+      "added_date": "2026-07-13"
     }
   ],
   "health_media": [
