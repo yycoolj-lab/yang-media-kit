@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-16T12:07:56.277878+08:00",
+  "last_updated": "2026-07-20T12:35:19.171590+08:00",
   "stats": {
     "facebook_followers": {
       "count": 53000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 100,
-      "display": "100+"
+      "count": 102,
+      "display": "102+"
     },
     "media_exposure": {
-      "count": 173,
-      "display": "173+"
+      "count": 175,
+      "display": "175+"
     },
     "book_sales": {
       "count": 5000,
@@ -1026,6 +1026,26 @@
       "url": "https://youtu.be/UwhFMH7uEuA",
       "source": "auto_search",
       "added_date": "2026-07-13"
+    },
+    {
+      "id": "tv-24396c71",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "趙少康切胸骨開心 心臟暫停3小時！血壓3數值看血管健康 名醫魏崢示警：這症狀有猝死風險！ 健康2.0 20241123【完整版】鄭凱云 楊智鈞 江承鴻 鄭光男 陳之穎 洪素卿 李筱娟",
+      "date": "",
+      "url": "https://youtu.be/EfIrTnpaMCs",
+      "source": "auto_search",
+      "added_date": "2026-07-20"
+    },
+    {
+      "id": "tv-deb4c2b9",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "【2022/12/27 中原光舞冬成 Battle】楊智鈞 龍棍",
+      "date": "",
+      "url": "https://youtu.be/JIoQtvswx9s",
+      "source": "auto_search",
+      "added_date": "2026-07-20"
     }
   ],
   "health_media": [
