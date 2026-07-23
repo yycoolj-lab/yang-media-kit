@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-20T12:35:19.171590+08:00",
+  "last_updated": "2026-07-23T12:14:56.856580+08:00",
   "stats": {
     "facebook_followers": {
       "count": 53000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 102,
-      "display": "102+"
+      "count": 103,
+      "display": "103+"
     },
     "media_exposure": {
-      "count": 175,
-      "display": "175+"
+      "count": 177,
+      "display": "177+"
     },
     "book_sales": {
       "count": 5000,
@@ -1046,6 +1046,16 @@
       "url": "https://youtu.be/JIoQtvswx9s",
       "source": "auto_search",
       "added_date": "2026-07-20"
+    },
+    {
+      "id": "tv-47b0f553",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "便秘也會心肌梗塞？7旬翁飲食不均長期便秘！倒臥馬桶急送醫！【醫師好辣】必看精彩片段 江坤俊 邱鴻傑 楊智鈞",
+      "date": "",
+      "url": "https://youtu.be/CrO50J3hqhY",
+      "source": "auto_search",
+      "added_date": "2026-07-23"
     }
   ],
   "health_media": [
@@ -1770,6 +1780,16 @@
       "source": "auto_search",
       "added_date": "2026-06-29",
       "summary": "三大電解質「鉀、鈣、鎂」看似微小，卻是維持心臟穩定跳動的重要電解質，台中富足診所院長、心臟外科醫師楊智鈞在臉書粉專「俠醫楊智鈞 - 富足診所血管職人」…"
+    },
+    {
+      "id": "ne-fa587904",
+      "outlet": "自由時報",
+      "title": "健康網》腦出血來得快又急 不只血壓高要當心 醫揭5大原因",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5512921",
+      "source": "auto_search",
+      "added_date": "2026-07-23",
+      "summary": "74歲聯電榮譽副董事長宣明智日前於新竹縣寶山鄉住處因腦硬膜外出血緊急送醫，腦出血健康議題也再度引發民眾關注。台中富足診所院長、心臟外科醫師楊智鈞指出…"
     }
   ]
 }
