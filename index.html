@@ -799,8 +799,12 @@
                     <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M9 7l8 5-8 5z"/></svg>
                 </span>
                 <div class="platform-body">
-                    <div class="platform-name">俠醫楊智鈞</div>
+                    <div class="platform-name">俠醫的血液循環頻道</div>
                     <div class="platform-handle">youtube.com/@yycoolj</div>
+                </div>
+                <div class="platform-stat" style="color:#FF0000;">
+                    <div class="n" id="yt-views-display">26.8萬</div>
+                    <div class="l">觀看次數</div>
                 </div>
                 <span class="platform-cta" style="background:#FF0000;">訂閱</span>
             </a>
@@ -1185,6 +1189,10 @@
         // --- Render FB follower count ---
         const fbEl = document.getElementById('fb-follower-display');
         if (fbEl) fbEl.textContent = data.stats.facebook_followers.display;
+
+        // --- Render YouTube view count ---
+        const ytEl = document.getElementById('yt-views-display');
+        if (ytEl && data.stats.youtube_views) ytEl.textContent = data.stats.youtube_views.display;
 
         // --- Render TV Shows (grouped by show) with collapse ---
         renderGroupedSection(
