@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-23T12:14:56.856580+08:00",
+  "last_updated": "2026-07-26T07:26:41.090966+08:00",
   "stats": {
     "facebook_followers": {
       "count": 53000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 103,
-      "display": "103+"
+      "count": 104,
+      "display": "104+"
     },
     "media_exposure": {
-      "count": 177,
-      "display": "177+"
+      "count": 179,
+      "display": "179+"
     },
     "book_sales": {
       "count": 5000,
@@ -1056,6 +1056,16 @@
       "url": "https://youtu.be/CrO50J3hqhY",
       "source": "auto_search",
       "added_date": "2026-07-23"
+    },
+    {
+      "id": "tv-752aebe9",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "為什麼咖啡也救不了你的疲勞？心臟外科醫揭密精神透支的4大求救訊號，看懂身體的無形警訊【 如果云知道 鄭凱云 】feat. #楊智鈞 心臟血管外科醫師",
+      "date": "",
+      "url": "https://youtu.be/oxvM7lqw-uw",
+      "source": "auto_search",
+      "added_date": "2026-07-26"
     }
   ],
   "health_media": [
@@ -1790,6 +1800,16 @@
       "source": "auto_search",
       "added_date": "2026-07-23",
       "summary": "74歲聯電榮譽副董事長宣明智日前於新竹縣寶山鄉住處因腦硬膜外出血緊急送醫，腦出血健康議題也再度引發民眾關注。台中富足診所院長、心臟外科醫師楊智鈞指出…"
+    },
+    {
+      "id": "ne-9dfdfe4a",
+      "outlet": "自由時報",
+      "title": "健康網》網球護心血管 不會打沒關係！醫：這點更重要",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5516789",
+      "source": "auto_search",
+      "added_date": "2026-07-26",
+      "summary": "不少人熱愛打網球，部分網球專長的運動員在國際賽場上有亮眼佳績。台中富足診所院長、心臟外科醫師楊智鈞在臉書粉專「俠醫楊智鈞 - 富足診所血管職人」引用一…"
     }
   ]
 }
