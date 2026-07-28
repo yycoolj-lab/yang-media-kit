@@ -215,7 +215,7 @@
         /* ── Stats Bar ── */
         .stats {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 16px;
             padding: 28px 30px;
             background: var(--card-bg);
@@ -688,6 +688,7 @@
                 gap: 8px;
                 padding: 16px;
             }
+            .stat-card .number { font-size: 1.35em; }
             .stat-card { padding: 14px 6px; }
             .stat-card .number { font-size: 1.4em; }
             .stat-card .label { font-size: 0.75em; }
@@ -1246,6 +1247,13 @@
                 { number: stats.media_exposure.display, label: '媒體曝光' },
                 { number: stats.book_sales.display, label: '著作銷量' }
             ];
+            if (stats.youtube_views) {
+                cards.splice(2, 0, {
+                    number: stats.youtube_views.display,
+                    label: 'YouTube 觀看',
+                    url: stats.youtube_views.url
+                });
+            }
             container.innerHTML = cards.map(function(c) {
                 var tag = c.url ? 'a' : 'div';
                 var href = c.url ? ' href="' + escHtml(c.url) + '" target="_blank"' : '';
