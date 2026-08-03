@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-30T11:55:35.568213+08:00",
+  "last_updated": "2026-08-03T12:29:01.820067+08:00",
   "stats": {
     "facebook_followers": {
       "count": 56000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 104,
-      "display": "104+"
+      "count": 105,
+      "display": "105+"
     },
     "media_exposure": {
-      "count": 179,
-      "display": "179+"
+      "count": 180,
+      "display": "180+"
     },
     "book_sales": {
       "count": 5000,
@@ -1073,6 +1073,16 @@
       "url": "https://youtu.be/oxvM7lqw-uw",
       "source": "auto_search",
       "added_date": "2026-07-26"
+    },
+    {
+      "id": "tv-d043e2ba",
+      "show": "健康2.0",
+      "show_network": "TVBS",
+      "title": "趙少康切胸骨開心 心臟暫停3小時！血壓3數值看血管健康 名醫魏崢示警：這症狀有猝死風險！ 健康2.0【完整版】#鄭凱云#楊智鈞#江承鴻#鄭光男#陳之穎#洪素卿#李筱娟",
+      "date": "",
+      "url": "https://youtu.be/cNk9I2aSHG4",
+      "source": "auto_search",
+      "added_date": "2026-08-03"
     }
   ],
   "health_media": [
