@@ -15,7 +15,7 @@
     <link rel="canonical" href="https://yycoolj-lab.github.io/yang-media-kit/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -46,22 +46,22 @@
     <style>
         :root {
             /* 江戶藍染風格配色 */
-            --primary: #1a2744;       /* 紺色 (kon-iro) 深藍 */
-            --primary-light: #2e4a7a; /* 縹色 (hanada-iro) */
-            --indigo: #3a5a8c;        /* 藍色 (ai-iro) */
-            --indigo-light: #6889b4;  /* 浅葱色 (asagi-iro) */
-            --accent: #b7282e;        /* 朱色 (shu-iro) */
-            --accent-light: #d05a5a;
-            --gold: #c8a45c;          /* 金茶 (kincha) */
-            --bg: #f0ebe3;            /* 鳥の子色 (torinoko) 和紙色 */
-            --card-bg: #faf7f0;       /* 生成色 (kinari) */
-            --text: #1a2230;          /* 墨色 (sumi-iro) */
-            --text-light: #5c6470;    /* 鈍色 (nibi-iro) */
+            --primary: #12362d;       /* 墨松綠 (ink pine) */
+            --primary-light: #1d4a3c; /* 松綠 (pine) */
+            --indigo: #1e4a3d;        /* 深松 (deep pine — buttons/links) */
+            --indigo-light: #4a6b7c;  /* 藏青 (muted teal-navy) */
+            --accent: #af5f63;        /* 藏紅 (muted crimson) */
+            --accent-light: #c48a8d;
+            --gold: #c99c48;          /* 澄金 (muted gold) */
+            --bg: #faf9f4;            /* 米紙白 (rice paper) */
+            --card-bg: #f7f3e8;       /* 砂色 (sand) */
+            --text: #12362d;          /* 墨松綠 */
+            --text-light: #5f6d66;    /* 灰綠 */
             --radius: 12px;
-            --shadow: 0 4px 24px rgba(26,39,68,0.08);
-            --shadow-hover: 0 8px 32px rgba(26,39,68,0.14);
+            --shadow: 0 4px 24px rgba(18,54,45,0.08);
+            --shadow-hover: 0 8px 32px rgba(18,54,45,0.14);
             /* 青海波 SVG pattern (seigaiha) */
-            --seigaiha: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40'%3E%3Cpath d='M0 40 C20 40 20 20 40 20 C60 20 60 40 80 40' fill='none' stroke='%233a5a8c' stroke-width='0.5' opacity='0.12'/%3E%3Cpath d='M-40 40 C-20 40 -20 20 0 20 C20 20 20 40 40 40' fill='none' stroke='%233a5a8c' stroke-width='0.5' opacity='0.12'/%3E%3Cpath d='M40 40 C60 40 60 20 80 20 C100 20 100 40 120 40' fill='none' stroke='%233a5a8c' stroke-width='0.5' opacity='0.12'/%3E%3C/svg%3E");
+            --seigaiha: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40'%3E%3Cpath d='M0 40 C20 40 20 20 40 20 C60 20 60 40 80 40' fill='none' stroke='%23c99c48' stroke-width='0.5' opacity='0.12'/%3E%3Cpath d='M-40 40 C-20 40 -20 20 0 20 C20 20 20 40 40 40' fill='none' stroke='%23c99c48' stroke-width='0.5' opacity='0.12'/%3E%3Cpath d='M40 40 C60 40 60 20 80 20 C100 20 100 40 120 40' fill='none' stroke='%23c99c48' stroke-width='0.5' opacity='0.12'/%3E%3C/svg%3E");
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -81,7 +81,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(26, 39, 68, 0.97);
+            background: rgba(18, 54, 45, 0.97);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 0 20px;
@@ -124,7 +124,7 @@
 
         /* ── Hero Header ── */
         header {
-            background: linear-gradient(160deg, #0e1a2e 0%, #1a2744 35%, #2e4a7a 100%);
+            background: linear-gradient(160deg, #0a231c 0%, #12362d 35%, #1d4a3c 100%);
             color: white;
             padding: 60px 40px 50px;
             text-align: center;
@@ -154,7 +154,7 @@
             object-fit: cover;
             object-position: center 20%;
             border: 3px solid var(--gold);
-            box-shadow: 0 0 0 6px rgba(200,164,92,0.15), 0 8px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 0 0 6px rgba(201,156,72,0.15), 0 8px 40px rgba(0,0,0,0.3);
             margin-bottom: 24px;
             position: relative;
             z-index: 1;
@@ -185,8 +185,8 @@
             z-index: 1;
         }
         .tag {
-            background: rgba(200,164,92,0.12);
-            border: 1px solid rgba(200,164,92,0.35);
+            background: rgba(201,156,72,0.12);
+            border: 1px solid rgba(201,156,72,0.35);
             padding: 6px 18px;
             border-radius: 24px;
             font-size: 0.88em;
@@ -222,21 +222,27 @@
             border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .stat-card {
-            padding: 20px 10px;
+            padding: 18px 10px;
             text-align: center;
             border-radius: 12px;
-            transition: all 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             cursor: default;
+            background: var(--primary);
+            color: #faf9f4;
         }
-        .stat-card:hover { background: var(--bg); }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(18,54,45,0.22);
+        }
         .stat-card .number {
-            font-size: 1.9em;
-            font-weight: 900;
-            color: var(--indigo);
+            font-family: 'Noto Serif TC', 'Songti TC', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #faf9f4;
             line-height: 1.2;
         }
         .stat-card .label {
-            color: var(--text-light);
+            color: rgba(250,249,244,0.72);
             font-size: 0.82em;
             margin-top: 4px;
             font-weight: 400;
@@ -252,18 +258,26 @@
         }
         .section:first-of-type { margin-top: 16px; border-radius: 0 0 var(--radius) var(--radius); }
         .section h2 {
-            font-size: 1.4em;
+            font-size: 1.45em;
             font-weight: 700;
             margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            letter-spacing: 0.04em;
             color: var(--primary);
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(58,90,140,0.15);
+            border-bottom: 1px solid rgba(18,54,45,0.14);
         }
-        .section h2 .icon { font-size: 1.1em; }
 
+        .kicker {
+            font-size: 0.7em;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        header h1, .section h2, .featured-book-title, .platform-stat .n {
+            font-family: 'Noto Serif TC', 'Songti TC', serif;
+        }
         /* ── Media List ── */
         .media-list { display: flex; flex-direction: column; gap: 10px; }
         .media-item {
@@ -279,7 +293,7 @@
         }
         .media-item.has-summary { align-items: flex-start; }
         .media-item:hover {
-            background: #eae8e4;
+            background: #e7eee8;
             border-color: rgba(0,0,0,0.04);
             transform: translateY(-1px);
             box-shadow: 0 2px 12px rgba(0,0,0,0.05);
@@ -295,13 +309,13 @@
             overflow: hidden;
             background: var(--card-bg);
             border: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 3px 12px rgba(26,39,68,0.16);
+            box-shadow: 0 3px 12px rgba(18,54,45,0.16);
             transition: transform 0.25s, box-shadow 0.25s;
         }
         .media-item .media-thumb:hover {
             transform: translateY(-3px);
             background: var(--card-bg);
-            box-shadow: 0 10px 24px rgba(26,39,68,0.28);
+            box-shadow: 0 10px 24px rgba(18,54,45,0.28);
         }
         .media-item .media-thumb img {
             display: block;
@@ -346,7 +360,7 @@
         .media-item a:hover {
             background: var(--primary-light);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(26,39,68,0.3);
+            box-shadow: 0 4px 12px rgba(18,54,45,0.3);
         }
 
         /* ── Subsection ── */
@@ -373,7 +387,7 @@
             margin: 0;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(200,164,92,0.2);
+            border: 1px solid rgba(201,156,72,0.2);
         }
         .highlight-box::before {
             content: '';
@@ -382,7 +396,7 @@
             right: -30%;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(200,164,92,0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(201,156,72,0.06) 0%, transparent 70%);
             border-radius: 50%;
         }
         .highlight-box h3 {
@@ -531,12 +545,12 @@
             width: 116px;
             border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(26,39,68,0.22);
+            box-shadow: 0 4px 16px rgba(18,54,45,0.22);
             transition: transform 0.25s, box-shadow 0.25s;
         }
         .featured-book-cover:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(26,39,68,0.3);
+            box-shadow: 0 8px 24px rgba(18,54,45,0.3);
         }
         .featured-book-cover img {
             display: block;
@@ -629,7 +643,7 @@
             border-radius: 50%;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 6px 22px rgba(26,39,68,0.4);
+            box-shadow: 0 6px 22px rgba(18,54,45,0.4);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s, visibility 0.3s;
@@ -761,7 +775,8 @@
         <div class="stats" id="stats-container"></div>
 
         <div class="section fade-up" id="clinic">
-            <h2><span class="icon">🏥</span> 富足診所</h2>
+            <div class="kicker">CLINIC</div>
+            <h2>富足診所</h2>
             <a class="platform-card" href="https://good-leg.com" target="_blank">
                 <span class="platform-edge" style="background:#114330;"></span>
                 <span class="platform-icon logo"><img src="assets/clinic-logo.png" alt="富足診所 LOGO"></span>
@@ -774,47 +789,50 @@
         </div>
 
         <div class="section fade-up" id="facebook">
-            <h2><span class="icon">📘</span> Facebook 粉絲專頁</h2>
+            <div class="kicker">FACEBOOK</div>
+            <h2>Facebook 粉絲專頁</h2>
             <a class="platform-card" href="https://www.facebook.com/good.leg.clinic/" target="_blank">
-                <span class="platform-edge" style="background:#1877F2;"></span>
-                <span class="platform-icon" style="background:#1877F2;">
+                <span class="platform-edge" style="background:#52679A;"></span>
+                <span class="platform-icon" style="background:#52679A;">
                     <svg viewBox="0 0 320 512" fill="#fff" aria-hidden="true"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
                 </span>
                 <div class="platform-body">
                     <div class="platform-name">俠醫楊智鈞 - 富足診所血管職人</div>
                     <div class="platform-handle">fb.com/good.leg.clinic</div>
                 </div>
-                <div class="platform-stat" style="color:#1877F2;">
+                <div class="platform-stat" style="color:#52679A;">
                     <div class="n" id="fb-follower-display">載入中...</div>
                     <div class="l">追蹤者</div>
                 </div>
-                <span class="platform-cta" style="background:#1877F2;">追蹤</span>
+                <span class="platform-cta" style="background:#52679A;">追蹤</span>
             </a>
         </div>
 
         <div class="section fade-up" id="youtube">
-            <h2><span class="icon">📺</span> YouTube 頻道</h2>
+            <div class="kicker">YOUTUBE</div>
+            <h2>YouTube 頻道</h2>
             <a class="platform-card" href="https://www.youtube.com/@yycoolj" target="_blank">
-                <span class="platform-edge" style="background:#FF0000;"></span>
-                <span class="platform-icon" style="background:#FF0000;">
+                <span class="platform-edge" style="background:#AF5F63;"></span>
+                <span class="platform-icon" style="background:#AF5F63;">
                     <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M9 7l8 5-8 5z"/></svg>
                 </span>
                 <div class="platform-body">
                     <div class="platform-name">俠醫的血液循環頻道</div>
                     <div class="platform-handle">youtube.com/@yycoolj</div>
                 </div>
-                <div class="platform-stat" style="color:#FF0000;">
+                <div class="platform-stat" style="color:#AF5F63;">
                     <div class="n" id="yt-views-display">26.8萬</div>
                     <div class="l">觀看次數</div>
                 </div>
-                <span class="platform-cta" style="background:#FF0000;">訂閱</span>
+                <span class="platform-cta" style="background:#AF5F63;">訂閱</span>
             </a>
         </div>
 
         <div class="section fade-up" id="newsletter">
-            <h2><span class="icon">✉️</span> 電子報</h2>
+            <div class="kicker">NEWSLETTER</div>
+            <h2>電子報</h2>
             <a class="platform-card" href="https://good-leg-clinic.kit.com/96a6dd948f" target="_blank">
-                <span class="platform-edge" style="background:#c8a45c;"></span>
+                <span class="platform-edge" style="background:#c99c48;"></span>
                 <span class="platform-icon" style="overflow:hidden; padding:0;">
                     <img src="photo.jpg?v=9" alt="楊智鈞醫師" style="width:100%; height:100%; object-fit:cover; object-position:center 20%;">
                 </span>
@@ -822,16 +840,17 @@
                     <div class="platform-name">俠醫楊智鈞 電子報</div>
                     <div class="platform-handle">醫療新知・診間思考，直送你的信箱</div>
                 </div>
-                <div class="platform-stat" style="color:#1a2744;">
+                <div class="platform-stat" style="color:#12362d;">
                     <div class="n">775</div>
                     <div class="l">訂閱者</div>
                 </div>
-                <span class="platform-cta" style="background:#c8a45c; color:#1a2744;">訂閱電子報</span>
+                <span class="platform-cta" style="background:#c99c48; color:#12362d;">訂閱電子報</span>
             </a>
         </div>
 
         <div class="section fade-up" id="awards">
-            <h2><span class="icon">🏆</span> 榮譽獎項</h2>
+            <div class="kicker">HONORS</div>
+            <h2>榮譽獎項</h2>
             <div class="media-list">
                 <div class="media-item">
                     <div class="info">
@@ -861,7 +880,8 @@
         </div>
 
         <div class="section fade-up" id="speaking">
-            <h2><span class="icon">🎤</span> 講師・演講（50+ 場）</h2>
+            <div class="kicker">SPEAKING</div>
+            <h2>講師・演講（50+ 場）</h2>
             <p style="text-align: center; color: var(--text-light); margin-bottom: 24px; font-size: 0.95em;">主題：簡報技巧｜溝通表達｜醫病關係｜生涯規劃</p>
 
             <div class="subsection">
@@ -954,24 +974,28 @@
 
         <!-- TV Shows: dynamically rendered from data.json -->
         <div class="section fade-up" id="tv">
-            <h2><span class="icon">📺</span> 電視節目</h2>
+            <div class="kicker">TV APPEARANCES</div>
+            <h2>電視節目</h2>
             <div id="tv-shows-container"></div>
         </div>
 
         <!-- Health Media: dynamically rendered from data.json -->
         <div class="section fade-up" id="health">
-            <h2><span class="icon">🩺</span> 權威健康媒體</h2>
+            <div class="kicker">HEALTH MEDIA</div>
+            <h2>權威健康媒體</h2>
             <div id="health-media-container"></div>
         </div>
 
         <!-- News Media: dynamically rendered from data.json -->
         <div class="section fade-up" id="news">
-            <h2><span class="icon">🗞️</span> 新聞媒體報導</h2>
+            <div class="kicker">NEWS COVERAGE</div>
+            <h2>新聞媒體報導</h2>
             <div id="news-media-container"></div>
         </div>
 
         <div class="section fade-up" id="books">
-            <h2><span class="icon">📚</span> 著作・專欄・Podcast</h2>
+            <div class="kicker">PUBLICATIONS</div>
+            <h2>著作・專欄・Podcast</h2>
             <div class="featured-book">
                 <div class="featured-book-body">
                     <div class="featured-book-head">
@@ -1048,7 +1072,8 @@
         </div>
 
         <div class="section fade-up" id="collab">
-            <h2><span class="icon">🤝</span> 品牌合作</h2>
+            <div class="kicker">COLLABORATIONS</div>
+            <h2>品牌合作</h2>
             <div class="subsection">
                 <h3>合作品牌</h3>
                 <div class="media-list">
@@ -1241,23 +1266,24 @@
             var container = document.getElementById('stats-container');
             if (!container) return;
             var cards = [
-                { number: stats.facebook_followers.display, label: 'Facebook 追蹤', url: stats.facebook_followers.url },
-                { number: '\u2B50 ' + stats.google_rating.score, label: 'Google 評價', url: stats.google_rating.url },
-                { number: stats.tv_episodes.display, label: '受邀節目集數' },
-                { number: stats.media_exposure.display, label: '媒體曝光' },
-                { number: stats.book_sales.display, label: '著作銷量' }
+                { number: stats.facebook_followers.display, label: 'Facebook 追蹤', url: stats.facebook_followers.url, color: '#52679A' },
+                { number: '\u2B50 ' + stats.google_rating.score, label: 'Google 評價', url: stats.google_rating.url, color: '#12362d' },
+                { number: stats.tv_episodes.display, label: '受邀節目集數', color: '#4A6B7C' },
+                { number: stats.media_exposure.display, label: '媒體曝光', color: '#4A6B7C' },
+                { number: stats.book_sales.display, label: '著作銷量', color: '#12362d' }
             ];
             if (stats.youtube_views) {
                 cards.splice(2, 0, {
                     number: stats.youtube_views.display,
                     label: 'YouTube 觀看',
-                    url: stats.youtube_views.url
+                    url: stats.youtube_views.url,
+                    color: '#AF5F63'
                 });
             }
             container.innerHTML = cards.map(function(c) {
                 var tag = c.url ? 'a' : 'div';
                 var href = c.url ? ' href="' + escHtml(c.url) + '" target="_blank"' : '';
-                var style = c.url ? ' style="text-decoration:none;color:inherit;"' : '';
+                var style = ' style="background:' + c.color + ';' + (c.url ? 'text-decoration:none;color:inherit;' : '') + '"';
                 return '<' + tag + href + ' class="stat-card"' + style + '>' +
                     '<div class="number">' + escHtml(c.number) + '</div>' +
                     '<div class="label">' + escHtml(c.label) + '</div>' +
