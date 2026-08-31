@@ -122,12 +122,11 @@
             padding-bottom: 40px;
         }
 
-        /* ── Hero Header ── */
+        /* ── Hero Header（溫暖禪風：暖砂底・墨字・拱形照片） ── */
         header {
-            background: linear-gradient(160deg, #0a231c 0%, #12362d 35%, #1d4a3c 100%);
-            color: white;
-            padding: 60px 40px 50px;
-            text-align: center;
+            background: linear-gradient(170deg, #fbf8ef 0%, #f7f2e4 55%, #f1e9d5 100%);
+            color: var(--text);
+            padding: 60px 48px 54px;
             position: relative;
             overflow: hidden;
         }
@@ -136,7 +135,34 @@
             position: absolute;
             inset: 0;
             background: var(--seigaiha);
-            opacity: 0.6;
+            opacity: 0.55;
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+        .hero-text { flex: 1; min-width: 0; text-align: left; }
+        .hero-kicker {
+            font-size: 0.78em;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            color: var(--gold);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+        .hero-portrait { flex-shrink: 0; }
+        .hero-portrait img {
+            display: block;
+            width: 250px;
+            height: 320px;
+            object-fit: cover;
+            object-position: center 20%;
+            border-radius: 160px 160px 16px 16px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 0 8px rgba(201,156,72,0.10), 0 18px 44px rgba(18,54,45,0.18);
         }
         header::after {
             content: '';
@@ -147,70 +173,49 @@
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
-        .avatar {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center 20%;
-            border: 3px solid var(--gold);
-            box-shadow: 0 0 0 6px rgba(201,156,72,0.15), 0 8px 40px rgba(0,0,0,0.3);
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
-        }
         header h1 {
-            font-size: 2.8em;
-            font-weight: 900;
-            letter-spacing: 0.05em;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
+            font-size: 2.9em;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
         header .subtitle {
-            font-size: 1.15em;
-            opacity: 0.85;
+            font-size: 1.05em;
+            color: var(--text-light);
             margin-bottom: 20px;
-            font-weight: 300;
-            letter-spacing: 0.08em;
-            position: relative;
-            z-index: 1;
+            font-weight: 400;
+            letter-spacing: 0.06em;
         }
         .tags {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 10px;
             flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
         }
         .tag {
-            background: rgba(201,156,72,0.12);
-            border: 1px solid rgba(201,156,72,0.35);
+            background: rgba(201,156,72,0.10);
+            border: 1px solid rgba(201,156,72,0.45);
             padding: 6px 18px;
             border-radius: 24px;
-            font-size: 0.88em;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            color: var(--gold);
+            font-size: 0.86em;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: #8a6a2f;
         }
         .bio-intro {
-            max-width: 720px;
-            margin: 16px auto 0;
-            padding: 18px 24px;
-            background: rgba(255,255,255,0.06);
+            max-width: 640px;
+            margin: 26px 0 0;
+            padding: 18px 22px;
+            background: rgba(255,255,255,0.55);
             border-left: 3px solid var(--gold);
             border-radius: 6px;
-            font-size: 0.95em;
-            line-height: 1.85;
-            color: rgba(255,255,255,0.92);
+            font-size: 0.93em;
+            line-height: 1.9;
+            color: var(--text);
             text-align: left;
-            position: relative;
-            z-index: 1;
-            font-weight: 300;
             letter-spacing: 0.02em;
         }
-        .bio-intro:first-of-type { margin-top: 28px; }
 
         /* ── Stats Bar ── */
         .stats {
@@ -709,11 +714,16 @@
             .section { padding: 24px 20px; margin-top: 10px; }
             header { padding: 40px 24px 36px; }
             header h1 { font-size: 2em; }
+            .hero-inner { flex-direction: column-reverse; gap: 26px; text-align: center; }
+            .hero-text { text-align: center; }
+            .tags { justify-content: center; }
+            .bio-intro { text-align: left; margin: 22px auto 0; }
+            .hero-portrait img { width: 190px; height: 244px; border-radius: 122px 122px 14px 14px; }
             .container { padding-bottom: 20px; }
         }
         @media (max-width: 600px) {
             header h1 { font-size: 1.8em; }
-            .avatar { width: 120px; height: 120px; }
+            .hero-portrait img { width: 170px; height: 218px; border-radius: 110px 110px 12px 12px; }
             .media-item {
                 flex-direction: column;
                 align-items: flex-start;
@@ -758,18 +768,25 @@
 
     <div class="container">
         <header id="hero">
-            <img src="photo.jpg?v=9" alt="楊智鈞醫師" class="avatar">
-            <h1>俠醫楊智鈞</h1>
-            <p class="subtitle">台中富足診所院長｜微創靜脈曲張手術權威</p>
-            <div class="tags">
-                <span class="tag">心臟外科</span>
-                <span class="tag">靜脈曲張</span>
-                <span class="tag">微創手術</span>
-                <span class="tag">血液淨化</span>
-            </div>
-            <p class="bio-intro">
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <div class="hero-kicker">Cardiovascular Surgeon ・ Writer</div>
+                    <h1>俠醫楊智鈞</h1>
+                    <p class="subtitle">台中富足診所院長｜微創靜脈曲張手術權威</p>
+                    <div class="tags">
+                        <span class="tag">心臟外科</span>
+                        <span class="tag">靜脈曲張</span>
+                        <span class="tag">微創手術</span>
+                        <span class="tag">血液淨化</span>
+                    </div>
+                    <p class="bio-intro">
                 俠醫楊智鈞，本名楊智鈞，英文名 Chih-Chun Yang / David C.C. Yang，是台灣心臟血管外科醫師、富足診所創辦人。專注於靜脈曲張微創治療與預防醫學，同時著有醫學科普書籍，他擁有心臟血管外科急重症背景，長期透過醫療書寫將複雜醫學轉化為大眾語言。是一位把心臟外科、靜脈醫學、預防醫學、個人書寫與品牌敘事結合起來的醫師創作者。
-            </p>
+                    </p>
+                </div>
+                <div class="hero-portrait">
+                    <img src="photo.jpg?v=9" alt="楊智鈞醫師">
+                </div>
+            </div>
         </header>
 
         <div class="stats" id="stats-container"></div>
