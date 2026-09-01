@@ -65,6 +65,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        ::selection { background: var(--gold); color: #12362d; }
 
         html { scroll-behavior: smooth; }
 
@@ -311,7 +312,7 @@
             background-image: var(--seigaiha);
             color: #f4f0e4;
         }
-        .section.band-ink h2 { color: #f7f3e8; border-bottom-color: rgba(201,156,72,0.35); }
+        .section.band-ink h2 { color: #f7f3e8; }
         .section.band-ink .media-item {
             background: rgba(255,255,255,0.055);
             border-color: rgba(201,156,72,0.16);
@@ -331,12 +332,18 @@
         .section h2 {
             font-size: 2.05em;
             font-weight: 700;
-            margin-bottom: 32px;
+            margin-bottom: 36px;
             letter-spacing: 0.05em;
             line-height: 1.35;
             color: var(--primary);
-            padding-bottom: 18px;
-            border-bottom: 1px solid rgba(18,54,45,0.14);
+        }
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 46px;
+            height: 2px;
+            background: var(--gold);
+            margin-top: 18px;
         }
 
         .kicker {
@@ -358,11 +365,13 @@
             align-items: center;
             gap: 12px;
             padding: 16px 20px;
-            background: var(--bg);
+            background: var(--card-bg);
             border-radius: 12px;
             transition: all 0.25s;
-            border: 1px solid transparent;
+            border: 1px solid rgba(18,54,45,0.05);
         }
+        .band-sand .media-item { background: var(--bg); }
+        .band-sand .platform-card { background: var(--bg); }
         .media-item.has-summary { align-items: flex-start; }
         .media-item:hover {
             background: #e7eee8;
@@ -997,7 +1006,7 @@
         <div class="section fade-up" id="speaking">
             <div class="kicker">SPEAKING</div>
             <h2>講師・演講（50+ 場）</h2>
-            <p style="text-align: center; color: var(--text-light); margin-bottom: 24px; font-size: 0.95em;">主題：簡報技巧｜溝通表達｜醫病關係｜生涯規劃</p>
+            <p style="color: var(--text-light); margin: -14px 0 30px; font-size: 0.92em; letter-spacing: 0.08em;">簡報技巧 ・ 溝通表達 ・ 醫病關係 ・ 生涯規劃</p>
 
             <div class="subsection">
                 <h3>公開課程講師</h3>
@@ -1372,7 +1381,7 @@
             if (!container) return;
             var cards = [
                 { number: stats.facebook_followers.display, label: 'Facebook 追蹤', url: stats.facebook_followers.url, color: '#52679A' },
-                { number: '\u2B50 ' + stats.google_rating.score, label: 'Google 評價', url: stats.google_rating.url, color: '#12362d' },
+                { number: '\u2605\uFE0E ' + Number(stats.google_rating.score).toFixed(1), label: 'Google 評價', url: stats.google_rating.url, color: '#12362d' },
                 { number: stats.tv_episodes.display, label: '受邀節目集數', color: '#4A6B7C' },
                 { number: stats.media_exposure.display, label: '媒體曝光', color: '#4A6B7C' },
                 { number: stats.book_sales.display, label: '著作銷量', color: '#12362d' }
