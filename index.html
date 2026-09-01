@@ -115,18 +115,26 @@
             background: rgba(255,255,255,0.15);
         }
 
-        /* ── Container ── */
+        /* ── Container（滿版色帶，內容自行收斂寬度） ── */
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding-bottom: 40px;
+            max-width: none;
+            margin: 0;
+            padding-bottom: 0;
+        }
+        .container > header,
+        .container > .stats,
+        .container > .section,
+        .container > footer {
+            padding-left: max(36px, calc(50vw - 500px));
+            padding-right: max(36px, calc(50vw - 500px));
         }
 
         /* ── Hero Header（溫暖禪風：暖砂底・墨字・拱形照片） ── */
         header {
             background: linear-gradient(170deg, #fbf8ef 0%, #f7f2e4 55%, #f1e9d5 100%);
             color: var(--text);
-            padding: 60px 48px 54px;
+            padding-top: 66px;
+            padding-bottom: 66px;
             position: relative;
             overflow: hidden;
         }
@@ -221,10 +229,11 @@
         .stats {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 16px;
-            padding: 28px 30px;
+            gap: 14px;
+            padding-top: 30px;
+            padding-bottom: 30px;
             background: var(--card-bg);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(18,54,45,0.08);
         }
         .stat-card {
             padding: 18px 10px;
@@ -253,31 +262,89 @@
             font-weight: 400;
         }
 
-        /* ── Sections ── */
-        .section {
-            padding: 36px 36px;
-            background: var(--card-bg);
-            margin-top: 16px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+        /* ── Quote Band（墨綠格言帶：字級對比的高潮） ── */
+        .quote-band {
+            background: var(--primary);
+            background-image: var(--seigaiha);
+            color: #f7f3e8;
+            text-align: center;
+            padding: 76px max(36px, calc(50vw - 500px));
+            border-top: 1px solid rgba(201,156,72,0.25);
+            border-bottom: 1px solid rgba(201,156,72,0.25);
         }
-        .section:first-of-type { margin-top: 16px; border-radius: 0 0 var(--radius) var(--radius); }
-        .section h2 {
-            font-size: 1.45em;
-            font-weight: 700;
-            margin-bottom: 24px;
-            letter-spacing: 0.04em;
+        .quote-kicker {
+            font-size: 0.66em;
+            letter-spacing: 0.36em;
+            color: var(--gold);
+            margin-bottom: 22px;
+            font-weight: 500;
+        }
+        .quote-text {
+            font-family: 'Noto Serif TC', 'Songti TC', serif;
+            font-size: 2.3em;
+            font-weight: 500;
+            line-height: 1.85;
+            letter-spacing: 0.14em;
+            color: #f7f3e8;
+        }
+        .quote-sign {
+            margin-top: 24px;
+            font-size: 0.85em;
+            letter-spacing: 0.16em;
+            color: rgba(201,156,72,0.85);
+        }
+
+        /* ── Sections（滿版色帶，深淺交錯） ── */
+        .section {
+            padding-top: 72px;
+            padding-bottom: 72px;
+            background: var(--bg);
+            margin-top: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        /* 砂色帶 */
+        .section.band-sand { background: var(--card-bg); }
+        /* 墨綠深帶 */
+        .section.band-ink {
+            background: var(--primary);
+            background-image: var(--seigaiha);
+            color: #f4f0e4;
+        }
+        .section.band-ink h2 { color: #f7f3e8; border-bottom-color: rgba(201,156,72,0.35); }
+        .section.band-ink .media-item {
+            background: rgba(255,255,255,0.055);
+            border-color: rgba(201,156,72,0.16);
+        }
+        .section.band-ink .media-item:hover { background: rgba(255,255,255,0.10); }
+        .section.band-ink .media-item .title { color: #f7f3e8; }
+        .section.band-ink .media-item .meta,
+        .section.band-ink .media-item .summary { color: rgba(244,240,228,0.72); }
+        .section.band-ink .media-item a:not(.media-thumb) {
+            background: var(--gold);
             color: var(--primary);
-            padding-bottom: 12px;
+        }
+        .section.band-ink .subsection h3 { color: var(--gold); border-bottom-color: var(--gold); }
+        .section.band-ink .collapse-toggle { border-color: var(--gold); color: var(--gold); }
+        .section.band-ink .collapse-toggle:hover { background: var(--gold); color: var(--primary); }
+        .section.band-ink .media-thumb { border-color: rgba(201,156,72,0.25); }
+        .section h2 {
+            font-size: 2.05em;
+            font-weight: 700;
+            margin-bottom: 32px;
+            letter-spacing: 0.05em;
+            line-height: 1.35;
+            color: var(--primary);
+            padding-bottom: 18px;
             border-bottom: 1px solid rgba(18,54,45,0.14);
         }
 
         .kicker {
-            font-size: 0.7em;
+            font-size: 0.66em;
             font-weight: 500;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.34em;
             color: var(--gold);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             text-transform: uppercase;
         }
         header h1, .section h2, .featured-book-title, .platform-stat .n {
@@ -622,11 +689,12 @@
             background: var(--primary);
             background-image: var(--seigaiha);
             color: white;
-            padding: 32px 36px;
+            padding-top: 44px;
+            padding-bottom: 44px;
             text-align: center;
-            margin-top: 16px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            margin-top: 0;
+            border-radius: 0;
+            box-shadow: none;
             border-top: 3px solid var(--gold);
             position: relative;
         }
@@ -711,7 +779,10 @@
             .stat-card { padding: 14px 6px; }
             .stat-card .number { font-size: 1.4em; }
             .stat-card .label { font-size: 0.75em; }
-            .section { padding: 24px 20px; margin-top: 10px; }
+            .section { padding-top: 48px; padding-bottom: 48px; }
+            .section h2 { font-size: 1.6em; margin-bottom: 24px; }
+            .quote-band { padding-top: 52px; padding-bottom: 52px; }
+            .quote-text { font-size: 1.5em; line-height: 1.75; }
             header { padding: 40px 24px 36px; }
             header h1 { font-size: 2em; }
             .hero-inner { flex-direction: column-reverse; gap: 26px; text-align: center; }
@@ -791,6 +862,12 @@
 
         <div class="stats" id="stats-container"></div>
 
+        <div class="quote-band">
+            <div class="quote-kicker">PHILOSOPHY</div>
+            <p class="quote-text">上求佛道，下化眾生。<br>血管專業，守護健康。</p>
+            <p class="quote-sign">— 俠醫楊智鈞</p>
+        </div>
+
         <div class="section fade-up" id="clinic">
             <div class="kicker">CLINIC</div>
             <h2>富足診所</h2>
@@ -805,7 +882,7 @@
             </a>
         </div>
 
-        <div class="section fade-up" id="facebook">
+        <div class="section fade-up band-sand" id="facebook">
             <div class="kicker">FACEBOOK</div>
             <h2>Facebook 粉絲專頁</h2>
             <a class="platform-card" href="https://www.facebook.com/good.leg.clinic/" target="_blank">
@@ -845,7 +922,7 @@
             </a>
         </div>
 
-        <div class="section fade-up" id="newsletter">
+        <div class="section fade-up band-sand" id="newsletter">
             <div class="kicker">NEWSLETTER</div>
             <h2>電子報</h2>
             <a class="platform-card" href="https://good-leg-clinic.kit.com/96a6dd948f" target="_blank">
@@ -865,7 +942,7 @@
             </a>
         </div>
 
-        <div class="section fade-up" id="awards">
+        <div class="section fade-up band-ink" id="awards">
             <div class="kicker">HONORS</div>
             <h2>榮譽獎項</h2>
             <div class="media-list">
@@ -990,7 +1067,7 @@
         </div>
 
         <!-- TV Shows: dynamically rendered from data.json -->
-        <div class="section fade-up" id="tv">
+        <div class="section fade-up band-sand" id="tv">
             <div class="kicker">TV APPEARANCES</div>
             <h2>電視節目</h2>
             <div id="tv-shows-container"></div>
@@ -1004,13 +1081,13 @@
         </div>
 
         <!-- News Media: dynamically rendered from data.json -->
-        <div class="section fade-up" id="news">
+        <div class="section fade-up band-sand" id="news">
             <div class="kicker">NEWS COVERAGE</div>
             <h2>新聞媒體報導</h2>
             <div id="news-media-container"></div>
         </div>
 
-        <div class="section fade-up" id="books">
+        <div class="section fade-up band-ink" id="books">
             <div class="kicker">PUBLICATIONS</div>
             <h2>著作・專欄・Podcast</h2>
             <div class="featured-book">
