@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-09-14T13:47:51.755767+08:00",
+  "last_updated": "2026-09-17T13:44:32.392443+08:00",
   "stats": {
     "facebook_followers": {
-      "count": 56000,
-      "display": "5.6萬",
+      "count": 57508,
+      "display": "5.8萬",
       "url": "https://www.facebook.com/good.leg.clinic/"
     },
     "google_rating": {
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 105,
-      "display": "105+"
+      "count": 108,
+      "display": "108+"
     },
     "media_exposure": {
-      "count": 182,
-      "display": "182+"
+      "count": 185,
+      "display": "185+"
     },
     "book_sales": {
       "count": 5000,
@@ -1083,6 +1083,36 @@
       "url": "https://youtu.be/cNk9I2aSHG4",
       "source": "auto_search",
       "added_date": "2026-08-03"
+    },
+    {
+      "id": "tv-a0cc3a0b",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "【全民星攻略】疫情時期 她們做什麼紓壓？EP1111預告｜ 週一至週五晚間9點 東森綜合32頻道",
+      "date": "",
+      "url": "https://youtu.be/PmEviO7iMy0",
+      "source": "auto_search",
+      "added_date": "2026-09-17"
+    },
+    {
+      "id": "tv-da23e6b6",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "【全民星攻略】吃什麼食物 能有效舒緩壓力？EP1111預告｜ 週一至週五晚間9點 東森綜合32頻道",
+      "date": "",
+      "url": "https://youtu.be/JsF6upS5pb8",
+      "source": "auto_search",
+      "added_date": "2026-09-17"
+    },
+    {
+      "id": "tv-ed257390",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "【全民星攻略】答案被否定 讓來賓森七七啦 EP1180預告｜ 週一至週五晚間9點 東森綜合32頻道",
+      "date": "",
+      "url": "https://youtu.be/TmGEnbGZfxU",
+      "source": "auto_search",
+      "added_date": "2026-09-17"
     }
   ],
   "health_media": [
