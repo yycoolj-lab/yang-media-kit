@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-24T13:51:40.017226+08:00",
+  "last_updated": "2026-09-28T14:19:31.946899+08:00",
   "stats": {
     "facebook_followers": {
       "count": 58000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 108,
-      "display": "108+"
+      "count": 109,
+      "display": "109+"
     },
     "media_exposure": {
-      "count": 186,
-      "display": "186+"
+      "count": 187,
+      "display": "187+"
     },
     "book_sales": {
       "count": 5000,
@@ -1113,6 +1113,16 @@
       "url": "https://youtu.be/TmGEnbGZfxU",
       "source": "auto_search",
       "added_date": "2026-09-17"
+    },
+    {
+      "id": "tv-3d66e230",
+      "show": "醫師好辣",
+      "show_network": "東森",
+      "title": "俠醫楊智鈞",
+      "date": "",
+      "url": "https://youtu.be/r25oygZnWEQ",
+      "source": "auto_search",
+      "added_date": "2026-09-28"
     }
   ],
   "health_media": [
