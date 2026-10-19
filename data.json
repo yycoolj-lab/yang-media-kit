@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15T13:34:05.898291+08:00",
+  "last_updated": "2026-10-19T13:43:44.301703+08:00",
   "stats": {
     "facebook_followers": {
       "count": 58000,
@@ -15,8 +15,8 @@
       "display": "109+"
     },
     "media_exposure": {
-      "count": 188,
-      "display": "188+"
+      "count": 190,
+      "display": "190+"
     },
     "book_sales": {
       "count": 5000,
@@ -1907,6 +1907,25 @@
       "source": "auto_search",
       "added_date": "2026-10-05",
       "summary": "首次上稿10-04&nbsp;12:56更新時間10-04 17:17台中富足診所院長、心臟外科醫師楊智鈞在臉書粉專「俠醫楊智鈞 - 富足診所血管職人…"
+    },
+    {
+      "id": "ne-875186b8",
+      "outlet": "自由時報",
+      "title": "健康網》久坐熬夜 醫：小心「深層靜脈血栓」",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5609562",
+      "source": "auto_search",
+      "added_date": "2026-10-19",
+      "summary": "久坐、熬夜、少喝水？小心「深層靜脈血栓」找上你！台中富足診所院長、心臟外科醫師楊智鈞在臉書粉專「俠醫楊智鈞 - 富足診所血管職人」表示，不少人經常長時…"
+    },
+    {
+      "id": "ne-db340fab",
+      "outlet": "TNL The News Lens 關鍵評論網",
+      "title": "楊智鈞《如果佛陀握著手術刀》：抽中法鼓山的菩薩戒，媽媽卻叫我認真考慮",
+      "date": "2026-10-18",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1oWlVpWjlXVHFxRGluNWxnZHdLV1VYdHgwYlF6ckxnTFdVSERPQlRCbUQ4SFp6LWpMazR5cW9TeFVXNU51V1BQR2Q2QnE0UERMSXdlQQ?oc=5&hl=en-US&gl=US&ceid=US:en",
+      "source": "auto_search",
+      "added_date": "2026-10-19"
     }
   ]
 }
