@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22T13:45:42.132887+08:00",
+  "last_updated": "2026-10-26T13:46:43.961234+08:00",
   "stats": {
     "facebook_followers": {
       "count": 58000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 109,
-      "display": "109+"
+      "count": 112,
+      "display": "112+"
     },
     "media_exposure": {
-      "count": 190,
-      "display": "190+"
+      "count": 194,
+      "display": "194+"
     },
     "book_sales": {
       "count": 5000,
@@ -1123,6 +1123,36 @@
       "url": "https://youtu.be/r25oygZnWEQ",
       "source": "auto_search",
       "added_date": "2026-09-28"
+    },
+    {
+      "id": "tv-8bcce1f7",
+      "show": "健康好生活",
+      "show_network": "年代",
+      "title": "腳踝發黑、反覆濕疹治不好？醫師驚爆：腿部血管在「生鏽」！Feat.楊智鈞醫師｜週五首播｜主持人洪素卿｜【健康早知道】S5EP.26 靜脈曲張",
+      "date": "",
+      "url": "https://youtu.be/0Tv8zLMVy1Y",
+      "source": "auto_search",
+      "added_date": "2026-10-26"
+    },
+    {
+      "id": "tv-984863ad",
+      "show": "醫師有話說",
+      "show_network": "",
+      "title": "腳扭傷竟引發致命血栓？3招辨識靜脈曲張警訊：腳踝發黑別輕忽！久坐久站族必看 Feat.楊智鈞醫師｜週五首播｜主持人洪素卿｜【健康早知道】S5EP.26 靜脈曲張",
+      "date": "",
+      "url": "https://youtu.be/j-wQJkS7ATY",
+      "source": "auto_search",
+      "added_date": "2026-10-26"
+    },
+    {
+      "id": "tv-26c22a87",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "小腿按壓凹陷、半夜常抽筋？當心下肢靜脈壓力已超載，受傷「不動」更危險？ Feat.楊智鈞醫師｜週五首播｜主持人洪素卿｜【健康早知道】S5EP.26 靜脈曲張",
+      "date": "",
+      "url": "https://youtu.be/RQumADzVKpk",
+      "source": "auto_search",
+      "added_date": "2026-10-26"
     }
   ],
   "health_media": [
@@ -1926,6 +1956,16 @@
       "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1oWlVpWjlXVHFxRGluNWxnZHdLV1VYdHgwYlF6ckxnTFdVSERPQlRCbUQ4SFp6LWpMazR5cW9TeFVXNU51V1BQR2Q2QnE0UERMSXdlQQ?oc=5&hl=en-US&gl=US&ceid=US:en",
       "source": "auto_search",
       "added_date": "2026-10-19"
+    },
+    {
+      "id": "ne-6bc47340",
+      "outlet": "自由時報",
+      "title": "健康網》腿上蜘蛛網陪伴10年 醫談「靜脈叢」",
+      "date": "",
+      "url": "https://health.ltn.com.tw/article/breakingnews/5616710",
+      "source": "auto_search",
+      "added_date": "2026-10-26",
+      "summary": "台中富足診所院長、心臟外科醫師楊智鈞在臉書粉專「俠醫楊智鈞 - 富足診所血管職人」表示，一般人俗稱腿上的蜘蛛網，其實正確名稱應該稱為「靜脈叢」。特別從…"
     }
   ]
 }
