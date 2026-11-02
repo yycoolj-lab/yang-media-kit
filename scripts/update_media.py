@@ -46,6 +46,8 @@ TV_SHOWS = {
     "命運好好玩": {"network": "JET", "channel_keywords": ["命運好好玩"]},
     "小明星大跟班": {"network": "中天", "channel_keywords": ["小明星大跟班"]},
     "醫師有話說": {"network": "", "channel_keywords": ["醫師有話說"]},
+    "健康早知道": {"network": "", "channel_keywords": ["健康早知道"]},
+    "來！聊醫下": {"network": "", "channel_keywords": ["來!聊醫下", "來！聊醫下", "聊醫下"]},
 }
 
 # Known news outlet domains for classification
