@@ -48,6 +48,7 @@ TV_SHOWS = {
     "醫師有話說": {"network": "", "channel_keywords": ["醫師有話說"]},
     "健康早知道": {"network": "", "channel_keywords": ["健康早知道"]},
     "來！聊醫下": {"network": "", "channel_keywords": ["來!聊醫下", "來！聊醫下", "聊醫下"]},
+    "哇賽心觀點": {"network": "哇賽心理學", "channel_keywords": ["哇賽心理學", "哇賽心觀點"]},
 }
 
 # Known news outlet domains for classification

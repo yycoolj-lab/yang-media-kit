@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 115,
-      "display": "115+"
+      "count": 116,
+      "display": "116+"
     },
     "media_exposure": {
-      "count": 197,
-      "display": "197+"
+      "count": 198,
+      "display": "198+"
     },
     "book_sales": {
       "count": 5000,
@@ -1183,6 +1183,16 @@
       "url": "https://youtu.be/Aqu8NZzHDok",
       "source": "auto_search",
       "added_date": "2026-11-02"
+    },
+    {
+      "id": "tv-d6ca461a",
+      "show": "哇賽心觀點",
+      "show_network": "哇賽心理學",
+      "title": "睡飽還是好累…一直沒精神、無力、長期沒電，你可能正在慢性發炎！從飲食、睡眠、壓力到代謝，找回身心能量｜哇賽心觀點（ft.楊智鈞醫師、婷婷營養師）",
+      "date": "2026-10-14",
+      "url": "https://youtu.be/bLBYDZwM7tU",
+      "source": "manual",
+      "added_date": "2026-11-03"
     }
   ],
   "health_media": [
