@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02T18:56:26.644225+08:00",
+  "last_updated": "2026-11-05T15:42:55.158274+08:00",
   "stats": {
     "facebook_followers": {
       "count": 58000,
@@ -11,12 +11,12 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 116,
-      "display": "116+"
+      "count": 117,
+      "display": "117+"
     },
     "media_exposure": {
-      "count": 198,
-      "display": "198+"
+      "count": 199,
+      "display": "199+"
     },
     "book_sales": {
       "count": 5000,
@@ -1193,6 +1193,16 @@
       "url": "https://youtu.be/bLBYDZwM7tU",
       "source": "manual",
       "added_date": "2026-11-03"
+    },
+    {
+      "id": "tv-84eddb69",
+      "show": "健康好生活",
+      "show_network": "年代",
+      "title": "EP34家人病危，葉克膜該裝嗎？心臟外科醫師揭開急救現場，談最難的生死決定！feat. 心臟血管外科 楊智鈞醫師",
+      "date": "",
+      "url": "https://youtu.be/-wuUDcZwMK0",
+      "source": "auto_search",
+      "added_date": "2026-11-05"
     }
   ],
   "health_media": [
