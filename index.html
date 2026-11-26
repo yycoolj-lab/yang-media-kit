@@ -971,7 +971,7 @@
                     <div class="platform-handle">Apple Podcasts ・ 醫療、修行與人生路上的對談</div>
                 </div>
                 <div class="platform-stat" style="color:#7C4A6B;">
-                    <div class="n">16</div>
+                    <div class="n" id="podcast-episodes-display">18</div>
                     <div class="l">集數</div>
                 </div>
                 <span class="platform-cta" style="background:#7C4A6B;">收聽</span>
@@ -1361,6 +1361,10 @@
         // --- Render YouTube view count ---
         const ytEl = document.getElementById('yt-views-display');
         if (ytEl && data.stats.youtube_views) ytEl.textContent = data.stats.youtube_views.display;
+
+        // --- Render podcast episode count ---
+        const podEl = document.getElementById('podcast-episodes-display');
+        if (podEl && data.stats.podcast_episodes) podEl.textContent = data.stats.podcast_episodes.display;
 
         // --- Render TV Shows (grouped by show) with collapse ---
         renderGroupedSection(

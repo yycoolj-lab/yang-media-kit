@@ -12,7 +12,7 @@ permissions:
 jobs:
   update-data:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
 
     steps:
       - name: Checkout repository
@@ -30,7 +30,7 @@ jobs:
         run: python -m playwright install chromium --with-deps
 
       - name: Install yt-dlp
-        run: pip install yt-dlp
+        run: pip install -U yt-dlp
 
       - name: Run update script
         run: python scripts/update_media.py
@@ -41,14 +41,15 @@ jobs:
       - name: Check for changes
         id: check
         run: |
-          git diff --quiet data.json && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
+          git add -N scripts/yt_seen.json 2>/dev/null || true
+          git diff --quiet data.json scripts/yt_seen.json && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push
         if: steps.check.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json
+          git add data.json scripts/yt_seen.json
           git commit -m "chore: auto-update media data $(date +%Y-%m-%d)" || true
           git pull --rebase origin main
           git push

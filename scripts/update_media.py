@@ -7,6 +7,7 @@ Updates data.json — designed to run in GitHub Actions (no API keys needed).
 
 import json
 import hashlib
+import os
 import re
 import subprocess
 import sys
@@ -33,6 +34,33 @@ FACEBOOK_PAGE_ID = "good.leg.clinic"
 # Google Maps Place ID for rating
 GOOGLE_PLACE_SEARCH = "富足診所"
 
+# The doctor's own channel: source of the view/subscriber stats, and never
+# counted as a media appearance.
+OWN_YOUTUBE_URL = "https://www.youtube.com/@yycoolj"
+OWN_CHANNELS = ["俠醫的血液循環頻道", "富足診所"]
+PODCAST_ITUNES_ID = "1710937955"
+BOOK_TITLES = ["如果佛陀握著手術刀"]
+# Brand channels: their videos are endorsements, listed by hand, not media appearances.
+BRAND_CHANNELS = ["大研生醫", "Daiken", "iRESTORE"]
+
+# Video ids already checked and rejected (so each run only inspects new ones)
+YT_SEEN_FILE = Path(__file__).parent / "yt_seen.json"
+MAX_YT_CHECKS = int(os.environ.get("MAX_YT_CHECKS", "150"))
+MAX_BACKFILL = int(os.environ.get("MAX_BACKFILL", "25"))
+MIN_VIDEO_SECONDS = 75  # skip Shorts-length clips cut from full episodes
+
+# Searches that are not tied to one show (query, how many results)
+GENERIC_YT_QUERIES = [
+    ("楊智鈞醫師", 40),
+    ("俠醫楊智鈞", 30),
+    ("楊智鈞 心臟外科", 25),
+    ("楊智鈞 靜脈曲張", 25),
+    ("楊智鈞 專訪", 20),
+    ("楊智鈞 富足診所", 20),
+    ("如果佛陀握著手術刀", 20),
+    ("feat.楊智鈞", 20),
+]
+
 # Known TV shows to search on YouTube
 TV_SHOWS = {
     "醫師好辣": {"network": "東森", "channel_keywords": ["醫師好辣"]},
@@ -48,7 +76,8 @@ TV_SHOWS = {
     "醫師有話說": {"network": "", "channel_keywords": ["醫師有話說"]},
     "健康早知道": {"network": "", "channel_keywords": ["健康早知道"]},
     "來！聊醫下": {"network": "", "channel_keywords": ["來!聊醫下", "來！聊醫下", "聊醫下"]},
-    "哇賽心觀點": {"network": "哇賽心理學", "channel_keywords": ["哇賽心理學", "哇賽心觀點"]},
+    "哇賽心觀點": {"network": "哇賽心理學", "channel_keywords": ["哇賽心理學", "哇賽心觀點"]},    "空中醫語教室": {"network": "", "channel_keywords": ["空中醫語教室", "Med on Air"]},
+    "廣播節目": {"network": "", "channel_keywords": ["九八新聞台", "飛碟聯播網", "中廣", "News98"]},
 }
 
 # Known news outlet domains for classification
@@ -185,9 +214,50 @@ def is_duplicate_title(title, existing_titles):
 
 # ─── FACEBOOK FOLLOWERS (Playwright) ─────────────────
 
+def fetch_facebook_followers_plugin():
+    """Follower count from Facebook's Page Plugin, the widget meant to be embedded on
+    other sites. It needs no login and is a plain HTTP request. Returns an int
+    (rounded by Facebook to the nearest thousand) or None."""
+    url = (
+        "https://www.facebook.com/plugins/page.php?href="
+        + urllib.parse.quote(FACEBOOK_PAGE_URL, safe="")
+        + "&tabs&width=340&height=130&show_facepile=false&locale=zh_TW"
+    )
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    }
+    html = requests.get(url, headers=headers, timeout=20).text
+    m = re.search(r'"followerCountFormatted":"((?:[^"\\]|\\.)*)"', html)
+    if not m:
+        return None
+    text = json.loads('"' + m.group(1) + '"').replace("\u00a0", " ").replace(",", "").strip()
+    num = re.match(r'([\d.]+)\s*(萬|K|M|千)?', text)
+    if not num:
+        return None
+    scale = {"萬": 10000, "K": 1000, "千": 1000, "M": 1000000}.get(num.group(2), 1)
+    return int(round(float(num.group(1)) * scale))
+
+
 def update_facebook_followers(data):
-    """Use Playwright headless browser to read Facebook page follower count."""
+    """Read the Facebook page follower count: Page Plugin first, Playwright as backup."""
     print("[FB] Fetching follower count...")
+    try:
+        count = fetch_facebook_followers_plugin()
+        old = data["stats"]["facebook_followers"].get("count", 0)
+        if count and count > 1000 and count >= old * 0.9:
+            # The plugin rounds to the nearest thousand. Keep a more precise stored
+            # number unless the rounded one has actually moved past it.
+            if format_follower_count(count) != format_follower_count(old):
+                data["stats"]["facebook_followers"]["count"] = count
+                data["stats"]["facebook_followers"]["display"] = format_follower_count(count)
+                print(f"[FB] Updated via page plugin: {old} -> {count} ({format_follower_count(count)})")
+                return True
+            print(f"[FB] Page plugin: unchanged at {format_follower_count(old)}")
+            return False
+        print(f"[FB] Page plugin gave no usable number ({count}), trying browser...")
+    except Exception as e:
+        print(f"[FB] Page plugin error: {e}, trying browser...")
+
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
@@ -559,7 +629,8 @@ def search_google_news(data):
     existing_titles = get_existing_titles(data)
     new_items = []
 
-    for name in SEARCH_NAMES:
+    news_terms = SEARCH_NAMES + BOOK_TITLES
+    for name in news_terms:
         rss_url = (
             f"https://news.google.com/rss/search?"
             f"q={urllib.parse.quote(name)}&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
@@ -577,7 +648,7 @@ def search_google_news(data):
                 if actual_url in existing_urls or link in existing_urls:
                     continue
 
-                if not any(n in title for n in SEARCH_NAMES):
+                if not any(n in title for n in news_terms):
                     continue
 
                 pub_date = ""
@@ -666,194 +737,389 @@ def determine_category(outlet):
 
 # ─── YOUTUBE SEARCH (yt-dlp, improved) ───────────────
 
-def search_youtube_shows(data):
-    """Use yt-dlp to search YouTube for new TV show appearances."""
-    print("[YT] Searching YouTube for new TV appearances...")
-    existing_urls = get_existing_urls(data)
-    existing_titles = get_existing_titles(data)
-    new_items = []
+# ─── YOUTUBE: CHANNEL STATS / PODCAST COUNT ──────────
 
-    # Check if yt-dlp is available
+BROWSER_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Cookie": "CONSENT=YES+1; SOCS=CAI",
+}
+
+
+def format_wan(count):
+    """278415 -> '27.8萬'; small numbers stay as-is with thousands separators."""
+    if count >= 10000:
+        return f"{count / 10000:.1f}".rstrip("0").rstrip(".") + "萬"
+    return f"{count:,}"
+
+
+def update_youtube_stats(data):
+    """Read total views / subscribers / video count from the channel's About page."""
+    print("[YT-STATS] Fetching channel stats...")
+    try:
+        resp = requests.get(OWN_YOUTUBE_URL + "/about", headers=BROWSER_HEADERS, timeout=20)
+        html = resp.text
+        m = re.search(r'"viewCountText":"([\d,]+) views"', html)
+        if not m:
+            print("[YT-STATS] View count not found on page, keeping old value")
+            return False
+        views = int(m.group(1).replace(",", ""))
+        yv = data["stats"].setdefault("youtube_views", {"url": OWN_YOUTUBE_URL})
+        old = yv.get("count", 0)
+        # Total views never go down by much; a collapse means we parsed the wrong thing.
+        if views < old * 0.9:
+            print(f"[YT-STATS] Suspicious value {views} (was {old}), keeping old value")
+            return False
+        yv["count"] = views
+        yv["display"] = format_wan(views)
+        s = re.search(r'"subscriberCountText":"([\d,.]+)(K|M)? subscribers"', html)
+        if s:
+            n = float(s.group(1).replace(",", ""))
+            n *= {"K": 1000, "M": 1000000}.get(s.group(2), 1)
+            yv["subscribers"] = int(n)
+        v = re.search(r'"videoCountText":"([\d,]+) videos"', html)
+        if v:
+            yv["videos"] = int(v.group(1).replace(",", ""))
+        print(f"[YT-STATS] views {old} -> {views} ({yv['display']}), subs {yv.get('subscribers')}, videos {yv.get('videos')}")
+        return views != old
+    except Exception as e:
+        print(f"[YT-STATS] Error: {e}")
+        return False
+
+
+def update_podcast_count(data):
+    """Episode count of the podcast, from Apple's public lookup API."""
+    print("[PODCAST] Fetching episode count...")
+    try:
+        resp = requests.get(
+            f"https://itunes.apple.com/lookup?id={PODCAST_ITUNES_ID}&country=tw", timeout=20
+        )
+        results = resp.json().get("results", [])
+        if not results or not results[0].get("trackCount"):
+            print("[PODCAST] No result, keeping old value")
+            return False
+        count = int(results[0]["trackCount"])
+        pod = data["stats"].setdefault("podcast_episodes", {})
+        old = pod.get("count", 0)
+        if count < old:
+            print(f"[PODCAST] Count went down ({old} -> {count}), keeping old value")
+            return False
+        pod["count"] = count
+        pod["display"] = str(count)
+        print(f"[PODCAST] episodes {old} -> {count}")
+        return count != old
+    except Exception as e:
+        print(f"[PODCAST] Error: {e}")
+        return False
+
+
+# ─── YOUTUBE: TV / INTERVIEW DISCOVERY ───────────────
+
+def load_seen():
+    if YT_SEEN_FILE.exists():
+        try:
+            return json.loads(YT_SEEN_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
+
+
+def save_seen(seen):
+    YT_SEEN_FILE.write_text(
+        json.dumps(seen, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8"
+    )
+
+
+def yt_flat_search(query, count):
+    """Cheap search: returns [(id, title, channel)] without per-video requests."""
+    try:
+        result = subprocess.run(
+            ["yt-dlp", f"ytsearch{count}:{query}", "--dump-json", "--no-download",
+             "--flat-playlist", "--no-warnings", "--extractor-args", "youtube:lang=zh-TW"],
+            capture_output=True, text=True, timeout=90,
+        )
+    except subprocess.TimeoutExpired:
+        print(f"[YT] Timeout searching '{query}'")
+        return []
+    out = []
+    for line in result.stdout.strip().split("\n"):
+        if not line:
+            continue
+        try:
+            v = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if v.get("id"):
+            out.append((v["id"], v.get("title", "") or "",
+                        v.get("channel", "") or v.get("uploader", "") or ""))
+    return out
+
+
+def yt_video_meta(video_id):
+    """Full metadata for one video: title, description, channel, upload date, duration.
+    Tries yt-dlp first, then the watch page HTML. Returns None if both fail."""
+    try:
+        result = subprocess.run(
+            ["yt-dlp", "--dump-json", "--no-download", "--no-warnings",
+             "--extractor-args", "youtube:lang=zh-TW", "--", video_id],
+            capture_output=True, text=True, timeout=60,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            info = json.loads(result.stdout.strip().split("\n")[0])
+            ud = info.get("upload_date") or ""
+            return {
+                "title": info.get("title", "") or "",
+                "description": info.get("description", "") or "",
+                "tags": " ".join(info.get("tags") or []),
+                "channel": info.get("channel", "") or info.get("uploader", "") or "",
+                "date": f"{ud[:4]}-{ud[4:6]}-{ud[6:8]}" if len(ud) == 8 else "",
+                "duration": info.get("duration") or 0,
+            }
+    except Exception:
+        pass
+
+    # Fallback: the watch page embeds the same fields as JSON.
+    try:
+        headers = dict(BROWSER_HEADERS, **{"Accept-Language": "zh-TW,zh;q=0.9"})
+        html = requests.get(f"https://www.youtube.com/watch?v={video_id}",
+                            headers=headers, timeout=20).text
+
+        def js_str(key):
+            m = re.search(r'"%s":"((?:[^"\\]|\\.)*)"' % key, html)
+            if not m:
+                return ""
+            try:
+                return json.loads('"' + m.group(1) + '"')
+            except Exception:
+                return m.group(1)
+
+        title = js_str("title")
+        channel = js_str("ownerChannelName") or js_str("author")
+        if not title or not channel:
+            return None
+        dm = re.search(r'"(?:uploadDate|publishDate)":"(\d{4}-\d{2}-\d{2})', html)
+        ls = re.search(r'"lengthSeconds":"(\d+)"', html)
+        return {
+            "title": title,
+            "description": js_str("shortDescription"),
+            "tags": "",
+            "channel": channel,
+            "date": dm.group(1) if dm else "",
+            "duration": int(ls.group(1)) if ls else 0,
+        }
+    except Exception:
+        return None
+
+
+ROLE_WORDS = ["來賓", "醫師", "名醫", "主任", "院長", "俠醫", "feat", "Feat", "專訪", "邀請", "外科", "主治"]
+
+
+def _simplify(text):
+    return re.sub(r'[\s　！!？?。，,、：:；;（）()【】\[\]「」『』｜|#＃]', '', text)
+
+
+def episode_key(show, title):
+    """Identify the broadcast episode a video belongs to, so that a full episode,
+    its parts and its re-uploads count once. None when the title carries no marker."""
+    m = re.search(r'EP\s?\.?(\d{2,4})', title, re.I) or re.search(r'第\s?(\d{2,4})\s?集', title)
+    if m:
+        return f"{show}|ep{int(m.group(1))}"
+    m = re.search(r'(20[12]\d)[./]?(\d{2})[./]?(\d{2})', title)
+    if m:
+        return f"{show}|d{m.group(1)}{m.group(2)}{m.group(3)}"
+    return None
+
+
+def names_doctor(meta, show_name, existing_simplified):
+    """True when the video really features the doctor, not merely mentions the name.
+
+    A name in the title counts. A name in the description counts only on a line
+    that also carries a role word (來賓／醫師／主任…), which rules out people who
+    share the name. A description line that just repeats the title of a video we
+    already list is a link to that other video, so it does not count either.
+    """
+    if any(n in meta["title"] for n in SEARCH_NAMES):
+        return True
+    for line in meta["description"].split("\n"):
+        if not any(n in line for n in SEARCH_NAMES):
+            continue
+        simple = _simplify(line)
+        if any(len(t) >= 12 and t[:12] in simple for t in existing_simplified):
+            continue
+        if any(w in line for w in ROLE_WORDS):
+            return True
+    # Hashtag-only mention: trust it only on a known show's channel.
+    if any(n in meta["tags"] for n in SEARCH_NAMES) and show_name != "網路直播/專訪":
+        return True
+    return False
+
+
+def classify_show(channel, title):
+    """Decide which show a video belongs to from its real channel and title."""
+    for name, info in TV_SHOWS.items():
+        if name in title:
+            return name, info["network"]
+    for name, info in TV_SHOWS.items():
+        if any(kw in channel for kw in info["channel_keywords"]):
+            return name, info["network"]
+    return "網路直播/專訪", ""
+
+
+def search_youtube_shows(data):
+    """Find new TV / interview appearances on YouTube.
+
+    1. Collect candidate video ids from many cheap searches.
+    2. For each id not seen before, fetch full metadata and keep it only if the
+       doctor's name is in the title, description or tags.
+    3. Classify by the video's real channel, and record the upload date.
+    Ids that were checked and rejected are remembered in yt_seen.json so later
+    runs don't fetch them again.
+    """
+    print("[YT] Searching YouTube for new appearances...")
     try:
         subprocess.run(["yt-dlp", "--version"], capture_output=True, check=True)
     except (FileNotFoundError, subprocess.CalledProcessError):
-        print("[YT] yt-dlp not installed, trying pip install...")
-        try:
-            subprocess.run([sys.executable, "-m", "pip", "install", "yt-dlp"],
-                         capture_output=True, check=True)
-        except Exception:
-            print("[YT] Could not install yt-dlp, skipping YouTube search")
-            return new_items
+        print("[YT] yt-dlp not available, skipping YouTube search")
+        return []
 
-    # Strategy 1: Search by show name + doctor name
-    for show_name, show_info in TV_SHOWS.items():
-        for name in SEARCH_NAMES[:1]:
-            query = f"{show_name} {name}"
-            found = _yt_search(query, show_name, show_info, existing_urls, existing_titles, data, new_items, count=10)
-            print(f"  [{show_name}] found {found} new")
+    existing_urls = get_existing_urls(data)
+    existing_titles = get_existing_titles(data)
+    seen = load_seen()
+    new_items = []
+    existing_simplified = {_simplify(i["title"]) for i in data.get("tv_shows", [])}
+    existing_episodes = {episode_key(i["show"], i["title"]) for i in data.get("tv_shows", [])}
+    existing_episodes.discard(None)
 
-    # Strategy 2: Generic search for doctor name on YouTube (catch unlisted shows)
-    for name in SEARCH_NAMES:
-        query = f"{name} 節目"
-        _yt_search_generic(query, existing_urls, existing_titles, data, new_items, count=15)
+    queries = [(f"{show} 楊智鈞", 12) for show in TV_SHOWS]
+    queries += [(q, n) for q, n in GENERIC_YT_QUERIES]
 
-    # Strategy 3: Search for doctor name + interview/專訪
-    _yt_search_generic("楊智鈞 專訪", existing_urls, existing_titles, data, new_items, count=10)
+    candidates = {}
+    for query, count in queries:
+        for vid, title, channel in yt_flat_search(query, count):
+            if vid in existing_urls or vid in seen or vid in candidates:
+                continue
+            candidates[vid] = (title, channel)
+    print(f"[YT] {len(candidates)} unseen candidates from {len(queries)} searches")
 
-    print(f"[YT] Found {len(new_items)} new TV appearances total")
+    # Titles that already name the doctor go first, so they are never cut by the cap.
+    ordered = sorted(candidates.items(),
+                     key=lambda kv: not any(n in kv[1][0] for n in SEARCH_NAMES))
+    checked = 0
+    for vid, (flat_title, flat_channel) in ordered:
+        if checked >= MAX_YT_CHECKS:
+            print(f"[YT] Reached {MAX_YT_CHECKS} checks this run; the rest wait for next run")
+            break
+        checked += 1
+        meta = yt_video_meta(vid)
+
+        if meta is None:
+            # Could not read the description. Only trust an explicit name in the title,
+            # and do not remember the id, so it is retried next run.
+            if not any(n in flat_title for n in SEARCH_NAMES):
+                continue
+            meta = {"title": flat_title, "description": "", "tags": "",
+                    "channel": flat_channel, "date": "", "duration": 0}
+            remember = False
+        else:
+            remember = True
+
+        show_name, network = classify_show(meta["channel"], meta["title"])
+        ep_key = episode_key(show_name, meta["title"])
+        simple_title = _simplify(meta["title"])
+
+        if any(own in meta["channel"] for own in OWN_CHANNELS):
+            verdict = "own_channel"
+        elif any(b in meta["channel"] for b in BRAND_CHANNELS):
+            verdict = "brand_channel"
+        elif not names_doctor(meta, show_name, existing_simplified):
+            verdict = "no_name"
+        elif meta["duration"] and meta["duration"] < MIN_VIDEO_SECONDS:
+            verdict = "too_short"
+        elif is_duplicate_title(meta["title"], existing_titles) or any(
+                len(t) >= 18 and t[:18] == simple_title[:18] for t in existing_simplified):
+            verdict = "duplicate_title"
+        elif ep_key and ep_key in existing_episodes:
+            verdict = "same_episode"
+        else:
+            verdict = None
+
+        if verdict:
+            if remember:
+                seen[vid] = verdict
+            continue
+
+        new_item = {
+            "id": make_id("tv", show_name, meta["title"]),
+            "show": show_name,
+            "show_network": network,
+            "title": meta["title"],
+            "date": meta["date"],
+            "url": f"https://youtu.be/{vid}",
+            "channel": meta["channel"],
+            "source": "auto_search",
+            "added_date": today_str(),
+        }
+        data["tv_shows"].append(new_item)
+        existing_urls.update([vid, new_item["url"]])
+        existing_titles.add(meta["title"])
+        existing_simplified.add(simple_title)
+        if ep_key:
+            existing_episodes.add(ep_key)
+        new_items.append(new_item)
+        print(f"  [+] [{show_name}] {meta['date'] or '----'} {meta['channel']} | {meta['title'][:50]}")
+
+    save_seen(seen)
+    print(f"[YT] Checked {checked}, added {len(new_items)} new appearances")
     return new_items
 
 
-def _yt_search(query, show_name, show_info, existing_urls, existing_titles, data, new_items, count=10):
-    """Search YouTube for a specific show."""
-    found = 0
-    try:
-        result = subprocess.run(
-            [
-                "yt-dlp",
-                f"ytsearch{count}:{query}",
-                "--dump-json",
-                "--no-download",
-                "--flat-playlist",
-            ],
-            capture_output=True,
-            text=True,
-            timeout=60,
-        )
+# ─── BACKFILL MISSING DATES ──────────────────────────
 
-        for line in result.stdout.strip().split("\n"):
-            if not line:
+def backfill_dates(data):
+    """Fill in missing dates, a few per run: YouTube upload dates for TV items,
+    and published dates for articles. Items without a date sink to the bottom
+    of the newest-first lists."""
+    filled = 0
+    budget = MAX_BACKFILL
+    for item in data.get("tv_shows", []):
+        if budget <= 0:
+            break
+        if item.get("date") or item.get("date_checked"):
+            continue
+        m = re.search(r'(?:youtu\.be/|[?&]v=)([\w-]{11})', item.get("url", ""))
+        if not m:
+            continue
+        budget -= 1
+        meta = yt_video_meta(m.group(1))
+        if meta and meta["date"]:
+            item["date"] = meta["date"]
+            item.setdefault("channel", meta["channel"])
+            filled += 1
+        elif meta:
+            item["date_checked"] = today_str()
+
+    for section in ("news_media", "health_media"):
+        for item in data.get(section, []):
+            if budget <= 0:
+                break
+            url = item.get("url", "")
+            if item.get("date") or item.get("date_checked") or "news.google.com" in url:
                 continue
+            budget -= 1
             try:
-                video = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-
-            video_id = video.get("id", "")
-            title = video.get("title", "")
-            url = f"https://youtu.be/{video_id}"
-
-            if video_id in existing_urls or url in existing_urls:
-                continue
-
-            # Verify relevance: the DOCTOR'S NAME must appear in title or description.
-            # (Matching only the show name lets other doctors' episodes through.)
-            description = video.get("description", "") or ""
-            text_to_check = title + " " + description
-            if not any(n in text_to_check for n in SEARCH_NAMES):
-                continue
-
-            if is_duplicate_title(title, existing_titles):
-                continue
-
-            upload_date = video.get("upload_date", "")
-            if upload_date and len(upload_date) == 8:
-                pub_date = f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:8]}"
-            else:
-                pub_date = ""
-
-            new_item = {
-                "id": make_id("tv", show_name, title),
-                "show": show_name,
-                "show_network": show_info["network"],
-                "title": title,
-                "date": pub_date,
-                "url": url,
-                "source": "auto_search",
-                "added_date": today_str(),
-            }
-
-            data["tv_shows"].append(new_item)
-            existing_urls.add(video_id)
-            existing_urls.add(url)
-            existing_titles.add(title)
-            new_items.append(new_item)
-            found += 1
-            print(f"  [+] [{show_name}] {title[:60]}...")
-
-    except subprocess.TimeoutExpired:
-        print(f"[YT] Timeout searching for '{query}'")
-    except Exception as e:
-        print(f"[YT] Error searching for '{query}': {e}")
-
-    return found
-
-
-def _yt_search_generic(query, existing_urls, existing_titles, data, new_items, count=10):
-    """Search YouTube generically — auto-detect which show it belongs to."""
-    try:
-        result = subprocess.run(
-            [
-                "yt-dlp",
-                f"ytsearch{count}:{query}",
-                "--dump-json",
-                "--no-download",
-                "--flat-playlist",
-            ],
-            capture_output=True,
-            text=True,
-            timeout=60,
-        )
-
-        for line in result.stdout.strip().split("\n"):
-            if not line:
-                continue
-            try:
-                video = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-
-            video_id = video.get("id", "")
-            title = video.get("title", "")
-            channel = video.get("channel", "") or video.get("uploader", "") or ""
-            url = f"https://youtu.be/{video_id}"
-
-            if video_id in existing_urls or url in existing_urls:
-                continue
-
-            if not any(n in title for n in SEARCH_NAMES):
-                continue
-
-            if is_duplicate_title(title, existing_titles):
-                continue
-
-            # Try to detect which show this belongs to
-            show_name = "網路直播/專訪"
-            show_network = ""
-            for sn, si in TV_SHOWS.items():
-                if sn in title or sn in channel or any(kw in channel for kw in si["channel_keywords"]):
-                    show_name = sn
-                    show_network = si["network"]
-                    break
-
-            upload_date = video.get("upload_date", "")
-            if upload_date and len(upload_date) == 8:
-                pub_date = f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:8]}"
-            else:
-                pub_date = ""
-
-            new_item = {
-                "id": make_id("tv", show_name, title),
-                "show": show_name,
-                "show_network": show_network,
-                "title": title,
-                "date": pub_date,
-                "url": url,
-                "source": "auto_search",
-                "added_date": today_str(),
-            }
-
-            data["tv_shows"].append(new_item)
-            existing_urls.add(video_id)
-            existing_urls.add(url)
-            existing_titles.add(title)
-            new_items.append(new_item)
-            print(f"  [+] [{show_name}] {title[:60]}...")
-
-    except subprocess.TimeoutExpired:
-        print(f"[YT] Timeout for generic search '{query}'")
-    except Exception as e:
-        print(f"[YT] Error in generic search '{query}': {e}")
+                html = requests.get(url, headers=dict(BROWSER_HEADERS, **{"Accept-Language": "zh-TW"}),
+                                    timeout=15).text
+                m = (re.search(r'"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})', html)
+                     or re.search(r'published_time"\s+content="(\d{4}-\d{2}-\d{2})', html))
+                if m:
+                    item["date"] = m.group(1)
+                    filled += 1
+                else:
+                    item["date_checked"] = today_str()
+            except Exception:
+                pass
+    print(f"[DATES] Filled {filled} missing dates")
+    return filled > 0
 
 
 # ─── RECALCULATE STATS ───────────────────────────────
@@ -903,10 +1169,20 @@ def main():
     if yt:
         changes = True
 
-    # 6. Recalculate stats
+    # 6. Own-channel numbers (no login needed)
+    if update_youtube_stats(data):
+        changes = True
+    if update_podcast_count(data):
+        changes = True
+
+    # 7. Fill in missing dates, a few per run
+    if backfill_dates(data):
+        changes = True
+
+    # 8. Recalculate stats
     recalculate_stats(data)
 
-    # 7. Save
+    # 9. Save
     save_data(data)
     if changes:
         print(f"\n[DONE] Data updated with new content.")

@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-11-23T16:35:11.737681+08:00",
+  "last_updated": "2026-11-26T12:13:49.271379+08:00",
   "stats": {
     "facebook_followers": {
-      "count": 58000,
-      "display": "5.8萬",
+      "count": 59000,
+      "display": "5.9萬",
       "url": "https://www.facebook.com/good.leg.clinic/"
     },
     "google_rating": {
@@ -11,23 +11,27 @@
       "url": "https://www.google.com.tw/search?hl=zh-TW&q=%E5%AF%8C%E8%B6%B3%E8%A8%BA%E6%89%80#lrd=0x346917ef63a9ea17:0x9ea9740b26ecc26e,1"
     },
     "tv_episodes": {
-      "count": 117,
-      "display": "117+"
+      "count": 129,
+      "display": "129+"
     },
     "media_exposure": {
-      "count": 199,
-      "display": "199+"
+      "count": 211,
+      "display": "211+"
     },
     "book_sales": {
       "count": 5000,
       "display": "5,000+"
     },
     "youtube_views": {
-      "count": 278415,
-      "display": "27.8萬",
-      "subscribers": 412,
+      "count": 280201,
+      "display": "28萬",
+      "subscribers": 417,
       "videos": 79,
       "url": "https://www.youtube.com/@yycoolj"
+    },
+    "podcast_episodes": {
+      "count": 18,
+      "display": "18"
     }
   },
   "tv_shows": [
@@ -206,7 +210,7 @@
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "便秘也會心肌梗塞？7旬翁倒臥馬桶急送醫（精華版）",
-      "date": "",
+      "date": "2022-02-28",
       "url": "https://youtu.be/UCt_lW9Egrs",
       "source": "manual",
       "added_date": "2026-02-12"
@@ -406,7 +410,7 @@
       "show": "聚焦2.0",
       "show_network": "年代",
       "title": "第223集 名醫劈腿拉筋動齡法！每天一分鐘延壽十年",
-      "date": "",
+      "date": "2022-08-11",
       "url": "https://youtu.be/FcnWlTDJ0pk",
       "source": "manual",
       "added_date": "2026-02-12"
@@ -459,7 +463,7 @@
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "17LIVE｜心臟外科手術室秘辛",
-      "date": "",
+      "date": "2020-03-20",
       "url": "https://youtu.be/CVYU5FPCNwQ",
       "source": "manual",
       "added_date": "2026-02-12"
@@ -469,7 +473,7 @@
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "17LIVE｜健康人也會心臟病發？安心過好年",
-      "date": "",
+      "date": "2020-01-15",
       "url": "https://youtu.be/-4xVOgZnFIQ",
       "source": "manual",
       "added_date": "2026-02-12"
@@ -479,7 +483,7 @@
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "早安健康｜小心空汙傷「心」！室內空氣與環境是關鍵",
-      "date": "",
+      "date": "2024-11-19",
       "url": "https://youtu.be/Qxq1gTnILVg",
       "source": "manual",
       "added_date": "2026-02-12"
@@ -489,7 +493,7 @@
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "克拉拉主播｜內外兼修 開心俠醫專訪",
-      "date": "",
+      "date": "2021-03-04",
       "url": "https://youtu.be/tYV_4vvTrlY",
       "source": "manual",
       "added_date": "2026-02-12"
@@ -499,7 +503,7 @@
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "就是愛健康｜俠醫楊智鈞的50道心臟密碼",
-      "date": "",
+      "date": "2024-02-10",
       "url": "https://youtu.be/XGVO9MU-k-w",
       "source": "manual",
       "added_date": "2026-02-12"
@@ -509,7 +513,7 @@
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "健康主播鄭凱云｜心梗自救！倒下前30秒一定要做這3件事",
-      "date": "",
+      "date": "2025-01-04",
       "url": "https://youtu.be/ieSBSFoQJV0",
       "source": "manual",
       "added_date": "2026-02-12"
@@ -519,250 +523,275 @@
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "關乎生死的心臟科！馬西屏心臟手術後，竟「中風」上頭條？！【#醫師好辣】20210713 完整版 關乎生死的心臟科 EP1165 馬西屏 劉中平",
-      "date": "",
+      "date": "2021-07-14",
       "url": "https://youtu.be/24K4IYbzNIQ",
       "source": "auto_search",
-      "added_date": "2026-03-02"
+      "added_date": "2026-03-02",
+      "channel": "醫師好辣"
     },
     {
       "id": "tv-07f3bcfd",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "真的隔行如隔山！醫師們大風吹交換考題只能盲猜？超怕答錯出糗面面相覷！20230213 曾國城 侯鐘堡 完整版 白袍醫師益智保衛戰 EP801【全民星攻略】",
-      "date": "",
+      "date": "2023-02-14",
       "url": "https://youtu.be/jub0MOshkAc",
       "source": "auto_search",
-      "added_date": "2026-03-02"
+      "added_date": "2026-03-02",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-f0447412",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "如何迎接老化避免悲劇 醫:每天保持3個穩定錨點【健康2.0分段】@tvbshealth20  EP3157-3 20260111 #鄭凱云#楊智鈞#楊聰財#蘇家宏#許聖梅",
-      "date": "",
+      "date": "2026-01-11",
       "url": "https://youtu.be/NOt3rJMuo_A",
       "source": "auto_search",
-      "added_date": "2026-03-02"
+      "added_date": "2026-03-02",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-cb610cbe",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "血壓波動大氣溫低 防範夜間.凌晨心因性猝死【健康2.0分段】@tvbshealth20  EP3157-1 20260111 #鄭凱云#楊智鈞#楊聰財#蘇家宏#許聖梅",
-      "date": "",
+      "date": "2026-01-11",
       "url": "https://youtu.be/eCyQ5TqmKWM",
       "source": "auto_search",
-      "added_date": "2026-03-02"
+      "added_date": "2026-03-02",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-9b7d33a8",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "律師手把手教學 只要8分鐘就可以寫好自書遺囑【健康2.0分段】@tvbshealth20  EP3157-4 20260111 #鄭凱云#楊智鈞#楊聰財#蘇家宏#許聖梅",
-      "date": "",
+      "date": "2026-01-11",
       "url": "https://youtu.be/6ZXCjfvo7H4",
       "source": "auto_search",
-      "added_date": "2026-03-02"
+      "added_date": "2026-03-02",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-123b7d21",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "獨居.不接電話.不出門 是精神醫學的紅色警訊【健康2.0分段】@tvbshealth20  EP3157-2 20260111 #鄭凱云#楊智鈞#楊聰財#蘇家宏#許聖梅",
-      "date": "",
+      "date": "2026-01-11",
       "url": "https://youtu.be/FU4wPfJDRco",
       "source": "auto_search",
-      "added_date": "2026-03-02"
+      "added_date": "2026-03-02",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-d71a8300",
       "show": "聚焦2.0",
       "show_network": "年代",
       "title": "冠軍麻辣鍋爆卡！快學101餐盤救命吃法！【聚焦2.0】第607集",
-      "date": "",
+      "date": "2025-11-29",
       "url": "https://youtu.be/e5tH1mfNQNA",
       "source": "auto_search",
-      "added_date": "2026-03-02"
+      "added_date": "2026-03-02",
+      "channel": "聚焦2.0"
     },
     {
       "id": "tv-2054aafd",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "無極限！病患扛著點滴架外出吃大餐？奇葩行徑讓醫師好崩潰！【#醫師好辣】 20190903 完整版 EP803 江坤俊 林婷",
-      "date": "",
+      "date": "2019-09-04",
       "url": "https://youtu.be/8p5Qh24BjJc",
       "source": "auto_search",
-      "added_date": "2026-03-09"
+      "added_date": "2026-03-09",
+      "channel": "醫師好辣"
     },
     {
       "id": "tv-e6b831c4",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "艾融答題運超強最終回合停不了！梁赫群逆天獎金運氣挑戰躲歸零？！20230803 曾國城 顏永烈 完整版 勇闖暑假鬼門關的生存智慧王 EP900【全民星攻略】",
-      "date": "",
+      "date": "2023-08-04",
       "url": "https://youtu.be/UpD0XRHGXbU",
       "source": "auto_search",
-      "added_date": "2026-03-09"
+      "added_date": "2026-03-09",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-fae00369",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "尚樺遇到題目客語自動跳過？竟轉頭對城哥說：交給你了？！20240117 曾國城 邱以太 完整版 熱血心跳強健高手雲集 EP994【全民星攻略】",
-      "date": "",
+      "date": "2024-01-18",
       "url": "https://youtu.be/0gROYNV4ndg",
       "source": "auto_search",
-      "added_date": "2026-03-16"
+      "added_date": "2026-03-16",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-272a0e02",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "楊奇煜不知登記結婚多少錢？蘿莉塔：你是不是沒登記！20240815 曾國城 許瓊月 瑪那熊 Part3 EP1111【全民星攻略】",
-      "date": "",
+      "date": "2024-08-16",
       "url": "https://youtu.be/wkGkALN_Zq0",
       "source": "auto_search",
-      "added_date": "2026-03-30"
+      "added_date": "2026-03-30",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-a98eb8ed",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "尚樺一本正經解說暗藏胡說八道？城哥：原來自肥在這邊！20240815 曾國城 楊奇煜 完整版 我需要吶喊！紓壓發洩知識大本營 EP1111【全民星攻略】",
-      "date": "",
+      "date": "2024-08-16",
       "url": "https://youtu.be/yJJEjAli7Kk",
       "source": "auto_search",
-      "added_date": "2026-04-13"
+      "added_date": "2026-04-13",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-6d0ffbb7",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "14歲少女肚子腫脹？竟罹患卵巢癌？！【醫師好辣】 20190515 part1 EP740 陳保仁 馮媛甄",
-      "date": "",
+      "date": "2019-05-16",
       "url": "https://youtu.be/TCMV1Efi47w",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "醫師好辣"
     },
     {
       "id": "tv-edd255d5",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "病患無極限！耐不住酒癮，偷跑出去竟車禍？！【醫師好辣】 精選 EP803｜江坤俊 林婷",
-      "date": "",
+      "date": "2020-08-11",
       "url": "https://youtu.be/j9BHothdTxw",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "東森綜合台"
     },
     {
       "id": "tv-a13e75fc",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "疾病居然會挑對象？部落客罹癌摘除子宮，竟遭小三嗆：比你健康？！【醫師好辣】精選 EP740｜陳保仁 馮媛甄",
-      "date": "",
+      "date": "2020-04-24",
       "url": "https://youtu.be/JFcXOhY6ZjE",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "東森綜合台"
     },
     {
       "id": "tv-c7e6cc54",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "搭機13小時痛暈竟是肺栓塞！腿腫抽筋發紅恐靜脈栓塞！謝金燕水腫成象腿4器官恐發求救訊號！健康2.0 20250420【完整版】#鄭凱云 #楊智鈞 #王健宇 #張宏銘 #葉懿昕 #芳瑜",
-      "date": "",
+      "date": "2025-04-20",
       "url": "https://youtu.be/pjWO2Huvhow",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-c79ff512",
       "show": "聚焦2.0",
       "show_network": "年代",
       "title": "享受新加坡米其林免出國！「麥片蝦.松鼠魚」道道都是招牌菜！【聚焦2.0】第607集",
-      "date": "",
+      "date": "2025-11-29",
       "url": "https://youtu.be/93ZfAUlxxKY",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "聚焦2.0"
     },
     {
       "id": "tv-2f7f012f",
       "show": "聚焦2.0",
       "show_network": "年代",
       "title": "帥出新高度！世界太極金牌男神孫家閎來了！解痛太極這樣練！心臟變形成「章魚壺」？資深媒體人遇生死劫？「一罐水」救命！炎炎夏日必吃瓜！營養博士傳授「最高明吃法」血糖不飆升！【聚焦2.0】第541集",
-      "date": "",
+      "date": "2024-06-29",
       "url": "https://youtu.be/SOj3-T_zG98",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "聚焦2.0"
     },
     {
       "id": "tv-01192bb5",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "做哪件事有助如廁更順暢？楊智鈞掏心掏肺分享城哥笑歪？！20230213 曾國城 李偉浩 張宜雯 Part2 EP801【全民星攻略】",
-      "date": "",
+      "date": "2023-02-18",
       "url": "https://youtu.be/_k-L9XpbLPs",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "東森美洲電視ETTV America"
     },
     {
       "id": "tv-470da61a",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "降血脂藥不影響肝腎功能 抗生素.止痛藥恐傷腎【健康2.0 分段】@tvbshealth20  EP3029-1  20250524 #鄭凱云#楊智鈞#蕭敦仁#劉怡里#許聖梅",
-      "date": "",
+      "date": "2025-05-24",
       "url": "https://youtu.be/HQrOJwobe-E",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-c8beb059",
-      "show": "網路直播/專訪",
+      "show": "廣播節目",
       "show_network": "",
       "title": "飛碟聯播網《飛碟早餐 唐湘龍時間》2023.01.31 台中沙鹿/大甲光田綜合醫院心臟外科主任 楊智鈞《俠醫楊智鈞的50道心臟密碼》",
-      "date": "",
+      "date": "2023-01-31",
       "url": "https://youtu.be/vXh3oSokRaw",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "飛碟聯播網"
     },
     {
       "id": "tv-5aa6c3dc",
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "教育葳來說｜楊智鈞醫師｜醫俠三遷，築夢葳格：楊智鈞醫師對教育理想國的執著追尋｜#葳格小學北屯校區 WAGOR TIMES 葳格人專訪（CC字幕）",
-      "date": "",
+      "date": "2026-01-13",
       "url": "https://youtu.be/fzo1-NaT_9s",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "葳格國際學校-小學部北屯校區"
     },
     {
       "id": "tv-30af412e",
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "楊智鈞自我介紹影片",
-      "date": "",
+      "date": "2018-02-08",
       "url": "https://youtu.be/kBBz2YLKJWQ",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "俠醫的血液循環頻道"
     },
     {
       "id": "tv-69042bcc",
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "縫合2-3mm的血管也OK！SMILE全飛秒近視雷射 經驗分享｜心臟血管外科 楊智鈞 醫師｜醫師的眼科醫師 張聰麒｜遠見眼科",
-      "date": "",
+      "date": "2022-03-04",
       "url": "https://youtu.be/cEKDy94mAuo",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "遠見眼科"
     },
     {
       "id": "tv-d6dca601",
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "外科醫師大滅絕-台中榮總心臟血管外科主治醫師楊智鈞@[超級簡報力]課程",
-      "date": "",
+      "date": "2015-05-27",
       "url": "https://youtu.be/N9tUeUku1wo",
       "source": "auto_search",
-      "added_date": "2026-04-14"
+      "added_date": "2026-04-14",
+      "channel": "Stacey Ma"
     },
     {
       "id": "tv-zz-P2SKtilrg68",
@@ -776,293 +805,322 @@
     },
     {
       "id": "tv-3b6f9a0a",
-      "show": "震震有詞",
-      "show_network": "高點電視台",
+      "show": "網路直播/專訪",
+      "show_network": "",
       "title": "搶救劉真！葉克膜真的是萬能嗎？！",
-      "date": "",
+      "date": "2020-02-26",
       "url": "https://youtu.be/EROVUQnqwSg",
       "source": "auto_search",
-      "added_date": "2026-04-15"
+      "added_date": "2026-04-15",
+      "channel": "17LIVE"
     },
     {
       "id": "tv-877ede6a",
-      "show": "醫次搞定",
+      "show": "網路直播/專訪",
       "show_network": "",
       "title": "20150622中天新聞　被高鐵閘門夾大腿　名醫批高鐵「不貼心」",
-      "date": "",
+      "date": "2015-06-22",
       "url": "https://youtu.be/v5agpKyRJ8s",
       "source": "auto_search",
-      "added_date": "2026-04-15"
+      "added_date": "2026-04-15",
+      "channel": "中天深喉嚨"
     },
     {
       "id": "tv-b7d70a9b",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "尚樺玩塔羅「驚人秘密」遭揭穿？Albee笑：內心蠢蠢欲動！20241216 曾國城 何妤玟 完整版 人人都有一套身心靈的保養祕訣 EP1180【全民星攻略】",
-      "date": "",
+      "date": "2024-12-17",
       "url": "https://youtu.be/AcKZtJlc7rI",
       "source": "auto_search",
-      "added_date": "2026-04-16"
+      "added_date": "2026-04-16",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-c1b33514",
       "show": "聚焦2.0",
       "show_network": "年代",
       "title": "孔鏘水腫成「米其林腿」按壓竟彈不回?!醫示警奪命危機！他擄獲木村拓哉味蕾！五星廚神曝光！必點招牌是？竹筒拔火罐！孔鏘老師被揪出心肺淤堵？踩竹筒能長高？!【聚焦2.0】第577集",
-      "date": "",
+      "date": "2025-04-19",
       "url": "https://youtu.be/S8Qz3bjcuQ4",
       "source": "auto_search",
-      "added_date": "2026-04-16"
+      "added_date": "2026-04-16",
+      "channel": "聚焦2.0"
     },
     {
       "id": "tv-12a900ea",
       "show": "聚焦2.0",
       "show_network": "年代",
       "title": "40歲爸感冒燒三天竟心衰竭！3毒素正在虐心！台大名醫養腸早餐曝光！【聚焦2.0】第624集",
-      "date": "",
+      "date": "2026-04-18",
       "url": "https://youtu.be/OHH7X3SK2mA",
       "source": "auto_search",
-      "added_date": "2026-04-20"
+      "added_date": "2026-04-20",
+      "channel": "聚焦2.0"
     },
     {
       "id": "tv-4cea52f2",
       "show": "聚焦2.0",
       "show_network": "年代",
       "title": "母罹罕見「血管瘤癌」4個月驟逝！愛雅香辣鍋藏洋蔥！花椒入魂思母情！【聚焦2.0】第624集",
-      "date": "",
+      "date": "2026-04-18",
       "url": "https://youtu.be/5sRkQXC8W7I",
       "source": "auto_search",
-      "added_date": "2026-04-20"
+      "added_date": "2026-04-20",
+      "channel": "聚焦2.0"
     },
     {
       "id": "tv-6550216f",
       "show": "聚焦2.0",
       "show_network": "年代",
       "title": "恐怖秒殺！唇發紫誤當疲勞！26歲網紅睡夢中猝逝！ 心臟比你老？一張表秒測心臟年齡！陳國元實測76歲！【聚焦2.0】第624集",
-      "date": "",
+      "date": "2026-04-18",
       "url": "https://youtu.be/ij77bZOPynU",
       "source": "auto_search",
-      "added_date": "2026-04-20"
+      "added_date": "2026-04-20",
+      "channel": "聚焦2.0"
     },
     {
       "id": "tv-2dc101b4",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "影響身體年齡關鍵！基礎代謝.肌肉量.脂肪比例【健康2.0 分段】@tvbshealth20  EP3029-3  20250524 #鄭凱云#楊智鈞#蕭敦仁#劉怡里#許聖梅",
-      "date": "",
+      "date": "2025-05-24",
       "url": "https://youtu.be/-8Lw8BsVWLY",
       "source": "auto_search",
-      "added_date": "2026-04-23"
+      "added_date": "2026-04-23",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-e40f88ef",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "女神級藝人來看診，醫師不知不覺講了40分鐘？！【#醫師好辣】20210622 完整版 醫師內心的恐懼 EP1162 賈蔚 陳榮堅",
-      "date": "",
+      "date": "2021-06-23",
       "url": "https://youtu.be/bEyFFSll1E4",
       "source": "auto_search",
-      "added_date": "2026-04-27"
+      "added_date": "2026-04-27",
+      "channel": "醫師好辣"
     },
     {
       "id": "tv-bc029bc9",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "D型人格易憂鬱！女星選不出喝啥飲料就暴哭？太玻璃心讓老公壓力好大！【#醫師好辣】20220722 part4 EP1378 鍾雲霓 貝童彤 夏宇童",
-      "date": "",
+      "date": "2022-07-23",
       "url": "https://youtu.be/8GwppoEBWx0",
       "source": "auto_search",
-      "added_date": "2026-04-27"
+      "added_date": "2026-04-27",
+      "channel": "醫師好辣"
     },
     {
       "id": "tv-969b1ac9",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "醫師堅持做肛門指診，病患痛到跑去投訴？！【#醫師好辣】20210121 part1 EP1088 陳榮堅 曲艾玲",
-      "date": "",
+      "date": "2021-01-22",
       "url": "https://youtu.be/VLIyyIUHvm0",
       "source": "auto_search",
-      "added_date": "2026-04-30"
+      "added_date": "2026-04-30",
+      "channel": "醫師好辣"
     },
     {
       "id": "tv-fa22d5f7",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "超大咖「女神」藝人看診！竟讓醫師不知不覺講40分鐘？！【醫師好辣】精選 EP1162｜賈蔚 陳榮堅",
-      "date": "",
+      "date": "2022-04-28",
       "url": "https://youtu.be/G-uk5lRTTcM",
       "source": "auto_search",
-      "added_date": "2026-04-30"
+      "added_date": "2026-04-30",
+      "channel": "東森綜合台"
     },
     {
       "id": "tv-a8742e3a",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "起床勿運動!長時間空腹缺水造成低血糖恐昏倒【健康2.0 分段】@tvbshealth20  EP3041-3 20250614 #鄭凱云#陳冠任#楊智鈞#鄒瑋倫#洪素卿",
-      "date": "",
+      "date": "2025-06-14",
       "url": "https://youtu.be/sQlvBjZWJVQ",
       "source": "auto_search",
-      "added_date": "2026-05-07"
+      "added_date": "2026-05-07",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-86e7783f",
-      "show": "網路直播/專訪",
+      "show": "健康早知道",
       "show_network": "",
       "title": "驚傳上廁所猝死危機？醫揭「這瞬間」心臟在求救！日常一動作幫心臟減壓，如何發現心血管的不定時炸彈? Feat.楊智鈞醫師｜週五首播｜主持人洪素卿｜【健康早知道】S5EP2 猝死危機",
       "date": "2026-05-08",
       "url": "https://youtu.be/FE-MewwenQM",
       "source": "auto_search",
-      "added_date": "2026-05-07"
+      "added_date": "2026-05-07",
+      "channel": "健康早知道"
     },
     {
       "id": "tv-2937eac9",
-      "show": "健康好生活",
-      "show_network": "年代",
+      "show": "健康早知道",
+      "show_network": "",
       "title": "睡眠呼吸中止症誘發心臟停跳？🌙打呼、半夜尿尿恐是心臟求救警訊！Feat.楊智鈞醫師｜週五首播｜主持人洪素卿｜【健康早知道】S5EP2 猝死危機",
-      "date": "",
+      "date": "2026-05-11",
       "url": "https://youtu.be/QGFBIFpaRUU",
       "source": "auto_search",
-      "added_date": "2026-05-14"
+      "added_date": "2026-05-14",
+      "channel": "健康早知道"
     },
     {
       "id": "tv-938cdf17",
-      "show": "網路直播/專訪",
+      "show": "健康早知道",
       "show_network": "",
       "title": "40歲後必做的２大心臟檢查？醫師親授「勾腳抬腿操」養護心血管循環！Feat.楊智鈞醫師｜週五首播｜主持人洪素卿｜【健康早知道】S5EP2 猝死危機",
-      "date": "",
+      "date": "2026-05-14",
       "url": "https://youtu.be/x2t4hhDzygw",
       "source": "auto_search",
-      "added_date": "2026-05-14"
+      "added_date": "2026-05-14",
+      "channel": "健康早知道"
     },
     {
       "id": "tv-80e0d099",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "城哥玩塔羅被揭近期吃太多？尚樺大笑：非常的準！20241216 曾國城 楊智鈞 陳柏臣 Part2 EP1180【全民星攻略】",
-      "date": "",
+      "date": "2024-12-17",
       "url": "https://youtu.be/61Gc8MwjphA",
       "source": "auto_search",
-      "added_date": "2026-06-04"
+      "added_date": "2026-06-04",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-450e33c0",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "85歲沈富雄搭捷運竟心梗 1症狀快速自救！持續胸痛、悶堵、呼吸困難恐心肌梗塞！心臟術後復健5要素！健康2.0 20250614【完整版】#鄭凱云#陳冠任#楊智鈞#鄒瑋倫#洪素卿#雷議宗",
-      "date": "",
+      "date": "2025-06-14",
       "url": "https://youtu.be/31pg7hqVvMs",
       "source": "auto_search",
-      "added_date": "2026-06-04"
+      "added_date": "2026-06-04",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-8076bb94",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "醫師都難以查出的疾病！病患性功能障礙就診，竟是大腦出問題？！【#醫師好辣】 20190819 完整版 EP794 賈蔚 陳櫻文",
-      "date": "",
+      "date": "2019-08-20",
       "url": "https://youtu.be/tmmVOQkZFxE",
       "source": "auto_search",
-      "added_date": "2026-06-11"
+      "added_date": "2026-06-11",
+      "channel": "醫師好辣"
     },
     {
       "id": "tv-f97c5446",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "狄志為想答錯全歪打正著？侯鐘堡驚險連3按閃歸零？！20230213 曾國城 侯鐘堡 狄志為 Part3 EP801【全民星攻略】",
-      "date": "",
+      "date": "2023-02-14",
       "url": "https://youtu.be/n_4ZqbpMFRw",
       "source": "auto_search",
-      "added_date": "2026-06-11"
+      "added_date": "2026-06-11",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-6e9c3c42",
       "show": "醫師好辣",
       "show_network": "衛視中文台",
       "title": "\"個性\"暴露你的病！A型人格易暴怒？無心之言竟害貝童彤大崩潰？！【醫師好辣】20220722 精選 EP1378｜徐乃麟 楊智鈞",
-      "date": "",
+      "date": "2023-05-11",
       "url": "https://youtu.be/nCp3eDEh5M0",
       "source": "auto_search",
-      "added_date": "2026-06-18"
+      "added_date": "2026-06-18",
+      "channel": "東森綜合台"
     },
     {
       "id": "tv-ee3bee0d",
-      "show": "祝你健康",
-      "show_network": "",
+      "show": "健康2.0",
+      "show_network": "TVBS",
       "title": "顱內致命炸彈 身體半邊麻痺恐是腦病變！腦瘤破裂前沒症狀 小心高血壓引爆！ 健康2.0 20231029【完整版】 鄭凱云 陳龍 楊智鈞 劉怡里 梁惠雯 雷議宗 @tvbshealth20",
-      "date": "",
+      "date": "2023-10-29",
       "url": "https://youtu.be/Q5mkELZZLI8",
       "source": "auto_search",
-      "added_date": "2026-06-22"
+      "added_date": "2026-06-22",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-b07d8ed3",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "動脈硬化危險因子 膽固醇過高.高血糖.抽菸.老化【健康2.0 分段】@tvbshealth20  EP3029-2  20250524 #鄭凱云#楊智鈞#蕭敦仁#劉怡里#陸巧因",
-      "date": "",
+      "date": "2025-05-24",
       "url": "https://youtu.be/24JfG_hsMVc",
       "source": "auto_search",
-      "added_date": "2026-07-06"
+      "added_date": "2026-07-06",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-2673593f",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "【醫師好辣】人人體內都留著渣男血液？別再讓器官當你的工具人？！ EP1792 預告｜每週六日下午5點 東森綜合32頻道",
-      "date": "",
+      "date": "2026-07-03",
       "url": "https://youtu.be/-cUwtd_rfO4",
       "source": "auto_search",
-      "added_date": "2026-07-09"
+      "added_date": "2026-07-09",
+      "channel": "醫師好辣"
     },
     {
       "id": "tv-65251888",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "【醫師好辣】史上最熱夏天，高溫讓你頻繁進醫院？！ EP1794 預告｜每週六日下午5點 東森綜合32頻道",
-      "date": "",
+      "date": "2026-07-10",
       "url": "https://youtu.be/BQA4qpyXxl4",
       "source": "auto_search",
-      "added_date": "2026-07-13"
+      "added_date": "2026-07-13",
+      "channel": "醫師好辣"
     },
     {
       "id": "tv-a69e87b9",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "泡澡 排尿 血壓掉 秋冬浴室是猝死高風險區！ 心臟外科醫師教戰 2招護心運動！ 健康2.0 20240204【完整版】鄭凱云 楊智鈞 陳欣湄 黃淑惠 洪素卿 陳之穎@tvbshealth20",
-      "date": "",
+      "date": "2024-02-04",
       "url": "https://youtu.be/UwhFMH7uEuA",
       "source": "auto_search",
-      "added_date": "2026-07-13"
+      "added_date": "2026-07-13",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-24396c71",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "趙少康切胸骨開心 心臟暫停3小時！血壓3數值看血管健康 名醫魏崢示警：這症狀有猝死風險！ 健康2.0 20241123【完整版】鄭凱云 楊智鈞 江承鴻 鄭光男 陳之穎 洪素卿 李筱娟",
-      "date": "",
+      "date": "2024-11-23",
       "url": "https://youtu.be/EfIrTnpaMCs",
       "source": "auto_search",
-      "added_date": "2026-07-20"
+      "added_date": "2026-07-20",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-deb4c2b9",
       "show": "網路直播/專訪",
       "show_network": "",
       "title": "【2022/12/27 中原光舞冬成 Battle】楊智鈞 龍棍",
-      "date": "",
+      "date": "2022-12-30",
       "url": "https://youtu.be/JIoQtvswx9s",
       "source": "auto_search",
-      "added_date": "2026-07-20"
+      "added_date": "2026-07-20",
+      "channel": "中原光舞社"
     },
     {
       "id": "tv-47b0f553",
       "show": "醫師好辣",
       "show_network": "東森",
       "title": "便秘也會心肌梗塞？7旬翁飲食不均長期便秘！倒臥馬桶急送醫！【醫師好辣】必看精彩片段 江坤俊 邱鴻傑 楊智鈞",
-      "date": "",
+      "date": "2022-02-28",
       "url": "https://youtu.be/CrO50J3hqhY",
       "source": "auto_search",
-      "added_date": "2026-07-23"
+      "added_date": "2026-07-23",
+      "channel": "東森綜合台"
     },
     {
       "id": "tv-752aebe9",
@@ -1072,47 +1130,52 @@
       "date": "2026-07-24",
       "url": "https://youtu.be/oxvM7lqw-uw",
       "source": "auto_search",
-      "added_date": "2026-07-26"
+      "added_date": "2026-07-26",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-d043e2ba",
       "show": "健康2.0",
       "show_network": "TVBS",
       "title": "趙少康切胸骨開心 心臟暫停3小時！血壓3數值看血管健康 名醫魏崢示警：這症狀有猝死風險！ 健康2.0【完整版】#鄭凱云#楊智鈞#江承鴻#鄭光男#陳之穎#洪素卿#李筱娟",
-      "date": "",
+      "date": "2025-07-31",
       "url": "https://youtu.be/cNk9I2aSHG4",
       "source": "auto_search",
-      "added_date": "2026-08-03"
+      "added_date": "2026-08-03",
+      "channel": "TVBS 優選頻道- T觀點"
     },
     {
       "id": "tv-a0cc3a0b",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "【全民星攻略】疫情時期 她們做什麼紓壓？EP1111預告｜ 週一至週五晚間9點 東森綜合32頻道",
-      "date": "",
+      "date": "2024-08-15",
       "url": "https://youtu.be/PmEviO7iMy0",
       "source": "auto_search",
-      "added_date": "2026-09-17"
+      "added_date": "2026-09-17",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-da23e6b6",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "【全民星攻略】吃什麼食物 能有效舒緩壓力？EP1111預告｜ 週一至週五晚間9點 東森綜合32頻道",
-      "date": "",
+      "date": "2024-08-15",
       "url": "https://youtu.be/JsF6upS5pb8",
       "source": "auto_search",
-      "added_date": "2026-09-17"
+      "added_date": "2026-09-17",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-ed257390",
       "show": "全民星攻略",
       "show_network": "衛視中文台",
       "title": "【全民星攻略】答案被否定 讓來賓森七七啦 EP1180預告｜ 週一至週五晚間9點 東森綜合32頻道",
-      "date": "",
+      "date": "2024-12-16",
       "url": "https://youtu.be/TmGEnbGZfxU",
       "source": "auto_search",
-      "added_date": "2026-09-17"
+      "added_date": "2026-09-17",
+      "channel": "全民星攻略"
     },
     {
       "id": "tv-3d66e230",
@@ -1122,7 +1185,8 @@
       "date": "2020-02-02",
       "url": "https://youtu.be/r25oygZnWEQ",
       "source": "auto_search",
-      "added_date": "2026-09-28"
+      "added_date": "2026-09-28",
+      "channel": "17LIVE"
     },
     {
       "id": "tv-8bcce1f7",
@@ -1132,7 +1196,8 @@
       "date": "2026-10-29",
       "url": "https://youtu.be/0Tv8zLMVy1Y",
       "source": "auto_search",
-      "added_date": "2026-10-26"
+      "added_date": "2026-10-26",
+      "channel": "健康早知道"
     },
     {
       "id": "tv-984863ad",
@@ -1142,7 +1207,8 @@
       "date": "2026-10-23",
       "url": "https://youtu.be/j-wQJkS7ATY",
       "source": "auto_search",
-      "added_date": "2026-10-26"
+      "added_date": "2026-10-26",
+      "channel": "健康早知道"
     },
     {
       "id": "tv-26c22a87",
@@ -1152,7 +1218,8 @@
       "date": "2026-10-26",
       "url": "https://youtu.be/RQumADzVKpk",
       "source": "auto_search",
-      "added_date": "2026-10-26"
+      "added_date": "2026-10-26",
+      "channel": "健康早知道"
     },
     {
       "id": "tv-03a89ce0",
@@ -1162,7 +1229,8 @@
       "date": "2025-06-17",
       "url": "https://youtu.be/9TKTgB7mTSU",
       "source": "auto_search",
-      "added_date": "2026-11-02"
+      "added_date": "2026-11-02",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-be8049ad",
@@ -1172,7 +1240,8 @@
       "date": "2025-06-14",
       "url": "https://youtu.be/FrmF6Y6M66g",
       "source": "auto_search",
-      "added_date": "2026-11-02"
+      "added_date": "2026-11-02",
+      "channel": "健康2.0"
     },
     {
       "id": "tv-bda40c63",
@@ -1182,7 +1251,8 @@
       "date": "2026-09-02",
       "url": "https://youtu.be/Aqu8NZzHDok",
       "source": "auto_search",
-      "added_date": "2026-11-02"
+      "added_date": "2026-11-02",
+      "channel": "來!聊醫下"
     },
     {
       "id": "tv-d6ca461a",
@@ -1196,13 +1266,146 @@
     },
     {
       "id": "tv-84eddb69",
-      "show": "健康好生活",
-      "show_network": "年代",
+      "show": "空中醫語教室",
+      "show_network": "",
       "title": "EP34家人病危，葉克膜該裝嗎？心臟外科醫師揭開急救現場，談最難的生死決定！feat. 心臟血管外科 楊智鈞醫師",
-      "date": "",
+      "date": "2026-11-05",
       "url": "https://youtu.be/-wuUDcZwMK0",
       "source": "auto_search",
-      "added_date": "2026-11-05"
+      "added_date": "2026-11-05",
+      "channel": "空中醫語教室 Med on Air"
+    },
+    {
+      "id": "tv-e01867d2",
+      "show": "空中醫語教室",
+      "show_network": "",
+      "title": "EP33 靜脈曲張只是不好看？ 心臟外科醫師揭開血管危機與病變的真相 feat. 心臟血管外科 楊智鈞醫師",
+      "date": "2026-10-30",
+      "url": "https://youtu.be/0O-L4k1f2pM",
+      "channel": "空中醫語教室 Med on Air",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-94a606e2",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "遠見眼科 101 旗艦開幕記者會採訪｜楊智鈞醫師",
+      "date": "2023-12-29",
+      "url": "https://youtu.be/ZLouer-jM90",
+      "channel": "遠見眼科",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-19e290cb",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "⚠武漢肺炎最新！俠醫：收假潮要當心❗️❗️                       俠醫楊智鈞提醒你👨‍⚕️防疫五步你做了嗎👀",
+      "date": "2020-01-29",
+      "url": "https://youtu.be/dJHF1smybWg",
+      "channel": "17LIVE",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-65f40325",
+      "show": "廣播節目",
+      "show_network": "",
+      "title": "飛碟聯播網《青春永遠不會老》 朱衛茵 主持 2023.05.04  適量飲酒有益心血管健康是真的嗎？  #心血管健康   #心臟   #楊智鈞",
+      "date": "2023-05-04",
+      "url": "https://youtu.be/hU7nUPn5BwA",
+      "channel": "飛碟聯播網",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-2d72798b",
+      "show": "全民星攻略",
+      "show_network": "衛視中文台",
+      "title": "每天做什麼10分鐘可活化大腦？城哥稱沒自肥被尚樺打臉！#全民星攻略 #曾國城 #蔡尚樺 【精華】",
+      "date": "2024-08-17",
+      "url": "https://youtu.be/UanSruNGRp0",
+      "channel": "全民星攻略",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-ca427176",
+      "show": "聚焦2.0",
+      "show_network": "年代",
+      "title": "熱燙飲食致命！AI讓安迪「說話」新台語女神！翻唱短影音爆紅！【聚焦2.0】第608集",
+      "date": "2025-12-06",
+      "url": "https://youtu.be/0DS_drn8rz8",
+      "channel": "聚焦2.0",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-9b3dda78",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "武漢肺炎『防疫懶人包』💊                        增強免疫力💪過年『挑食』更健康！                        心臟外科醫師👨‍⚕️教你安 「心」過好年❤",
+      "date": "2020-01-22",
+      "url": "https://youtu.be/Cy6N4ukl1Gs",
+      "channel": "17LIVE",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-b89763d7",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "腿部靜脈曲張不需忍 無刀微創雙腿更好看",
+      "date": "2023-06-30",
+      "url": "https://youtu.be/KNJeE-xR3rs",
+      "channel": "亞太日報台灣",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-eb90d7f9",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "劉真手術風險8%❗接受微創心臟手術不可不知的3⃣大風險👨‍⚕️",
+      "date": "2020-03-13",
+      "url": "https://youtu.be/ZMWfR9DALjI",
+      "channel": "17LIVE",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-90bc7583",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "【武漢肺炎系列直播】                           來來來畫重點！👨‍⚕️                          ⚠️了解社區感染，防疫莫驚慌！",
+      "date": "2020-02-19",
+      "url": "https://youtu.be/2bZk05V9wGU",
+      "channel": "17LIVE",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-ab7b1574",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "【武漢肺炎系列直播】 情人節來臨💕",
+      "date": "2020-02-12",
+      "url": "https://youtu.be/kxIjq8QaeOc",
+      "channel": "17LIVE",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
+    },
+    {
+      "id": "tv-cd28e849",
+      "show": "網路直播/專訪",
+      "show_network": "",
+      "title": "超高齡病人來安南醫院開心臟安啦!!",
+      "date": "2019-05-04",
+      "url": "https://youtu.be/JaMGgBFchLI",
+      "channel": "CITY BEING樂活城市新聞 古秀美",
+      "source": "auto_search",
+      "added_date": "2026-11-26"
     }
   ],
   "health_media": [
