@@ -49,6 +49,46 @@ MAX_YT_CHECKS = int(os.environ.get("MAX_YT_CHECKS", "150"))
 MAX_BACKFILL = int(os.environ.get("MAX_BACKFILL", "25"))
 MIN_VIDEO_SECONDS = 75  # skip Shorts-length clips cut from full episodes
 
+OWN_CHANNEL_IDS = {"UCQwaTIPz3jlpunrDCoyDJpA"}
+
+# Channels whose RSS feed is checked every run (channel id -> name). Channels of
+# any appearance found later are added automatically from data.json.
+WATCH_CHANNELS = {
+    "UCndzUZnInvxnJVzFn2rRDrw": "醫師好辣",
+    "UCet3uxeYnTk3n1acNCNlJgA": "東森綜合台",
+    "UCAqzHNzLTC6Vm5UYE7xw_2A": "健康2.0",
+    "UCH0CYJBlFqswdlDdbXDnB-Q": "全民星攻略",
+    "UCLt4uN5WixTqZHqgD05Eoiw": "聚焦2.0",
+    "UCUocTbetB7_xJkV2zXBLtCw": "健康早知道",
+    "UCLw13zx2c-zcyDiFXhNrpNA": "祝你健康",
+    "UCZYbpFxslzhODUMDwS2Xt1g": "空中醫語教室 Med on Air",
+    "UCb4CEGKZuAW8emEuP9JCKEg": "哇賽心理學",
+    "UCHdR0x9YE1O3k2V3y0n_bIg": "來!聊醫下",
+    "UCSF7m0Ad3hkYdrqrlNXxqkg": "健康主播鄭凱云",
+    "UCOc2A2GJ9-WhjZSUO3nVEgQ": "九八新聞台",
+    "UCUaf4I5TYCExf9mWzv1cB_A": "飛碟聯播網",
+    "UCZhgu7uf-971SGC8zkwGEHA": "早安健康",
+    "UCTPCYXkmdoQDHjCrhCTHyVQ": "就是愛健康",
+    "UCQmSXClLgPY6PrSM3_h1XtQ": "17LIVE",
+    "UCdq8Q2SVIkZKoUaB7iRDPDg": "高點電視",
+}
+
+# Channel id -> show, for channels whose displayed name varies by language.
+CHANNEL_ID_TO_SHOW = {
+    "UCndzUZnInvxnJVzFn2rRDrw": "醫師好辣",
+    "UCAqzHNzLTC6Vm5UYE7xw_2A": "健康2.0",
+    "UCmgDmqjxbkqIXu4rNbrKodA": "健康2.0",
+    "UCH0CYJBlFqswdlDdbXDnB-Q": "全民星攻略",
+    "UCLt4uN5WixTqZHqgD05Eoiw": "聚焦2.0",
+    "UCUocTbetB7_xJkV2zXBLtCw": "健康早知道",
+    "UCLw13zx2c-zcyDiFXhNrpNA": "祝你健康",
+    "UCZYbpFxslzhODUMDwS2Xt1g": "空中醫語教室",
+    "UCb4CEGKZuAW8emEuP9JCKEg": "哇賽心觀點",
+    "UCHdR0x9YE1O3k2V3y0n_bIg": "來！聊醫下",
+    "UCOc2A2GJ9-WhjZSUO3nVEgQ": "廣播節目",
+    "UCUaf4I5TYCExf9mWzv1cB_A": "廣播節目",
+}
+
 # Searches that are not tied to one show (query, how many results)
 GENERIC_YT_QUERIES = [
     ("楊智鈞醫師", 40),
@@ -831,7 +871,9 @@ def save_seen(seen):
 
 
 def yt_flat_search(query, count):
-    """Cheap search: returns [(id, title, channel)] without per-video requests."""
+    """Cheap search. Each result carries the title, channel, duration and the
+    description snippet YouTube shows under a search hit. No per-video requests,
+    so this works from cloud machines where single-video lookups are blocked."""
     try:
         result = subprocess.run(
             ["yt-dlp", f"ytsearch{count}:{query}", "--dump-json", "--no-download",
@@ -849,9 +891,17 @@ def yt_flat_search(query, count):
             v = json.loads(line)
         except json.JSONDecodeError:
             continue
-        if v.get("id"):
-            out.append((v["id"], v.get("title", "") or "",
-                        v.get("channel", "") or v.get("uploader", "") or ""))
+        if v.get("id") and len(v["id"]) == 11:
+            out.append({
+                "id": v["id"],
+                "title": v.get("title", "") or "",
+                "description": v.get("description", "") or "",
+                "tags": "",
+                "channel": v.get("channel", "") or v.get("uploader", "") or "",
+                "channel_id": v.get("channel_id", "") or "",
+                "date": "",
+                "duration": v.get("duration") or 0,
+            })
     return out
 
 
@@ -954,33 +1004,75 @@ def names_doctor(meta, show_name, existing_simplified):
     return False
 
 
-def classify_show(channel, title):
-    """Decide which show a video belongs to from its real channel and title."""
+def classify_show(channel, title, channel_id=""):
+    """Decide which show a video belongs to from its title and real channel."""
     for name, info in TV_SHOWS.items():
         if name in title:
             return name, info["network"]
+    if channel_id and channel_id in CHANNEL_ID_TO_SHOW:
+        name = CHANNEL_ID_TO_SHOW[channel_id]
+        return name, TV_SHOWS[name]["network"]
     for name, info in TV_SHOWS.items():
         if any(kw in channel for kw in info["channel_keywords"]):
             return name, info["network"]
     return "網路直播/專訪", ""
 
 
+_feed_cache = {}
+
+
+def yt_channel_feed(channel_id):
+    """A channel's public RSS feed: its 15 newest videos with the full description
+    and the exact publish date. Works without login from anywhere."""
+    if not channel_id:
+        return []
+    if channel_id in _feed_cache:
+        return _feed_cache[channel_id]
+    entries = []
+    try:
+        resp = requests.get(
+            f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}", timeout=20
+        )
+        feed = feedparser.parse(resp.content)
+        channel = feed.feed.get("title", "")
+        for e in feed.entries:
+            vid = e.get("yt_videoid", "")
+            if not vid:
+                continue
+            entries.append({
+                "id": vid,
+                "title": e.get("title", "") or "",
+                "description": e.get("summary", "") or "",
+                "tags": "",
+                "channel": channel,
+                "channel_id": channel_id,
+                "date": (e.get("published", "") or "")[:10],
+                "duration": 0,
+            })
+    except Exception as ex:
+        print(f"[YT] Feed error for {channel_id}: {ex}")
+    _feed_cache[channel_id] = entries
+    return entries
+
+
 def search_youtube_shows(data):
     """Find new TV / interview appearances on YouTube.
 
-    1. Collect candidate video ids from many cheap searches.
-    2. For each id not seen before, fetch full metadata and keep it only if the
-       doctor's name is in the title, description or tags.
-    3. Classify by the video's real channel, and record the upload date.
-    Ids that were checked and rejected are remembered in yt_seen.json so later
-    runs don't fetch them again.
+    Two sources of candidates:
+      a. the RSS feeds of every channel the doctor has appeared on (newest uploads,
+         full description, exact date);
+      b. keyword searches (title plus the description snippet of each hit).
+    When single-video lookups are possible (they are on a home connection, usually
+    not on cloud machines) each search hit is also checked against its full
+    description, and rejected ids are remembered in yt_seen.json.
     """
     print("[YT] Searching YouTube for new appearances...")
     try:
         subprocess.run(["yt-dlp", "--version"], capture_output=True, check=True)
+        have_ytdlp = True
     except (FileNotFoundError, subprocess.CalledProcessError):
-        print("[YT] yt-dlp not available, skipping YouTube search")
-        return []
+        print("[YT] yt-dlp not available, only channel feeds will be checked")
+        have_ytdlp = False
 
     existing_urls = get_existing_urls(data)
     existing_titles = get_existing_titles(data)
@@ -990,49 +1082,20 @@ def search_youtube_shows(data):
     existing_episodes = {episode_key(i["show"], i["title"]) for i in data.get("tv_shows", [])}
     existing_episodes.discard(None)
 
-    queries = [(f"{show} 楊智鈞", 12) for show in TV_SHOWS]
-    queries += [(q, n) for q, n in GENERIC_YT_QUERIES]
-
-    candidates = {}
-    for query, count in queries:
-        for vid, title, channel in yt_flat_search(query, count):
-            if vid in existing_urls or vid in seen or vid in candidates:
-                continue
-            candidates[vid] = (title, channel)
-    print(f"[YT] {len(candidates)} unseen candidates from {len(queries)} searches")
-
-    # Titles that already name the doctor go first, so they are never cut by the cap.
-    ordered = sorted(candidates.items(),
-                     key=lambda kv: not any(n in kv[1][0] for n in SEARCH_NAMES))
-    checked = 0
-    for vid, (flat_title, flat_channel) in ordered:
-        if checked >= MAX_YT_CHECKS:
-            print(f"[YT] Reached {MAX_YT_CHECKS} checks this run; the rest wait for next run")
-            break
-        checked += 1
-        meta = yt_video_meta(vid)
-
-        if meta is None:
-            # Could not read the description. Only trust an explicit name in the title,
-            # and do not remember the id, so it is retried next run.
-            if not any(n in flat_title for n in SEARCH_NAMES):
-                continue
-            meta = {"title": flat_title, "description": "", "tags": "",
-                    "channel": flat_channel, "date": "", "duration": 0}
-            remember = False
-        else:
-            remember = True
-
-        show_name, network = classify_show(meta["channel"], meta["title"])
+    def consider(meta, full_description):
+        """Apply every rule to one video. Returns (added, verdict)."""
+        vid = meta["id"]
+        show_name, network = classify_show(meta["channel"], meta["title"], meta.get("channel_id", ""))
         ep_key = episode_key(show_name, meta["title"])
         simple_title = _simplify(meta["title"])
 
-        if any(own in meta["channel"] for own in OWN_CHANNELS):
+        if meta.get("channel_id") in OWN_CHANNEL_IDS or any(own in meta["channel"] for own in OWN_CHANNELS):
             verdict = "own_channel"
         elif any(b in meta["channel"] for b in BRAND_CHANNELS):
             verdict = "brand_channel"
         elif not names_doctor(meta, show_name, existing_simplified):
-            verdict = "no_name"
+            # With only a snippet we cannot be sure the name is absent.
+            verdict = "no_name" if full_description else "unconfirmed"
         elif meta["duration"] and meta["duration"] < MIN_VIDEO_SECONDS:
             verdict = "too_short"
         elif is_duplicate_title(meta["title"], existing_titles) or any(
@@ -1042,20 +1105,25 @@ def search_youtube_shows(data):
             verdict = "same_episode"
         else:
             verdict = None
-
         if verdict:
-            if remember:
-                seen[vid] = verdict
-            continue
+            return False, verdict
 
+        date = meta["date"]
+        if not date:
+            # The channel feed has exact dates for recent uploads.
+            for e in yt_channel_feed(meta.get("channel_id", "")):
+                if e["id"] == vid:
+                    date = e["date"]
+                    break
         new_item = {
             "id": make_id("tv", show_name, meta["title"]),
             "show": show_name,
             "show_network": network,
             "title": meta["title"],
-            "date": meta["date"],
+            "date": date,
             "url": f"https://youtu.be/{vid}",
             "channel": meta["channel"],
+            "channel_id": meta.get("channel_id", ""),
             "source": "auto_search",
             "added_date": today_str(),
         }
@@ -1066,10 +1134,66 @@ def search_youtube_shows(data):
         if ep_key:
             existing_episodes.add(ep_key)
         new_items.append(new_item)
-        print(f"  [+] [{show_name}] {meta['date'] or '----'} {meta['channel']} | {meta['title'][:50]}")
+        print(f"  [+] [{show_name}] {date or '----'} {meta['channel']} | {meta['title'][:50]}")
+        return True, None
+
+    # a. Channel feeds
+    watch = dict(WATCH_CHANNELS)
+    for item in data.get("tv_shows", []):
+        if item.get("channel_id") and item["channel_id"] not in OWN_CHANNEL_IDS:
+            watch.setdefault(item["channel_id"], item.get("channel", ""))
+    feed_checked = 0
+    for channel_id in watch:
+        for entry in yt_channel_feed(channel_id):
+            if entry["id"] in existing_urls or entry["id"] in seen:
+                continue
+            feed_checked += 1
+            consider(entry, full_description=True)
+    print(f"[YT] Feeds: {len(watch)} channels, {feed_checked} recent videos checked")
+
+    # b. Keyword searches
+    if have_ytdlp:
+        queries = [(f"{show} 楊智鈞", 12) for show in TV_SHOWS]
+        queries += [(q, n) for q, n in GENERIC_YT_QUERIES]
+        candidates = {}
+        for query, count in queries:
+            for hit in yt_flat_search(query, count):
+                vid = hit["id"]
+                if vid in existing_urls or vid in seen or vid in candidates:
+                    continue
+                candidates[vid] = hit
+        print(f"[YT] Search: {len(candidates)} unseen candidates from {len(queries)} searches")
+
+        ordered = sorted(candidates.values(),
+                         key=lambda h: not any(n in h["title"] for n in SEARCH_NAMES))
+        lookups = failures = 0
+        lookups_work = True
+        for hit in ordered:
+            vid = hit["id"]
+            if vid in existing_urls:
+                continue
+            full = None
+            if lookups_work and lookups < MAX_YT_CHECKS:
+                lookups += 1
+                full = yt_video_meta(vid)
+                if full is None:
+                    failures += 1
+                    if failures >= 3 and failures == lookups:
+                        print("[YT] Single-video lookups are blocked here; using search snippets only")
+                        lookups_work = False
+                else:
+                    full["id"] = vid
+                    full["channel_id"] = hit["channel_id"]
+            if full is not None:
+                added, verdict = consider(full, full_description=True)
+                if verdict:
+                    seen[vid] = verdict
+            else:
+                consider(hit, full_description=False)
+        print(f"[YT] Search: {lookups} full lookups ({failures} failed)")
 
     save_seen(seen)
-    print(f"[YT] Checked {checked}, added {len(new_items)} new appearances")
+    print(f"[YT] Added {len(new_items)} new appearances")
     return new_items
 
 
@@ -1081,6 +1205,7 @@ def backfill_dates(data):
     of the newest-first lists."""
     filled = 0
     budget = MAX_BACKFILL
+    blocked = 0
     for item in data.get("tv_shows", []):
         if budget <= 0:
             break
@@ -1091,6 +1216,11 @@ def backfill_dates(data):
             continue
         budget -= 1
         meta = yt_video_meta(m.group(1))
+        if meta is None:
+            blocked += 1
+            if blocked >= 3:
+                break
+            continue
         if meta and meta["date"]:
             item["date"] = meta["date"]
             item.setdefault("channel", meta["channel"])
