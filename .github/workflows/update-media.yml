@@ -33,6 +33,8 @@ jobs:
         run: pip install -U yt-dlp
 
       - name: Run update script
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
         run: python scripts/update_media.py
 
       - name: Fetch article summaries (fills new/empty items only)

@@ -951,7 +951,7 @@
                     <div class="platform-handle">醫療新知・診間思考，直送你的信箱</div>
                 </div>
                 <div class="platform-stat" style="color:#12362d;">
-                    <div class="n">775</div>
+                    <div class="n" id="newsletter-subscribers-display">1,002</div>
                     <div class="l">訂閱者</div>
                 </div>
                 <span class="platform-cta" style="background:#c99c48; color:#12362d;">訂閱電子報</span>
@@ -1296,6 +1296,16 @@
                     </div>
                     <div class="media-item">
                         <div class="info">
+                            <div class="title">大研生醫魚油｜你的魚油「吃對」了嗎？EPA/DHA 與食用時機</div>
+                            <div class="meta">2026/06/03｜YouTube｜大研生醫官方頻道</div>
+                        </div>
+                        <a href="https://youtu.be/l6JEArew2Xo" target="_blank">觀看</a>
+                        <a class="media-thumb" href="https://youtu.be/l6JEArew2Xo" target="_blank">
+                            <img src="assets/thumbs/vid-fishoil-daiken.jpg" alt="大研生醫魚油 EPA/DHA 與食用時機影片" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="media-item">
+                        <div class="info">
                             <div class="title">輝葉 COZY SEAT 垂直律動椅</div>
                             <div class="meta">2026/05/21｜Instagram</div>
                         </div>
@@ -1322,6 +1332,16 @@
                         <a href="https://www.instagram.com/reel/DWxqzk4AiTf/" target="_blank">觀看</a>
                         <a class="media-thumb" href="https://www.instagram.com/reel/DWxqzk4AiTf/" target="_blank">
                             <img src="assets/thumbs/vid-pen2.jpg" alt="物外 ystudio 雲龍箔鋼筆影片" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="media-item">
+                        <div class="info">
+                            <div class="title">iRESTORE 雷射生髮帽｜用專業眼光選擇生髮產品</div>
+                            <div class="meta">2024/01/02｜YouTube｜iRESTORE 官方頻道</div>
+                        </div>
+                        <a href="https://youtu.be/0z75--YUeOM" target="_blank">觀看</a>
+                        <a class="media-thumb" href="https://youtu.be/0z75--YUeOM" target="_blank">
+                            <img src="assets/thumbs/vid-irestore.jpg" alt="iRESTORE 雷射生髮帽推薦影片" loading="lazy">
                         </a>
                     </div>
                 </div>
@@ -1361,6 +1381,10 @@
         // --- Render YouTube view count ---
         const ytEl = document.getElementById('yt-views-display');
         if (ytEl && data.stats.youtube_views) ytEl.textContent = data.stats.youtube_views.display;
+
+        // --- Render newsletter subscriber count ---
+        const nlEl = document.getElementById('newsletter-subscribers-display');
+        if (nlEl && data.stats.newsletter_subscribers) nlEl.textContent = data.stats.newsletter_subscribers.display;
 
         // --- Render podcast episode count ---
         const podEl = document.getElementById('podcast-episodes-display');

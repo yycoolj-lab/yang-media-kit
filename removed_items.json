@@ -342,5 +342,19 @@
     "added_date": "2026-04-14",
     "_section": "news_media",
     "_reason": "different_person_same_name"
+  },
+  {
+    "id": "tv-deb4c2b9",
+    "show": "網路直播/專訪",
+    "show_network": "",
+    "title": "【2022/12/27 中原光舞冬成 Battle】楊智鈞 龍棍",
+    "date": "2022-12-30",
+    "url": "https://youtu.be/JIoQtvswx9s",
+    "source": "auto_search",
+    "added_date": "2026-07-20",
+    "channel": "中原光舞社",
+    "channel_id": "UCtz0NNF6mp-tFYbgrxv2HlA",
+    "_section": "tv_shows",
+    "_reason": "same_name_different_person"
   }
 ]

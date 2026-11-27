@@ -853,6 +853,39 @@ def update_podcast_count(data):
         return False
 
 
+def update_newsletter_subscribers(data):
+    """Active subscriber count of the Kit newsletter. Needs the KIT_API_KEY
+    environment variable (a GitHub Actions secret); skipped when it is absent."""
+    key = os.environ.get("KIT_API_KEY", "").strip()
+    if not key:
+        print("[KIT] No KIT_API_KEY set, skipping newsletter count")
+        return False
+    print("[KIT] Fetching subscriber count...")
+    try:
+        resp = requests.get(
+            "https://api.kit.com/v4/subscribers",
+            params={"status": "active", "include_total_count": "true", "per_page": 1},
+            headers={"X-Kit-Api-Key": key, "Accept": "application/json"},
+            timeout=20,
+        )
+        if resp.status_code != 200:
+            print(f"[KIT] HTTP {resp.status_code}, keeping old value")
+            return False
+        total = (resp.json().get("pagination") or {}).get("total_count")
+        if not isinstance(total, int) or total <= 0:
+            print("[KIT] No total in response, keeping old value")
+            return False
+        nl = data["stats"].setdefault("newsletter_subscribers", {})
+        old = nl.get("count", 0)
+        nl["count"] = total
+        nl["display"] = f"{total:,}"
+        print(f"[KIT] subscribers {old} -> {total}")
+        return total != old
+    except Exception as e:
+        print(f"[KIT] Error: {type(e).__name__}, keeping old value")
+        return False
+
+
 # ─── YOUTUBE: TV / INTERVIEW DISCOVERY ───────────────
 
 def load_seen():
@@ -1303,6 +1336,8 @@ def main():
     if update_youtube_stats(data):
         changes = True
     if update_podcast_count(data):
+        changes = True
+    if update_newsletter_subscribers(data):
         changes = True
 
     # 7. Fill in missing dates, a few per run
